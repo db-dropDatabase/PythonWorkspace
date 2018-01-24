@@ -31,10 +31,12 @@ def show_images(images, cols = 1, titles = None):
     fig.set_size_inches(np.array(fig.get_size_inches()) * n_images)
     plt.show()
 
-path = path.relpath(path.join('images', 'pictograph-center.png'))
+cwd = path.relpath(os.path.dirname(os.path.realpath(__file__)))
+path = path.join(cwd, path.join('images', 'robotview.png'))
+#robotPath = path.join(cwd, 'images', 'robotview.png')
 
 img = cv2.imread(path, 1)
-img = cv2.pyrDown(img)
+#img = cv2.pyrDown(img)
 img = cv2.pyrDown(img)
 img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
 
@@ -48,13 +50,19 @@ colorSpace = cv2.cvtColor(img, cv2.COLOR_RGB2HSV)
 val = 15
 for row in colorSpace:
     for pixel in row:
-        pixel[0] -= val
-        if(pixel[0] < 0):
-            pixel[0] += 180
+        if(pixel[0] < val):
+            pixel[0] = 180 - (val - pixel[0])
+        else:
+            pixel[0] -= val
+
+colorSpace = cv2.cvtColor(colorSpace, cv2.COLOR_HSV2RGB)
+h,s,v = cv2.split(colorSpace)
 
 # convert back to RGB
-colorSpace = cv2.cvtColor(colorSpace, cv2.COLOR_HSV2RGB)
-
 r,g,b = cv2.split(colorSpace)
 
-show_images((img, colorSpace, r))
+satWeight = np.uint8((np.uint16(r) * (255 - np.uint16(s))) >> 8)
+valWeight = np.uint8((np.uint16(r) * (255 - np.uint16(v))) >> 8)
+bothWeight = np.uint8((np.uint32(r) * (255 - np.uint32(s)) * (255 - np.uint32(v))) >> 16)
+
+show_images((img, colorSpace, r, satWeight, valWeight, bothWeight), cols=2, titles=("Original", "Hue Shifted", "Orange Channel", "Saturation Weighted Orange Channel", "Value Weighted Orange Channel", "Both Weighted Orange Channel"))
