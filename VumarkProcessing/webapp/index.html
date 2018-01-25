@@ -10,21 +10,17 @@
             transform: scale(2);
         }
 
-        #img {
-            width: 75vw;
-            height: 40vh;
-            background-position: center;
-            background-size: contain;
-            background-repeat: no-repeat;
+        #img{
+            top: 5vh;
+            height: 50vh;
         }
+
 	</style>
     <script>
         const IMAGE_CACHE_COUNT = 5;
         var cachedImages = []
+        var currentPoints = [];
         
-        var currentIndex;
-        var currentCache;
-
         var getNewImage = () => {
             return fetch("https://script.google.com/a/koontzs.com/macros/s/AKfycbwxlBGhHPGxNQyg8Gayt7bnbtTdDEnauVz-GafHPq75LIBu7KgO/exec?img=next").then((str) => {
                 return str.json();
@@ -45,6 +41,7 @@
                     })[0];
                 });
                 //check the data
+                if(currentPoints.length != 4) return document.querySelector('#error').innerHTML = "TRACE THE PICTOGRAPH PLEASE";
                 for(let i = 0, len = pictoThing.length; i < len; i++)  
                     if(!pictoThing[i]) 
                         return document.querySelector('#error').innerHTML = "SELECT ALL THE THINGS PLEASE";
@@ -55,7 +52,8 @@
                     light: pictoThing[1],
                     print: pictoThing[2],
                     blur: pictoThing[3],
-                    balls: pictoThing[4]
+                    balls: pictoThing[4],
+                    picto: currentPoints,
                 };
                 if(pictoThing[5] === "none") out.type = "none";
                 console.log(out);
@@ -64,8 +62,14 @@
                 fetch(url);
                 document.querySelector('#error').innerHTML = "K THXS"; 
                 cachedImages.splice(0, 1);
+                currentPoints = [];
                 getNewImage();
-                document.querySelector('#img').style.backgroundImage = "url(" + cachedImages[0].image.src + ")";
+                let canvas = document.querySelector('#img');
+                console.log(cachedImages);
+                canvas.width = cachedImages[0].image.width;
+                canvas.height = cachedImages[0].image.height;
+                let ctx = canvas.getContext("2d");
+                ctx.drawImage(cachedImages[0].image, 0, 0);
             });
 
             var recurse = () => {
@@ -73,13 +77,40 @@
             }
 
             recurse().then(() => {
-                document.querySelector('#img').style.backgroundImage = "url(" + cachedImages[0].image.src + ")";
+                //initialize canvas
+                let canvas = document.querySelector('#img');
+                console.log(cachedImages);
+                canvas.width = cachedImages[0].image.width;
+                canvas.height = cachedImages[0].image.height;
+                let ctx = canvas.getContext("2d");
+                ctx.drawImage(cachedImages[0].image, 0, 0);
+
+                canvas.addEventListener("click", (evt) => {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    ctx.drawImage(cachedImages[0].image, 0, 0);
+                    let rect = canvas.getBoundingClientRect();
+                    console.log(canvas.width + ' ' + canvas.height);
+                    let pos = {
+                        x: Math.round((evt.clientX - rect.left) * (canvas.width / rect.width)),
+                        y: Math.round((evt.clientY - rect.top) * (canvas.height / rect.height)),
+                    };
+                    
+                    currentPoints.push([pos.x, pos.y]);
+                    if(currentPoints.length > 4) currentPoints.splice(0, 1);
+                    ctx.beginPath();
+                    ctx.strokeStyle = 'green';
+                    ctx.lineWidth = 20;
+                    ctx.moveTo(currentPoints[0][0], currentPoints[0][1]);
+                    for(let i = 1, len = currentPoints.length; i < len; i++) ctx.lineTo(currentPoints[i][0], currentPoints[i][1]);
+                    if(currentPoints.length == 4) ctx.lineTo(currentPoints[0][0], currentPoints[0][1]);
+                    ctx.stroke();
+                });
             });
         };
 	</script>
 </head>
 <body>
-    <div id="img"></div>
+    <canvas id="img"></canvas>
     <div id="form">
         <p>Glare</p>
         <div id="glare" class="radio">
