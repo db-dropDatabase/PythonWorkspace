@@ -1,4 +1,5 @@
 from enum import Enum, unique
+import pickle
 
 # Dataset Generation API
 # Surroundings (background behind picture)
@@ -20,10 +21,15 @@ class Surroundings(Enum):
 # Perspective
 # contains a rotation and translation object, which can be used to determine how the image
 # was processed
-class Perpective:
+class Perspective:
     def __init__(self, rotation, translation): #rotation is (X, Y, Z) and translation is the same
         self.rotation = rotation
         self.translation = translation
+    
+    # Function to correct the image according to the perspective information
+    def getCorrectedImage(self, img):
+        #TODO: this function
+        return False
 
 # Glare
 # Not computer generated, just recorded for informational purposes
@@ -52,8 +58,8 @@ class Lighting(Enum):
 # Again assigned arbitrary values
 @unique
 class PrintQuality(Enum):
-    BAD = "bad" # Faded print
     GOOD = "good" # saturated print
+    BAD = "bad" # Faded print
     PERFECT = "perfect" # the pictogram was digitally edited in
     
 # Pictogram type
@@ -63,6 +69,50 @@ class PictogramType(Enum):
     LEFT = "left"
     CENTER = "center"
     RIGHT = "right"
+
+# Blur, as in we shook the camera on accident
+@unique
+class Blur(Enum):
+    NONE = "none"
+    BLURRED = "blur"
+
+# Ball present in image
+# Will be present in the right corner of the pictogram if at all
+@unique
+class Balls(Enum):
+    NONE = "none"
+    BLUE = "blue"
+    RED = "red"
+
+# Class to represent the pictograms location within the image
+class PictogramLocation:
+    def __init__(self, points): # points are ((x, y), (x, y), (x, y), (x, y)) in pixels of corners 
+    # in order of ((top left, top right, bottom left, bottom right)) 
+        self.points = points
+    # returns just the pictogram image cut out of the rest of the image
+    def getLocalizedPictogram(self, img):
+        #TODO: this function
+        return False
+
+
+class Pictogram:
+    # each bit of data that can be assigned to a given pictogram picture
+    # first the path of the image, then please use the above enums
+    def __init__(self, imgPath, surroundings, perspective, glare, lighting, printQual, pictogramType, blur, balls):
+        self.imgPath = imgPath
+        self.surroundings = surroundings
+        self.perspective = perspective
+        self.glare = glare
+        self.lighting = lighting
+        self.printQual = printQual
+        self.pictogramType = pictogramType
+        self.blur = blur
+        self.balls = balls
+
+    # applies the image transforms necessary and returns the pictogram
+    def getImage(self):
+        #TODO this function
+        return False
 
 # API use example:
 # data = GetDataSet(surroundings="bad", type="left")
