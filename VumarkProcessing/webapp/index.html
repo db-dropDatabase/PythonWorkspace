@@ -12,22 +12,27 @@
 
         #img {
             width: 75vw;
-            height: 75vh;
+            height: 40vh;
             background-position: center;
             background-size: contain;
             background-repeat: no-repeat;
         }
 	</style>
     <script>
+        const IMAGE_CACHE_COUNT = 5;
+        var cachedImages = []
+        
         var currentIndex;
         var currentCache;
 
         var getNewImage = () => {
-            fetch("https://script.google.com/a/koontzs.com/macros/s/AKfycbwxlBGhHPGxNQyg8Gayt7bnbtTdDEnauVz-GafHPq75LIBu7KgO/exec?img=next").then((str) => {
-                let obj = JSON.parse(str);
-                currentIndex = obj.index;
-                currentCache = obj.cacheIndex;
-                document.querySelector('#img').style.backgroundImage = 'url("https://drive.google.com/a/koontzs.com/uc?id=' + obj.id + '&export=download")';
+            return fetch("https://script.google.com/a/koontzs.com/macros/s/AKfycbwxlBGhHPGxNQyg8Gayt7bnbtTdDEnauVz-GafHPq75LIBu7KgO/exec?img=next").then((str) => {
+                return str.json();
+            }).then((obj) => {
+                console.log(obj)
+                obj.image = new Image();
+                obj.image.src = 'https://drive.google.com/a/koontzs.com/uc?id=' + obj.id + '&export=download';
+                cachedImages.push(obj);
             });
         };
 
@@ -37,8 +42,13 @@
                 let pictoThing = [...document.querySelectorAll('.radio')].map((elem) => {
                     return [...elem.childNodes].filter((elem) => {
                         return elem.checked;
-                    })[0].value;
+                    })[0];
                 });
+                //check the data
+                for(let i = 0, len = pictoThing.length; i < len; i++)  
+                    if(!pictoThing[i]) 
+                        return document.querySelector('#error').innerHTML = "SELECT ALL THE THINGS PLEASE";
+                pictoThing = pictoThing.map((p) => { return p.value; }); 
                 //push back data
                 let out = {
                     glare: pictoThing[0],
@@ -49,16 +59,22 @@
                 };
                 if(pictoThing[5] === "none") out.type = "none";
                 console.log(out);
-                
+                let url = "https://script.google.com/a/koontzs.com/macros/s/AKfycbwxlBGhHPGxNQyg8Gayt7bnbtTdDEnauVz-GafHPq75LIBu7KgO/exec?index=" + cachedImages[0].index + "&cacheIndex=" + cachedImages[0].cacheIndex + "&data=" + encodeURIComponent(JSON.stringify(out));
+                console.log(url);
+                fetch(url);
+                document.querySelector('#error').innerHTML = "K THXS"; 
+                cachedImages.splice(0, 1);
                 getNewImage();
+                document.querySelector('#img').style.backgroundImage = "url(" + cachedImages[0].image.src + ")";
             });
 
-            document.querySelector('#prev').addEventListener("click", () => {
+            var recurse = () => {
+                if(cachedImages.length < IMAGE_CACHE_COUNT) return getNewImage().then(recurse);
+            }
 
-                document.querySelector('#img').style.backgroundImage = 'url("right/' + index + '.jpg")';
+            recurse().then(() => {
+                document.querySelector('#img').style.backgroundImage = "url(" + cachedImages[0].image.src + ")";
             });
-
-            getNewImage();
         };
 	</script>
 </head>
@@ -112,11 +128,11 @@
         <div id="picto" class="radio">
             <input type="radio" class="picto" id="pictoYes" name="picto" value="yes">
             <label for="pictoYes">Yes</label>
-            <input type="radio" class="picto" id="pictoNone" name="balls" value="none">
-            <label for="pictoNone">None</label>s
+            <input type="radio" class="picto" id="pictoNone" name="picto" value="none">
+            <label for="pictoNone">None</label>
         </div>
         <button id="next" type="button">Next</button>
-        <button id="prev" type="button">Prev</button>
     </div>
+    <p id="error"></p>
 </body>
 </html>
