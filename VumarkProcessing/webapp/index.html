@@ -53,7 +53,7 @@
                     print: pictoThing[2],
                     blur: pictoThing[3],
                     balls: pictoThing[4],
-                    picto: currentPoints,
+                    picto: JSON.stringify(currentPoints),
                 };
                 if(pictoThing[5] === "none") out.type = "none";
                 console.log(out);
