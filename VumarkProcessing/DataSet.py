@@ -35,7 +35,6 @@ class Perspective:
 # Not computer generated, just recorded for informational purposes
 @unique
 class Glare(Enum):
-    NONE = "none" # pictogram was digitally edited in
     PAPER = "paper" # only catches ambient light reflecting off of the paper
     PLASTIC_SLEVE = "plastic" # catches light reflecting off of the plastic sleve
     PLEXIGLASS_COVER = "plexi" # catches light reflecting off of a sctratched plexiglass cover
@@ -50,7 +49,6 @@ class Lighting(Enum):
     NONE = "none" # A dark room
     POOR = "poor" # A not very well lit room
     GOOD = "good" # The best lighting availible given the equipment I have
-    PERFECT = "perfect" # The pictogram was digitally edited in
     # Unfortunatly, we are probably looking at a near dark room due to the sports-like
     # aspect of the competitions later on
 
