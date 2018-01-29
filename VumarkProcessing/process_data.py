@@ -6,6 +6,22 @@ from ShowImagesMatPlot import show_images
 from matplotlib import pyplot as plt
 from matplotlib import path
 import itertools
+import collections
+
+# Resolution 330x270
+X_RES = 350
+Y_RES = 270
+
+POINTS = np.float32(((0, Y_RES), (0, 0), (X_RES, 0), (X_RES, Y_RES)))
+
+def get_image_from_data(data):
+    return cv2.imread(os.path.join('C:\\Users\\Noah\\Documents\\code\\DataSet', data['type'], data['name']))
+
+def scale_points(points, scale):
+    return ((points[0][0] - points[0][0] * scale, points[0][1] * (1 + scale)),
+            (points[1][0] - points[1][0] * scale, points[1][1] - points[1][1] * scale),
+            (points[2][0] * (1 + scale), points[2][1] - points[2][1] * scale),
+            (points[3][0] * (1 + scale), points[0][1] * (1 + scale)))
 
 data = ''
 
@@ -25,27 +41,39 @@ def mapDict(item):
         # if Y of point 0 is greater than Y of point 1 and the opposite is true of the Y's of the next two points, switch em
         # also vice versa
         if (tempRay[0][1] > tempRay[1][1] and tempRay[2][1] > tempRay[3][1]) or (tempRay[0][1] < tempRay[1][1] and tempRay[2][1] < tempRay[3][1]):
-            item['picto'] = (tempRay[0], tempRay[1], tempRay[3], tempRay[2])
+            tempRay = (tempRay[0], tempRay[1], tempRay[3], tempRay[2])
+        # switch points so origin is always a bottom left
+        if tempRay[0][1] < tempRay[1][1]:
+            item['picto'] = (tempRay[1], tempRay[0], tempRay[3], tempRay[2])
         else:
-            item['picto'] = tuple(tempRay)
+            item['picto'] = tempRay
+
     else:
         item['picto'] = None
     return item
 
 data = list(map(mapDict, data))
 
-for item in data:
-    img = cv2.imread(os.path.join('C:\\Users\\Noah\\Documents\\code\\DataSet', item['type'], item['name']))
+for i in range(len(data)):
+    item = data[i]
+    img = get_image_from_data(item)
+    nextImg = get_image_from_data(data[i+1])
     # check mah lines
-    if item['picto'] != None:
-        for i in range(len(item['picto']) - 1):
-            img = cv2.line(img, item['picto'][i], item['picto'][i+1], (0, 255, 0), 20)
-        # create path
-        p = path.Path(item['picto'])
-        print(tuple(itertools.product(*[range(img.shape[1]), range(img.shape[0])])))
-        mask = np.matrix(p.contains_points())
-        # make a mask using the points given
+    if hasattr(item['picto'], "__len__") and hasattr(data[i+1]['picto'], "__len__"):
+        for x in range(len(item['picto']) - 1):
+            img = cv2.line(img, item['picto'][x], item['picto'][x+1], (0, 255, 0), 20)
         
+        # get perpective transform to crop pictogram out of image
+        pers = cv2.getPerspectiveTransform(np.float32(item['picto']), POINTS)
+        img = cv2.warpPerspective(img, pers, (X_RES, Y_RES))
+
+        # warp according to the next image
+        pers = cv2.getPerspectiveTransform(POINTS, np.float32(scale_points(data[i+1]['picto'], 0.1)))
+        img = cv2.warpPerspective(img, pers, (nextImg.shape[1], nextImg.shape[0]))
+        mask = cv2.threshold(cv2.cvtColor(img, cv2.COLOR_RGB2GRAY), 1, 1, cv2.THRESH_BINARY_INV)[1]
+        # bitwise copy
+        print(img)
+        img = cv2.bitwise_or(img, cv2.bitwise_or(img, nextImg, mask=mask))
 
     img = cv2.pyrDown(img)
     img = cv2.pyrDown(img)
