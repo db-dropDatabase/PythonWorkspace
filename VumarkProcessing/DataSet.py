@@ -1,5 +1,6 @@
 from enum import Enum, unique
-import pickle
+import itertools
+import random
 
 # Dataset Generation API
 # Surroundings (background behind picture)
@@ -59,8 +60,7 @@ class Lighting(Enum):
 class PrintQuality(Enum):
     GOOD = "good" # saturated print
     BAD = "bad" # Faded print
-    PERFECT = "perfect" # the pictogram was digitally edited in
-    
+
 # Pictogram type
 # The thing the neural network wants to get
 @unique
@@ -128,9 +128,18 @@ def DataIterator(surroundings=list(Surroundings),
                  glare=list(Glare),    
                  lighting=list(Lighting), 
                  printQuality=list(PrintQuality), 
-                 type=list(PictogramType), 
+                 pictogramType=list(PictogramType), 
                  blur=list(Blur), 
                  balls=list(Balls),
                  randomizePerspective=False):
     # check every argument if value or array
+    combo = [pictogramType, surroundings, glare, lighting, printQuality, blur, balls]
+    combo = map(wrapList, combo)
+    
+    # generate every permutation
+    perm = list(itertools.product(*combo))
+    #shuffle it
+    random.shuffle(perm)
+    print(perm)
 
+DataIterator()
