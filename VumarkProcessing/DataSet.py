@@ -138,8 +138,9 @@ def DataIterator(surroundings=list(Surroundings),
     
     # generate every permutation
     perm = list(itertools.product(*combo))
-    #shuffle it
+    # shuffle it
     random.shuffle(perm)
-    print(perm)
+    # iterate through it, returning a new object for each next() call
+    
 
 DataIterator()
