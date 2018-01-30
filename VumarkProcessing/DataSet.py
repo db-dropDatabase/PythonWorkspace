@@ -16,6 +16,7 @@ import pickle
 class Surroundings(Enum):
     GENERATED_NOISE = "noise" # noise created by randomizing each pixel
     BLACK = "black" # a solid black
+    MISMATCH_BACKGROUND = "misback"
     PICTURE_BACKGROUND = "background" # the background of the photo how it normally is
 
 # Perspective
@@ -85,7 +86,7 @@ class Balls(Enum):
 # Class to represent the pictograms location within the image
 class PictogramLocation:
     def __init__(self, points): # points are ((x, y), (x, y), (x, y), (x, y)) in pixels of corners 
-    # in order of ((top left, top right, bottom left, bottom right)) 
+    # in order of ((bottom left, top left, top right, bottom right)) 
         self.points = points
     # returns just the pictogram image cut out of the rest of the image
     def getLocalizedPictogram(self, img):
@@ -116,3 +117,20 @@ class Pictogram:
 # data = GetDataSet(surroundings="bad", type="left")
 
 # img = data.next()
+
+def wrapList(item):
+    if hasattr(item, "__len__"):
+        return item
+    else:
+        return [item]
+
+def DataIterator(surroundings=list(Surroundings), 
+                 glare=list(Glare),    
+                 lighting=list(Lighting), 
+                 printQuality=list(PrintQuality), 
+                 type=list(PictogramType), 
+                 blur=list(Blur), 
+                 balls=list(Balls),
+                 randomizePerspective=False):
+    # check every argument if value or array
+

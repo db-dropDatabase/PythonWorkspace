@@ -70,9 +70,8 @@ for i in range(len(data)):
         # warp according to the next image
         pers = cv2.getPerspectiveTransform(POINTS, np.float32(scale_points(data[i+1]['picto'], 0.1)))
         img = cv2.warpPerspective(img, pers, (nextImg.shape[1], nextImg.shape[0]))
-        mask = cv2.threshold(cv2.cvtColor(img, cv2.COLOR_RGB2GRAY), 1, 1, cv2.THRESH_BINARY_INV)[1]
+        mask = cv2.threshold(cv2.cvtColor(img, cv2.COLOR_RGB2GRAY), 0, 1, cv2.THRESH_BINARY_INV)[1]
         # bitwise copy
-        print(img)
         img = cv2.bitwise_or(img, cv2.bitwise_or(img, nextImg, mask=mask))
 
     img = cv2.pyrDown(img)
