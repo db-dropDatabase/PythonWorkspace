@@ -60,19 +60,19 @@ for i in range(len(data)):
     nextImg = get_image_from_data(data[i+1])
     # check mah lines
     if hasattr(item['picto'], "__len__") and hasattr(data[i+1]['picto'], "__len__"):
-        for x in range(len(item['picto']) - 1):
-            img = cv2.line(img, item['picto'][x], item['picto'][x+1], (0, 255, 0), 20)
-        
-        # get perpective transform to crop pictogram out of image
-        pers = cv2.getPerspectiveTransform(np.float32(item['picto']), POINTS)
-        img = cv2.warpPerspective(img, pers, (X_RES, Y_RES))
+        #for x in range(len(item['picto']) - 1):
+        #    img = cv2.line(img, item['picto'][x], item['picto'][x+1], (0, 255, 0), 20)
 
-        # warp according to the next image
-        pers = cv2.getPerspectiveTransform(POINTS, np.float32(scale_points(data[i+1]['picto'], 0.1)))
+        # warp pictograph of previous into position of next
+        pers = cv2.getPerspectiveTransform(np.float32(item['picto']), np.float32(data[i+1]['picto']))
         img = cv2.warpPerspective(img, pers, (nextImg.shape[1], nextImg.shape[0]))
-        mask = cv2.threshold(cv2.cvtColor(img, cv2.COLOR_RGB2GRAY), 0, 1, cv2.THRESH_BINARY_INV)[1]
+
+        # warp four point mask matrix to respective points
+        pers = cv2.getPerspectiveTransform(np.float32(((0, 0), (0, nextImg.shape[0]), (nextImg.shape[1], nextImg.shape[0]), (nextImg.shape[1], 0))), np.float32(data[i+1]['picto']))
+        mask = cv2.warpPerspective(np.full((nextImg.shape[0], nextImg.shape[1]), 255, dtype=np.uint8), pers, (nextImg.shape[1], nextImg.shape[0]))
+
         # bitwise copy
-        img = cv2.bitwise_or(img, cv2.bitwise_or(img, nextImg, mask=mask))
+        img = cv2.bitwise_or(cv2.bitwise_or(0, nextImg, mask=cv2.bitwise_not(mask)), cv2.bitwise_or(0, img, mask=mask))
 
     img = cv2.pyrDown(img)
     img = cv2.pyrDown(img)
