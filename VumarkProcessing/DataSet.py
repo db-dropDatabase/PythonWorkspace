@@ -3,6 +3,8 @@ import itertools
 import random
 import json
 import cv2
+import numpy as np
+import os
 
 # Dataset Generation API
 # Surroundings (background behind picture)
@@ -113,10 +115,24 @@ class Pictogram:
         self.balls = balls
         self.picLoc = location
 
+    @classmethod
+    def fromDataDict(self, img, surroundings, perspective, location, dataDict):
+        return self(
+            img,
+            surroundings,
+            perspective,
+            dataDict['glare'],
+            dataDict['light'],
+            dataDict['print'],
+            dataDict['type'],
+            dataDict['blur'],
+            dataDict['balls'],
+            location
+        )
+
     # applies the image transforms necessary and returns the pictogram
-    def getImage(self):
-        #TODO this function
-        return False
+    def getImage(self, res):
+        return cv2.resize(self.img, res)
 
 # API use example:
 # data = GetDataSet(surroundings="bad", type="left")
@@ -152,13 +168,11 @@ def stringListToCoords(str):
 
 def filterPictures(objs, critRay):
     def isMatch(pic):
-        return  (pic['type'] == critRay[0].value 
-                and pic['glare'] == critRay[2].value
-                and pic['light'] == critRay[3].value
-                and pic['print'] == critRay[4].value
-                and pic['blur'] == critRay[4].value
-                and pic['balls'] == critRay[5].value)
-
+        SEARCH_KEYS = ['type', 'glare', 'light', 'print', 'blur', 'balls']
+        for key in SEARCH_KEYS:
+            if(pic[key] != critRay[key].value):
+                return False
+        return True
     return filter(isMatch, objs)
 
 def DataIterator(dataObject, # the parsed JSON from the dataset
@@ -176,40 +190,147 @@ def DataIterator(dataObject, # the parsed JSON from the dataset
     # check every argument if value or array
     combo = [pictogramType, surroundings, glare, lighting, printQuality, blur, balls]
     combo = map(wrapList, combo)
-    
+
     # generate every permutation
     perm = list(itertools.product(*combo))
+    # convert the list of list to list of dictionaries
+    perm = list(map(lambda item: {
+        'type' : item[0],
+        'surr' : item[1],
+        'glare' : item[2],
+        'light' : item[3],
+        'print' : item[4],
+        'blur' : item[5],
+        'balls' : item[6]
+     }, perm))
     # shuffle it
     random.shuffle(perm)
     # iterate through it, returning a new object for each next() call
     for i in range(loops):
-        for item in perm:
-            # if the surroundings are normal, find a picture that matches all the criteria
-            if item[1] == Surroundings.PICTURE_BACKGROUND:
-                ray = filterPictures(dataObject, item)
-                if len(ray) == 0:
-                    print("skipping: ")
-                    print(item)
+        for item in reversed(perm):
+            # generate the lists of posible conminations of pictures to prevent double showing one
+            # if the list doesn't exist already
+            if not 'combo' in item:
+                # filter the images to the ones we are interested in, then
+                # generate a special list for mismatched (since we have to keep track of combonations)
+                if item['surr'] == Surroundings.MISMATCH_BACKGROUND:
+                     # this may take awhile
+                    item['combo'] = list(itertools.permutations(filterPictures(dataObject, item), 2))
+                    random.shuffle(item['combo'])
+                # else filter and generate a normal list of just possible images
                 else:
-                    picItem = random.choice(ray)
-                    # remove the image from the data so we don't pick it again
-                    dataObject[next((i for i in range(len(dataObject)) if dataObject[i]['id'] == picItem['id']))]['match'] = True
-                    # return the pictogram object
-                    yield Pictogram(
-                        cv2.imread(os.path.join(PATH, picItem['type'], picItem['name'])),
-                        Surroundings.PICTURE_BACKGROUND,
-                        None,
-                        Glare(picItem['glare']),
-                        Lighting(picItem['lighting']),
-                        PrintQuality(picItem['print']),
-                        PictogramType(picItem['type']),
-                        Blur(picItem['blur']),
-                        Balls(picItem['balls']),
-                        stringListToCoords(picItem['picto'])
-                    )
-            else if item[1] == Surroundings.MISMATCH_BACKGROUND:
+                    item['combo'] = list(filterPictures(dataObject, item))
+                    random.shuffle(item['combo'])
+
+            # next, check if that list is emptey
+            # if so, log and move on since there aren't any more images that fit the given combination
+            if item['combo'] == None or len(item['combo']) == 0:
+                print("skipping: ")
+                print(item)
+                print("-----")
+                perm.remove(item)
+                continue
+
+            # get the a combo from our shuffled list
+            picItem = item['combo'].pop() # this wil be a list of dicts or a dict
+
+            # next, initialize the image loaded based on the type of surroundings
+            img = None
+            # if we have any surroundings except PICTURE_BACKGROUND, do processing
+            if item['surr'] == Surroundings.PICTURE_BACKGROUND:
+                img = cv2.imread(os.path.join(PATH, picItem['type'], picItem['name']))
+            # mismatch warping
+            elif item['surr'] == Surroundings.MISMATCH_BACKGROUND:
+                    backData = picItem[0]
+                    pictoData = picItem[1]
+                    # check if both images have coords
+                    # else log and continue
+                    if not hasattr(backData['picto'], "__len__") or not hasattr(pictoData['picto'], "__len__"):
+                        print("Missing coords on image ")
+                        if not hasattr(backData['picto'], "__len__"):
+                            print(backData)
+                        if not hasattr(pictoData['picto'], "__len__"):
+                            print(pictoData)
+                        continue
+                    # get the background image
+                    back = cv2.imread(os.path.join(PATH, backData['type'], backData['name']))
+                    # get the pictogram image
+                    picto = cv2.imread(os.path.join(PATH, pictoData['type'], pictoData['name']))
+                    # The actual warping code
+                    # warp pictograph of picto into position of background
+                    pers = cv2.getPerspectiveTransform(np.float32(pictoData['picto']), np.float32(backData['picto']))
+                    picto = cv2.warpPerspective(picto, pers, (back.shape[1], back.shape[0]))
+                    # warp four point mask matrix to respective points
+                    pers = cv2.getPerspectiveTransform(np.float32(((0, 0), (0, back.shape[0]), (back.shape[1], back.shape[0]), (back.shape[1], 0))), np.float32(backData['picto']))
+                    mask = cv2.warpPerspective(np.full((back.shape[0], back.shape[1]), 255, dtype=np.uint8), pers, (back.shape[1], back.shape[0]))
+                    # bitwise copy
+                    img = cv2.bitwise_or(cv2.bitwise_or(0, back, mask=cv2.bitwise_not(mask)), cv2.bitwise_or(0, picto, mask=mask))
+                    picItem = backData
+            # every other kind of warping
+            else:
+                # get image
+                img = cv2.imread(os.path.join(PATH, picItem['type'], picItem['name']))
+                # create mask
+                # warp four point mask matrix to respective points
+                pers = cv2.getPerspectiveTransform(np.float32(((0, 0), (0, img.shape[0]), (img.shape[1], img.shape[0]), (img.shape[1], 0))), np.float32(picItem['picto']))
+                mask = cv2.warpPerspective(np.full((img.shape[0], img.shape[1]), 255, dtype=np.uint8), pers, (img.shape[1], img.shape[0]))
+                # generate image to copy to depending on the type of surroundings
+                back = None
+                if item['surr'] == Surroundings.BLACK:
+                    back = np.zeros(img.shape, dtype=np.uint8)
+                elif item['surr'] == Surroundings.GENERATED_NOISE:
+                    back = np.random.randint(0, high=255, size=img.shape, dtype=np.uint8)
+                # bitwise copy
+                img = cv2.bitwise_or(cv2.bitwise_or(0, back, mask=cv2.bitwise_not(mask)), cv2.bitwise_or(0, img, mask=mask))
+
+            # return pictogram object with the image and all the data we know about it
+            print("returning: ")
+            print(picItem)
+            print(item['surr'])
+            print("-----")
+            yield Pictogram.fromDataDict(
+                img,
+                item['surr'],
+                None, #TODO: perspective warping
+                picItem['picto'],
+                item
+            )
                 
 
+# get the JSON and parse it
 
+def mapDict(item):
+    str = '[' + item['picto'] + ']'
+    ray = json.loads(str)
+    tempRay = [0, 0, 0, 0]
+    # map flat string to coordinate arrays
+    if len(ray) > 0:
+        for i in range(0, 4):
+            tempRay[i] = (ray[i * 2], ray[i * 2 + 1])
+        # sort by X coordinate
+        tempRay.sort(key=lambda coord: coord[0])
+        # if Y of point 0 is greater than Y of point 1 and the opposite is true of the Y's of the next two points, switch em
+        # also vice versa
+        if (tempRay[0][1] > tempRay[1][1] and tempRay[2][1] > tempRay[3][1]) or (tempRay[0][1] < tempRay[1][1] and tempRay[2][1] < tempRay[3][1]):
+            tempRay = (tempRay[0], tempRay[1], tempRay[3], tempRay[2])
+        # switch points so origin is always a bottom left
+        if tempRay[0][1] < tempRay[1][1]:
+            item['picto'] = (tempRay[1], tempRay[0], tempRay[3], tempRay[2])
+        else:
+            item['picto'] = tempRay
 
-DataIterator(None, 2)
+    else:
+        item['picto'] = None
+    return item
+
+with open("first100.json", 'r') as f:
+        data = json.load(f)
+
+data = list(map(mapDict, data))
+
+iterator = DataIterator(data, 2)
+
+for item in iterator:
+    cv2.imshow("image", item.getImage((800, 600)))
+    cv2.waitKey(0)
+    cv2.destroyAllWindows()
