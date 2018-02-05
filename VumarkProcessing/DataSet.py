@@ -323,7 +323,7 @@ def mapDict(item):
         item['picto'] = None
     return item
 
-with open("first100.json", 'r') as f:
+with open("mostOfThem.json", 'r') as f:
         data = json.load(f)
 
 data = list(map(mapDict, data))
