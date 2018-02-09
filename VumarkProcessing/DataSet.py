@@ -5,7 +5,9 @@ import json
 import cv2
 import numpy as np
 import os
-
+from PIL import Image as pil_image
+from keras.preprocessing import image
+from keras.preprocessing.image import ImageDataGenerator
 # Dataset Generation API
 # Surroundings (background behind picture)
 # Perpsective (rotation and translation)
@@ -14,6 +16,10 @@ import os
 # Print fading
 # Resolution 330x270
 # Type: (left, right, center)
+
+# TODO: Load image according to settings specified by size
+# Using PIL and a linear interpolation algorithm to downscale
+# Create generator using an ImageDataGenerator to process the data after the initial creation
 
 PATH = 'C:\\Users\\Noah\\Documents\\code\\DataSet'
 
@@ -130,10 +136,6 @@ class Pictogram:
             location
         )
 
-    # applies the image transforms necessary and returns the pictogram
-    def getImage(self, res):
-        return cv2.resize(self.img, res)
-
 # API use example:
 # data = GetDataSet(surroundings="bad", type="left")
 
@@ -175,9 +177,13 @@ def filterPictures(objs, critRay):
         return True
     return filter(isMatch, objs)
 
-def DataIterator(dataObject, # the parsed JSON from the dataset
+def DataIterator(dataObject, # the parsed JSON from the dataset'
+                 batch_size, # of image to run at once
                  loops, # the # of times to loop through every combination of factor
                  # using different images this time
+                 image_generator, #image data generator from keras
+                 target_type, # type of pictogram to generate a 1 in the target output
+                 size=(64,64), #width/height to scale the image to
                  surroundings=list(Surroundings), 
                  glare=list(Glare),    
                  lighting=list(Lighting), 
@@ -207,6 +213,10 @@ def DataIterator(dataObject, # the parsed JSON from the dataset
     random.shuffle(perm)
     # iterate through it, returning a new object for each next() call
     for i in range(loops):
+        # batch list 
+        batch_x = []
+        batch_y = []
+
         for item in reversed(perm):
             # generate the lists of posible conminations of pictures to prevent double showing one
             # if the list doesn't exist already
@@ -282,19 +292,29 @@ def DataIterator(dataObject, # the parsed JSON from the dataset
                     back = np.random.randint(0, high=255, size=img.shape, dtype=np.uint8)
                 # bitwise copy
                 img = cv2.bitwise_or(cv2.bitwise_or(0, back, mask=cv2.bitwise_not(mask)), cv2.bitwise_or(0, img, mask=mask))
-
-            # return pictogram object with the image and all the data we know about it
-            print("returning: ")
-            print(picItem)
-            print(item['surr'])
-            print("-----")
-            yield Pictogram.fromDataDict(
-                img,
-                item['surr'],
-                None, #TODO: perspective warping
-                picItem['picto'],
-                item
-            )
+            
+            #print("done creating: ")
+            #print(picItem)
+            #print(item['surr'])
+            #print("-----")
+            # apply image transformations from keras onto image
+            # downscale image to given size using nearest interpolation
+            img = cv2.resize(img, size, interpolation=cv2.INTER_NEAREST)
+            img = np.float64(img)
+            # randomize image based on generator
+            if image_generator != None:
+                img = image_generator.random_transform(img)
+                img = image_generator.standardize(img)
+            # append the image to the batches
+            batch_x.append(img)
+            num = None
+            if item['type'] == target_type: num = 1.
+            else: num = 0.
+            batch_y.append(num)
+            if(len(batch_x) >= batch_size):
+                yield batch_x, batch_y
+                batch_x = []
+                batch_y = []
                 
 
 # get the JSON and parse it
@@ -324,13 +344,20 @@ def mapDict(item):
     return item
 
 with open("mostOfThem.json", 'r') as f:
-        data = json.load(f)
+    data = json.load(f)
 
 data = list(map(mapDict, data))
 
-iterator = DataIterator(data, 2)
+iterator = DataIterator(data, 32, 2, ImageDataGenerator(rescale=1./255,
+                                                        shear_range=0.2,
+                                                        zoom_range=0.2,
+                                                        horizontal_flip=True),
+                        PictogramType.RIGHT, pictogramType=(PictogramType.LEFT, PictogramType.RIGHT))
 
 for item in iterator:
-    cv2.imshow("image", item.getImage((800, 600)))
+    print(item[1][0])
+    cv2.imshow("image", item[0][0])
     cv2.waitKey(0)
     cv2.destroyAllWindows()
+
+
