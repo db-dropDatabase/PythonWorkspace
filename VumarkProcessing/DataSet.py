@@ -192,172 +192,132 @@ def DataIterator(dataObject, # the parsed JSON from the dataset'
                  blur=list(Blur), 
                  balls=list(Balls),
                  randomizePerspective=False): # not currently implemented
-        
-    # check every argument if value or array
-    combo = [pictogramType, surroundings, glare, lighting, printQuality, blur, balls]
-    combo = map(wrapList, combo)
-
-    # generate every permutation
-    perm = list(itertools.product(*combo))
-    # convert the list of list to list of dictionaries
-    perm = list(map(lambda item: {
-        'type' : item[0],
-        'surr' : item[1],
-        'glare' : item[2],
-        'light' : item[3],
-        'print' : item[4],
-        'blur' : item[5],
-        'balls' : item[6]
-     }, perm))
-    # shuffle it
-    random.shuffle(perm)
+    
     # iterate through it, returning a new object for each next() call
-    for i in range(loops):
+    i = 0
+    while loops == None or i < loops:
+        if loops != None: i = i + 1
+        # check every argument if value or array
+        combo = [pictogramType, surroundings, glare, lighting, printQuality, blur, balls]
+        combo = map(wrapList, combo)
+
+        # generate every permutation
+        perm = list(itertools.product(*combo))
+        # convert the list of list to list of dictionaries
+        perm = list(map(lambda item: {
+            'type' : item[0],
+            'surr' : item[1],
+            'glare' : item[2],
+            'light' : item[3],
+            'print' : item[4],
+            'blur' : item[5],
+            'balls' : item[6]
+        }, perm))
+        # shuffle it
+        random.shuffle(perm)
+        
         # batch list 
         batch_x = []
         batch_y = []
 
-        for item in reversed(perm):
-            # generate the lists of posible conminations of pictures to prevent double showing one
-            # if the list doesn't exist already
-            if not 'combo' in item:
-                # filter the images to the ones we are interested in, then
-                # generate a special list for mismatched (since we have to keep track of combonations)
-                if item['surr'] == Surroundings.MISMATCH_BACKGROUND:
-                     # this may take awhile
-                    item['combo'] = list(itertools.permutations(filterPictures(dataObject, item), 2))
-                    random.shuffle(item['combo'])
-                # else filter and generate a normal list of just possible images
+        while len(perm) > 0:
+            for item in reversed(perm):
+                # generate the lists of posible conminations of pictures to prevent double showing one
+                # if the list doesn't exist already
+                if not 'combo' in item:
+                    # filter the images to the ones we are interested in, then
+                    # generate a special list for mismatched (since we have to keep track of combonations)
+                    if item['surr'] == Surroundings.MISMATCH_BACKGROUND:
+                        # this may take awhile
+                        item['combo'] = list(itertools.permutations(filterPictures(dataObject, item), 2))
+                        random.shuffle(item['combo'])
+                    # else filter and generate a normal list of just possible images
+                    else:
+                        item['combo'] = list(filterPictures(dataObject, item))
+                        random.shuffle(item['combo'])
+
+                # next, check if that list is emptey
+                # if so, log and move on since there aren't any more images that fit the given combination
+                if item['combo'] == None or len(item['combo']) == 0:
+                    #print("skipping: ")
+                    #print(item)
+                    #print("-----")
+                    perm.remove(item)
+                    continue
+
+                # get the a combo from our shuffled list
+                picItem = item['combo'].pop() # this wil be a list of dicts or a dict
+
+                # next, initialize the image loaded based on the type of surroundings
+                img = None
+                # if we have any surroundings except PICTURE_BACKGROUND, do processing
+                if item['surr'] == Surroundings.PICTURE_BACKGROUND:
+                    img = cv2.imread(os.path.join(PATH, picItem['type'], picItem['name']))
+                # mismatch warping
+                elif item['surr'] == Surroundings.MISMATCH_BACKGROUND:
+                        backData = picItem[0]
+                        pictoData = picItem[1]
+                        # check if both images have coords
+                        # else log and continue
+                        if not hasattr(backData['picto'], "__len__") or not hasattr(pictoData['picto'], "__len__"):
+                            print("Missing coords on image ")
+                            if not hasattr(backData['picto'], "__len__"):
+                                print(backData)
+                            if not hasattr(pictoData['picto'], "__len__"):
+                                print(pictoData)
+                            continue
+                        # get the background image
+                        back = cv2.imread(os.path.join(PATH, backData['type'], backData['name']))
+                        # get the pictogram image
+                        picto = cv2.imread(os.path.join(PATH, pictoData['type'], pictoData['name']))
+                        # The actual warping code
+                        # warp pictograph of picto into position of background
+                        pers = cv2.getPerspectiveTransform(np.float32(pictoData['picto']), np.float32(backData['picto']))
+                        picto = cv2.warpPerspective(picto, pers, (back.shape[1], back.shape[0]))
+                        # warp four point mask matrix to respective points
+                        pers = cv2.getPerspectiveTransform(np.float32(((0, 0), (0, back.shape[0]), (back.shape[1], back.shape[0]), (back.shape[1], 0))), np.float32(backData['picto']))
+                        mask = cv2.warpPerspective(np.full((back.shape[0], back.shape[1]), 255, dtype=np.uint8), pers, (back.shape[1], back.shape[0]))
+                        # bitwise copy
+                        img = cv2.bitwise_or(cv2.bitwise_or(0, back, mask=cv2.bitwise_not(mask)), cv2.bitwise_or(0, picto, mask=mask))
+                        picItem = backData
+                # every other kind of warping
                 else:
-                    item['combo'] = list(filterPictures(dataObject, item))
-                    random.shuffle(item['combo'])
-
-            # next, check if that list is emptey
-            # if so, log and move on since there aren't any more images that fit the given combination
-            if item['combo'] == None or len(item['combo']) == 0:
-                print("skipping: ")
-                print(item)
-                print("-----")
-                perm.remove(item)
-                continue
-
-            # get the a combo from our shuffled list
-            picItem = item['combo'].pop() # this wil be a list of dicts or a dict
-
-            # next, initialize the image loaded based on the type of surroundings
-            img = None
-            # if we have any surroundings except PICTURE_BACKGROUND, do processing
-            if item['surr'] == Surroundings.PICTURE_BACKGROUND:
-                img = cv2.imread(os.path.join(PATH, picItem['type'], picItem['name']))
-            # mismatch warping
-            elif item['surr'] == Surroundings.MISMATCH_BACKGROUND:
-                    backData = picItem[0]
-                    pictoData = picItem[1]
-                    # check if both images have coords
-                    # else log and continue
-                    if not hasattr(backData['picto'], "__len__") or not hasattr(pictoData['picto'], "__len__"):
-                        print("Missing coords on image ")
-                        if not hasattr(backData['picto'], "__len__"):
-                            print(backData)
-                        if not hasattr(pictoData['picto'], "__len__"):
-                            print(pictoData)
-                        continue
-                    # get the background image
-                    back = cv2.imread(os.path.join(PATH, backData['type'], backData['name']))
-                    # get the pictogram image
-                    picto = cv2.imread(os.path.join(PATH, pictoData['type'], pictoData['name']))
-                    # The actual warping code
-                    # warp pictograph of picto into position of background
-                    pers = cv2.getPerspectiveTransform(np.float32(pictoData['picto']), np.float32(backData['picto']))
-                    picto = cv2.warpPerspective(picto, pers, (back.shape[1], back.shape[0]))
+                    # get image
+                    img = cv2.imread(os.path.join(PATH, picItem['type'], picItem['name']))
+                    # create mask
                     # warp four point mask matrix to respective points
-                    pers = cv2.getPerspectiveTransform(np.float32(((0, 0), (0, back.shape[0]), (back.shape[1], back.shape[0]), (back.shape[1], 0))), np.float32(backData['picto']))
-                    mask = cv2.warpPerspective(np.full((back.shape[0], back.shape[1]), 255, dtype=np.uint8), pers, (back.shape[1], back.shape[0]))
+                    pers = cv2.getPerspectiveTransform(np.float32(((0, 0), (0, img.shape[0]), (img.shape[1], img.shape[0]), (img.shape[1], 0))), np.float32(picItem['picto']))
+                    mask = cv2.warpPerspective(np.full((img.shape[0], img.shape[1]), 255, dtype=np.uint8), pers, (img.shape[1], img.shape[0]))
+                    # generate image to copy to depending on the type of surroundings
+                    back = None
+                    if item['surr'] == Surroundings.BLACK:
+                        back = np.zeros(img.shape, dtype=np.uint8)
+                    elif item['surr'] == Surroundings.GENERATED_NOISE:
+                        back = np.random.randint(0, high=255, size=img.shape, dtype=np.uint8)
                     # bitwise copy
-                    img = cv2.bitwise_or(cv2.bitwise_or(0, back, mask=cv2.bitwise_not(mask)), cv2.bitwise_or(0, picto, mask=mask))
-                    picItem = backData
-            # every other kind of warping
-            else:
-                # get image
-                img = cv2.imread(os.path.join(PATH, picItem['type'], picItem['name']))
-                # create mask
-                # warp four point mask matrix to respective points
-                pers = cv2.getPerspectiveTransform(np.float32(((0, 0), (0, img.shape[0]), (img.shape[1], img.shape[0]), (img.shape[1], 0))), np.float32(picItem['picto']))
-                mask = cv2.warpPerspective(np.full((img.shape[0], img.shape[1]), 255, dtype=np.uint8), pers, (img.shape[1], img.shape[0]))
-                # generate image to copy to depending on the type of surroundings
-                back = None
-                if item['surr'] == Surroundings.BLACK:
-                    back = np.zeros(img.shape, dtype=np.uint8)
-                elif item['surr'] == Surroundings.GENERATED_NOISE:
-                    back = np.random.randint(0, high=255, size=img.shape, dtype=np.uint8)
-                # bitwise copy
-                img = cv2.bitwise_or(cv2.bitwise_or(0, back, mask=cv2.bitwise_not(mask)), cv2.bitwise_or(0, img, mask=mask))
-            
-            #print("done creating: ")
-            #print(picItem)
-            #print(item['surr'])
-            #print("-----")
-            # apply image transformations from keras onto image
-            # downscale image to given size using nearest interpolation
-            img = cv2.resize(img, size, interpolation=cv2.INTER_NEAREST)
-            img = np.float64(img)
-            # randomize image based on generator
-            if image_generator != None:
-                img = image_generator.random_transform(img)
-                img = image_generator.standardize(img)
-            # append the image to the batches
-            batch_x.append(img)
-            num = None
-            if item['type'] == target_type: num = 1.
-            else: num = 0.
-            batch_y.append(num)
-            if(len(batch_x) >= batch_size):
-                yield batch_x, batch_y
-                batch_x = []
-                batch_y = []
+                    img = cv2.bitwise_or(cv2.bitwise_or(0, back, mask=cv2.bitwise_not(mask)), cv2.bitwise_or(0, img, mask=mask))
                 
-
-# get the JSON and parse it
-
-def mapDict(item):
-    str = '[' + item['picto'] + ']'
-    ray = json.loads(str)
-    tempRay = [0, 0, 0, 0]
-    # map flat string to coordinate arrays
-    if len(ray) > 0:
-        for i in range(0, 4):
-            tempRay[i] = (ray[i * 2], ray[i * 2 + 1])
-        # sort by X coordinate
-        tempRay.sort(key=lambda coord: coord[0])
-        # if Y of point 0 is greater than Y of point 1 and the opposite is true of the Y's of the next two points, switch em
-        # also vice versa
-        if (tempRay[0][1] > tempRay[1][1] and tempRay[2][1] > tempRay[3][1]) or (tempRay[0][1] < tempRay[1][1] and tempRay[2][1] < tempRay[3][1]):
-            tempRay = (tempRay[0], tempRay[1], tempRay[3], tempRay[2])
-        # switch points so origin is always a bottom left
-        if tempRay[0][1] < tempRay[1][1]:
-            item['picto'] = (tempRay[1], tempRay[0], tempRay[3], tempRay[2])
-        else:
-            item['picto'] = tempRay
-
-    else:
-        item['picto'] = None
-    return item
-
-with open("mostOfThem.json", 'r') as f:
-    data = json.load(f)
-
-data = list(map(mapDict, data))
-
-iterator = DataIterator(data, 32, 2, ImageDataGenerator(rescale=1./255,
-                                                        shear_range=0.2,
-                                                        zoom_range=0.2,
-                                                        horizontal_flip=True),
-                        PictogramType.RIGHT, pictogramType=(PictogramType.LEFT, PictogramType.RIGHT))
-
-for item in iterator:
-    print(item[1][0])
-    cv2.imshow("image", item[0][0])
-    cv2.waitKey(0)
-    cv2.destroyAllWindows()
+                #print("done creating: ")
+                #print(picItem)
+                #print(item['surr'])
+                #print("-----")
+                # apply image transformations from keras onto image
+                # downscale image to given size using nearest interpolation
+                img = cv2.resize(img, size, interpolation=cv2.INTER_NEAREST)
+                img = np.float64(img)
+                # randomize image based on generator
+                if image_generator != None:
+                    img = image_generator.random_transform(img)
+                    img = image_generator.standardize(img)
+                # append the image to the batches
+                batch_x.append(img)
+                num = None
+                if item['type'] == target_type: num = 1.
+                else: num = 0.
+                batch_y.append(num)
+                if(len(batch_x) >= batch_size):
+                    yield np.array(batch_x), np.array(batch_y)
+                    batch_x = []
+                    batch_y = []
 
 
