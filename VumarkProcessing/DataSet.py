@@ -8,6 +8,8 @@ import os
 from PIL import Image as pil_image
 from keras.preprocessing import image
 from keras.preprocessing.image import ImageDataGenerator
+import copy
+
 # Dataset Generation API
 # Surroundings (background behind picture)
 # Perpsective (rotation and translation)
@@ -168,9 +170,11 @@ def stringListToCoords(str):
     else:
         return None
 
-def filterPictures(objs, critRay):
+def filterPictures(objs, critRay, anyType=False):
     def isMatch(pic):
         SEARCH_KEYS = ['type', 'glare', 'light', 'print', 'blur', 'balls']
+        if anyType: 
+            del SEARCH_KEYS[0]
         for key in SEARCH_KEYS:
             if(pic[key] != critRay[key].value):
                 return False
@@ -192,62 +196,67 @@ def DataIterator(dataObject, # the parsed JSON from the dataset'
                  blur=list(Blur), 
                  balls=list(Balls),
                  randomizePerspective=False): # not currently implemented
-    
+
+    # generate every possible combination
+    # check every argument if value or array
+    combo = (pictogramType, surroundings, glare, lighting, printQuality, blur, balls)
+    combo = map(wrapList, combo)
+    # generate every permutation
+    combo = itertools.product(*combo)
+    # and wrap it into a dict
+    combo = list(map(lambda item: {
+        'type' : item[0],
+        'surr' : item[1],
+        'glare' : item[2],
+        'light' : item[3],
+        'print' : item[4],
+        'blur' : item[5],
+        'balls' : item[6]
+    }, combo))
+    # and for every item in that dict, generate and shuffle all the picture possibilities
+    # essentially creating a hash table
+    for item in reversed(combo):
+        # filter the images to the ones we are interested in, then
+        # generate a special list for mismatched (since we have to keep track of combonations)
+        if item['surr'] == Surroundings.MISMATCH_BACKGROUND:
+            # this may take awhile
+            # product of all pictogram images and all surrounding images
+            item['combo'] = list(itertools.product(filterPictures(dataObject, item), filterPictures(dataObject, item, anyType=True)))
+        # else filter and generate a normal list of just possible images
+        else:
+            item['combo'] = list(filterPictures(dataObject, item))
+        # check it's length, if < 0 then remove and continue
+        if item['combo'] == None or len(item['combo']) == 0:
+            #print("skipping: ")
+            #print(item)
+            #print("-----")
+            combo.remove(item)
+            continue
+
     # iterate through it, returning a new object for each next() call
     i = 0
     while loops == None or i < loops:
-        if loops != None: i = i + 1
-        # check every argument if value or array
-        combo = [pictogramType, surroundings, glare, lighting, printQuality, blur, balls]
-        combo = map(wrapList, combo)
-
-        # generate every permutation
-        perm = list(itertools.product(*combo))
-        # convert the list of list to list of dictionaries
-        perm = list(map(lambda item: {
-            'type' : item[0],
-            'surr' : item[1],
-            'glare' : item[2],
-            'light' : item[3],
-            'print' : item[4],
-            'blur' : item[5],
-            'balls' : item[6]
-        }, perm))
+        if loops != None: 
+            i = i + 1
+        # copy the combo array
+        perm = copy.deepcopy(combo)
         # shuffle it
         random.shuffle(perm)
-        
         # batch list 
         batch_x = []
         batch_y = []
-
-        while len(perm) > 0:
-            for item in reversed(perm):
-                # generate the lists of posible conminations of pictures to prevent double showing one
-                # if the list doesn't exist already
-                if not 'combo' in item:
-                    # filter the images to the ones we are interested in, then
-                    # generate a special list for mismatched (since we have to keep track of combonations)
-                    if item['surr'] == Surroundings.MISMATCH_BACKGROUND:
-                        # this may take awhile
-                        item['combo'] = list(itertools.permutations(filterPictures(dataObject, item), 2))
-                        random.shuffle(item['combo'])
-                    # else filter and generate a normal list of just possible images
-                    else:
-                        item['combo'] = list(filterPictures(dataObject, item))
-                        random.shuffle(item['combo'])
-
-                # next, check if that list is emptey
-                # if so, log and move on since there aren't any more images that fit the given combination
-                if item['combo'] == None or len(item['combo']) == 0:
-                    #print("skipping: ")
-                    #print(item)
-                    #print("-----")
-                    perm.remove(item)
-                    continue
-
+        # boolean to break at the end of the for loop
+        breakEnd = False
+        while not breakEnd:
+            for item in perm:                    
                 # get the a combo from our shuffled list
-                picItem = item['combo'].pop() # this wil be a list of dicts or a dict
-
+                picItem = random.choice(item['combo']) # this wil be a list of dicts or a dict
+                item['combo'].remove(picItem)
+                # check if that list is emptey
+                # if so, skip to the next set of image permutations after the end of this cycle
+                # this will in theory balance out the catigories of images rather than relying on the images to be equally distributed
+                if len(item['combo']) == 0: 
+                    breakEnd = True
                 # next, initialize the image loaded based on the type of surroundings
                 img = None
                 # if we have any surroundings except PICTURE_BACKGROUND, do processing
@@ -255,8 +264,8 @@ def DataIterator(dataObject, # the parsed JSON from the dataset'
                     img = cv2.imread(os.path.join(PATH, picItem['type'], picItem['name']))
                 # mismatch warping
                 elif item['surr'] == Surroundings.MISMATCH_BACKGROUND:
-                        backData = picItem[0]
-                        pictoData = picItem[1]
+                        backData = picItem[1]
+                        pictoData = picItem[0]
                         # check if both images have coords
                         # else log and continue
                         if not hasattr(backData['picto'], "__len__") or not hasattr(pictoData['picto'], "__len__"):
@@ -296,11 +305,6 @@ def DataIterator(dataObject, # the parsed JSON from the dataset'
                         back = np.random.randint(0, high=255, size=img.shape, dtype=np.uint8)
                     # bitwise copy
                     img = cv2.bitwise_or(cv2.bitwise_or(0, back, mask=cv2.bitwise_not(mask)), cv2.bitwise_or(0, img, mask=mask))
-                
-                #print("done creating: ")
-                #print(picItem)
-                #print(item['surr'])
-                #print("-----")
                 # apply image transformations from keras onto image
                 # downscale image to given size using nearest interpolation
                 img = cv2.resize(img, size, interpolation=cv2.INTER_NEAREST)
@@ -312,12 +316,64 @@ def DataIterator(dataObject, # the parsed JSON from the dataset'
                 # append the image to the batches
                 batch_x.append(img)
                 num = None
+                # generate the bianary answer for our network
                 if item['type'] == target_type: num = 1.
                 else: num = 0.
+                # append, and see if we can send off the batch
                 batch_y.append(num)
                 if(len(batch_x) >= batch_size):
                     yield np.array(batch_x), np.array(batch_y)
                     batch_x = []
                     batch_y = []
 
+"""
+# get the JSON and parse it
+def mapDict(item):
+    str = '[' + item['picto'] + ']'
+    ray = json.loads(str)
+    tempRay = [0, 0, 0, 0]
+    # map flat string to coordinate arrays
+    if len(ray) > 0:
+        for i in range(0, 4):
+            tempRay[i] = (ray[i * 2], ray[i * 2 + 1])
+        # sort by X coordinate
+        tempRay.sort(key=lambda coord: coord[0])
+        # if Y of point 0 is greater than Y of point 1 and the opposite is true of the Y's of the next two points, switch em
+        # also vice versa
+        if (tempRay[0][1] > tempRay[1][1] and tempRay[2][1] > tempRay[3][1]) or (tempRay[0][1] < tempRay[1][1] and tempRay[2][1] < tempRay[3][1]):
+            tempRay = (tempRay[0], tempRay[1], tempRay[3], tempRay[2])
+        # switch points so origin is always a bottom left
+        if tempRay[0][1] < tempRay[1][1]:
+            item['picto'] = (tempRay[1], tempRay[0], tempRay[3], tempRay[2])
+        else:
+            item['picto'] = tempRay
+    else:
+        item['picto'] = None
+    return item
 
+with open("mostOfThem.json", 'r') as f:
+    data = json.load(f)
+
+data = list(map(mapDict, filter(lambda item: item['type'] != 'none', data)))
+
+test_datagen = ImageDataGenerator(rescale=1./255)
+
+train_datagen = ImageDataGenerator(rescale=1./255,
+                                   shear_range=0.2,
+                                   zoom_range=0.2,
+                                   horizontal_flip=True)
+
+iter = DataIterator(data, 
+                32, 
+                None, 
+                train_datagen,
+                PictogramType.LEFT, 
+                pictogramType=(PictogramType.CENTER, PictogramType.LEFT))
+
+for item in iter:
+    print(len(item[0]))
+    for i in range(len(item[0])):
+        if not hasattr(item[0][i], "__len__") or not hasattr(item[0][i], "shape"):
+            print(i)
+            raise ValueError("HUR DUR")
+"""

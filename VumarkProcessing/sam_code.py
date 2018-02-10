@@ -8,12 +8,6 @@ import DataSet
 from DataSet import PictogramType
 import json
 
-train_datagen = ImageDataGenerator(rescale=1./255,
-                                   shear_range=0.2,
-                                   zoom_range=0.2,
-                                   horizontal_flip=True)
-test_datagen = ImageDataGenerator(rescale=1./255)
-
 # get the JSON and parse it
 def mapDict(item):
     str = '[' + item['picto'] + ']'
@@ -34,7 +28,6 @@ def mapDict(item):
             item['picto'] = (tempRay[1], tempRay[0], tempRay[3], tempRay[2])
         else:
             item['picto'] = tempRay
-
     else:
         item['picto'] = None
     return item
@@ -51,29 +44,35 @@ def nn(testIter, trainIter, name):
     model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
     
     model.fit_generator(trainIter,
-                        steps_per_epoch=300,
+                        steps_per_epoch=30,
                         epochs=3,
                         validation_data=testIter,
                         validation_steps=20)
     model.save_weights(name + '.h5')
     return model
 
-
 with open("mostOfThem.json", 'r') as f:
     data = json.load(f)
 
-data = list(map(mapDict, data))
+data = tuple(map(mapDict, filter(lambda item: item['type'] != 'none', data)))
+
+train_datagen = ImageDataGenerator(rescale=1./255,
+                                   shear_range=0.2,
+                                   zoom_range=0.2,
+                                   horizontal_flip=True)
+test_datagen = ImageDataGenerator(rescale=1./255)
+
 
 nn( DataSet.DataIterator(data, 
                 32, 
-                2, 
+                None, 
                 test_datagen,
                 PictogramType.LEFT, 
                 pictogramType=(PictogramType.CENTER, PictogramType.LEFT),
                 surroundings=DataSet.Surroundings.PICTURE_BACKGROUND), 
     DataSet.DataIterator(data, 
                 32, 
-                2, 
+                None, 
                 train_datagen,
                 PictogramType.LEFT, 
                 pictogramType=(PictogramType.CENTER, PictogramType.LEFT)),
@@ -81,14 +80,14 @@ nn( DataSet.DataIterator(data,
 
 nn( DataSet.DataIterator(data, 
                 32, 
-                2, 
+                None, 
                 test_datagen,
                 PictogramType.RIGHT, 
                 pictogramType=(PictogramType.CENTER, PictogramType.RIGHT),
                 surroundings=DataSet.Surroundings.PICTURE_BACKGROUND), 
     DataSet.DataIterator(data, 
                 32, 
-                2, 
+                None, 
                 train_datagen,
                 PictogramType.RIGHT, 
                 pictogramType=(PictogramType.CENTER, PictogramType.RIGHT)),
@@ -96,14 +95,14 @@ nn( DataSet.DataIterator(data,
 
 nn( DataSet.DataIterator(data, 
                 32, 
-                2, 
+                None, 
                 test_datagen,
                 PictogramType.RIGHT, 
                 pictogramType=(PictogramType.LEFT, PictogramType.RIGHT),
                 surroundings=DataSet.Surroundings.PICTURE_BACKGROUND), 
     DataSet.DataIterator(data, 
                 32, 
-                2, 
+                None, 
                 train_datagen,
                 PictogramType.RIGHT, 
                 pictogramType=(PictogramType.LEFT, PictogramType.RIGHT)),
