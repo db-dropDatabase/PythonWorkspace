@@ -83,6 +83,10 @@ class PictogramType(Enum):
     CENTER = "center"
     RIGHT = "right"
 
+    @classmethod
+    def has_value(cls, value):
+        return any(value == item.value for item in cls)
+
 # Blur, as in we shook the camera on accident
 @unique
 class Blur(Enum):
@@ -279,6 +283,14 @@ def DataIterator(dataObject, # the parsed JSON from the dataset'
                         back = cv2.imread(os.path.join(PATH, backData['type'], backData['name']))
                         # get the pictogram image
                         picto = cv2.imread(os.path.join(PATH, pictoData['type'], pictoData['name']))
+                        # check and see if we read the image
+                        if not hasattr(back, "__len__") or not hasattr(picto, "__len__"):
+                            print("Image failed to read!")
+                            if not hasattr(back, "__len__"):
+                                print(backData)
+                            if not hasattr(picto, "__len__"):
+                                print(pictoData)
+                            continue
                         # The actual warping code
                         # warp pictograph of picto into position of background
                         pers = cv2.getPerspectiveTransform(np.float32(pictoData['picto']), np.float32(backData['picto']))

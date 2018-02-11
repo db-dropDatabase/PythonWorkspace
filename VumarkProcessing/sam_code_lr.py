@@ -44,7 +44,7 @@ def nn(testIter, trainIter, name):
     model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
     
     model.fit_generator(trainIter,
-                        steps_per_epoch=30,
+                        steps_per_epoch=300,
                         epochs=3,
                         validation_data=testIter,
                         validation_steps=20)
@@ -54,7 +54,7 @@ def nn(testIter, trainIter, name):
 with open("mostOfThem.json", 'r') as f:
     data = json.load(f)
 
-data = tuple(map(mapDict, filter(lambda item: item['type'] != 'none', data)))
+data = tuple(map(mapDict, filter(lambda item: PictogramType.has_value(item['type']), data)))
 
 train_datagen = ImageDataGenerator(rescale=1./255,
                                    shear_range=0.2,
@@ -62,7 +62,7 @@ train_datagen = ImageDataGenerator(rescale=1./255,
                                    horizontal_flip=True)
 test_datagen = ImageDataGenerator(rescale=1./255)
 
-
+'''
 nn( DataSet.DataIterator(data, 
                 32, 
                 None, 
@@ -92,7 +92,7 @@ nn( DataSet.DataIterator(data,
                 PictogramType.RIGHT, 
                 pictogramType=(PictogramType.CENTER, PictogramType.RIGHT)),
     'class_weightCR')
-
+'''
 nn( DataSet.DataIterator(data, 
                 32, 
                 None, 
