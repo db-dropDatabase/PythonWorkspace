@@ -44,7 +44,7 @@ def nn(testIter, trainIter, name):
     model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
     
     model.fit_generator(trainIter,
-                        steps_per_epoch=300,
+                        steps_per_epoch=3,
                         epochs=3,
                         validation_data=testIter,
                         validation_steps=20)
