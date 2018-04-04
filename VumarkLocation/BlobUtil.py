@@ -1,4 +1,5 @@
 from enum import IntEnum
+import itertools
 
 # Expanding box blob detection algorithm
 # takes a binary image and returns the center of clustered points
@@ -75,4 +76,58 @@ def ExpandingBoxCluster(binImg, maxDist, xSearchDist=0, ySearchDist=0):
                     break
             clustRay.append(currentRect)
     return clustRay
-            
+
+# Sort points by visible and nonvisible from a center point, with on pixels acting as walls
+# returns [[visible], [nonvisible]]
+def RayCastClassifier(binImg, blobs, centerX, centerY):
+    ret = ([], [])
+    for blob in blobs:
+        # reduce blob point duplicates
+        points = []
+        for i in range(2):
+            if not any(map(lambda p: p == (blob[i], blob[i+1]), points)):
+                points.append((blob[i], blob[i+1]))
+        # ray cast test every point left
+        # functional programming ftw
+        if any(map(lambda point: 
+            any(map(lambda linePoint: 
+                binImg[linePoint[1], linePoint[0]], 
+            get_line((centerX, centerY), (point[0], point[1])))), 
+        points)):
+            ret[1].append(blob)
+        else:
+            ret[0].append(blob)
+    return ret
+
+
+def get_line(start, end):
+    # Setup initial conditions
+    x1, y1 = start
+    x2, y2 = end
+    dx = x2 - x1
+    dy = y2 - y1
+    # Determine how steep the line is
+    is_steep = abs(dy) > abs(dx)
+    # Rotate line
+    if is_steep:
+        x1, y1 = y1, x1
+        x2, y2 = y2, x2
+    # Swap start and end points if necessary and store swap state
+    if x1 > x2:
+        x1, x2 = x2, x1
+        y1, y2 = y2, y1
+    # Recalculate differentials
+    dx = x2 - x1
+    dy = y2 - y1
+    # Calculate error
+    error = int(dx / 2.0)
+    ystep = 1 if y1 < y2 else -1
+    # Iterate over bounding box generating points between start and end
+    y = y1
+    for x in range(x1, x2 + 1):
+        coord = (y, x) if is_steep else (x, y)
+        yield coord
+        error -= abs(dy)
+        if error < 0:
+            y += ystep
+            error += dx

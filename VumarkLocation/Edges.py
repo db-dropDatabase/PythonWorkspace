@@ -7,16 +7,17 @@ from matplotlib import pyplot as plt
 from ShowImagesMatPlot import show_images
 from mpl_toolkits.axes_grid1 import make_axes_locatable
 from matplotlib.widgets import Slider, Button, RadioButtons
-from BoxBlobMaker import ExpandingBoxCluster
-from BoxBlobMaker import P
+from BlobUtil import ExpandingBoxCluster
+from BlobUtil import P
+from BlobUtil import RayCastClassifier
 
 cwd = path.relpath(os.path.dirname(os.path.realpath(__file__)))
-#path = path.join(cwd, path.join('images', 'robotview.png'))
-path = path.join(cwd, path.join('images', '98.jpg'))
+path = path.join(cwd, path.join('images', 'robotview.png'))
+#path = path.join(cwd, path.join('images', '98.jpg'))
 #robotPath = path.join(cwd, 'images', 'robotview.png')
 
 img = cv2.imread(path, 1)
-img = cv2.pyrDown(img)
+#img = cv2.pyrDown(img)
 #img = cv2.pyrDown(img)
 img = cv2.pyrDown(img)
 img = cv2.pyrDown(img)
@@ -81,8 +82,14 @@ def proc(img):
                 drawCorn[x,y] = 255
             else:
                 drawCorn[x,y] = 0
+
+    boxes = ExpandingBoxCluster(drawCorn, 1)
+    print(RayCastClassifier(drawCorn, boxes, drawCorn.shape[1] >> 1, drawCorn.shape[0] >> 1))
+
     drawBox = cv2.merge((img, drawCorn, img))
-    for box in ExpandingBoxCluster(drawCorn, 1):
+
+
+    for box in boxes:
         cv2.rectangle(drawBox, (box[0], box[1]), (box[2], box[3]), (255, 0, 0))
 
     return drawBox
