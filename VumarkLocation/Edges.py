@@ -8,15 +8,16 @@ from ShowImagesMatPlot import show_images
 from mpl_toolkits.axes_grid1 import make_axes_locatable
 from matplotlib.widgets import Slider, Button, RadioButtons
 from BoxBlobMaker import ExpandingBoxCluster
+from BoxBlobMaker import P
 
 cwd = path.relpath(os.path.dirname(os.path.realpath(__file__)))
 #path = path.join(cwd, path.join('images', 'robotview.png'))
-path = path.join(cwd, path.join('images', '81.jpg'))
+path = path.join(cwd, path.join('images', '98.jpg'))
 #robotPath = path.join(cwd, 'images', 'robotview.png')
 
 img = cv2.imread(path, 1)
-#img = cv2.pyrDown(img)
 img = cv2.pyrDown(img)
+#img = cv2.pyrDown(img)
 img = cv2.pyrDown(img)
 img = cv2.pyrDown(img)
 img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
@@ -24,6 +25,8 @@ img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
 IMG_SHAPE = img.shape
 IMG_WIDTH = IMG_SHAPE[1]
 IMG_HEIGHT = IMG_SHAPE[0]
+
+print(IMG_SHAPE)
 
 colorSpace = cv2.cvtColor(img, cv2.COLOR_RGB2HSV)
 
@@ -41,7 +44,7 @@ rs, bs, gs = cv2.split(colorSpace)
 
 bothSWeight = np.uint8((np.uint32(rs) * (255 - np.uint32(bs)) * (255 - np.uint32(gs))) >> 16)
 
-KERN = np.ones((4,4),np.uint8)
+KERN = np.ones((5,5),np.uint8)
 
 # Start Main
 # Create slider for the image rotating
@@ -56,6 +59,19 @@ cornerThresh = Slider(div.append_axes("top", size="10%", pad=0.3), "Corner Thres
 
 def proc(img):
     img = cv2.dilate(cv2.Canny(bothSWeight, minVal.val, maxVal.val), KERN)
+    # look for the largest blob in the left half of the image
+    boxes = ExpandingBoxCluster(img, 1, xSearchDist=img.shape[1]>>1)
+    print(boxes)
+    # sort by largest y box
+    largestY = 0
+    index = 0
+    for i in range(len(boxes)):
+        yDist = boxes[i][P.BOTTOM_RIGHT_Y] - boxes[i][P.TOP_LEFT_Y]
+        if yDist > largestY:
+            index = i
+            largestY = yDist
+    # crop image to largest box to just look at pictograph
+    img = img[boxes[index][P.TOP_LEFT_Y] - 10:boxes[index][P.BOTTOM_RIGHT_Y] + 10, boxes[index][P.TOP_LEFT_X] - 10:boxes[index][P.BOTTOM_RIGHT_X] + 10]
     drawCorn = img.copy()
     corners = cv2.cornerHarris(img, 3, 5, 0.08)
     totalCorn = 0
@@ -63,7 +79,6 @@ def proc(img):
         for y in range(drawCorn.shape[1]):
             if(corners[x,y] >= cornerThresh.val):
                 drawCorn[x,y] = 255
-                totalCorn += 1
             else:
                 drawCorn[x,y] = 0
     drawBox = cv2.merge((img, drawCorn, img))

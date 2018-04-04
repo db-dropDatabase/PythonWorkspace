@@ -20,12 +20,19 @@ def clip(val, minv, maxv):
         return maxv
     return val 
 
-def ExpandingBoxCluster(binImg, maxDist):
+def ExpandingBoxCluster(binImg, maxDist, xSearchDist=0, ySearchDist=0):
     # array of clusters, in form of [[topLeftx, topLefty, bottomRightx, bottomRighty]]
     clustRay = []
     # search every pixel besides the ones already in clusters
-    for x in range(maxDist, binImg.shape[1] - maxDist):
-        for y in range(maxDist, binImg.shape[0] - maxDist):
+    xSearch = binImg.shape[1]
+    if xSearchDist != 0:
+        xSearch = xSearchDist
+    ySearch = binImg.shape[0]
+    if ySearchDist != 0:
+        ySearch = ySearchDist
+
+    for x in range(maxDist, xSearch - maxDist):
+        for y in range(maxDist, ySearch - maxDist):
             # if point is not true or already in a cluster, skip it
             if not binImg[y,x] or any(map(lambda point : _pointInRect(x, y, point), clustRay)):
                 continue
