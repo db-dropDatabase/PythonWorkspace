@@ -79,28 +79,33 @@ def ExpandingBoxCluster(binImg, maxDist, xSearchDist=0, ySearchDist=0):
 
 # Sort points by visible and nonvisible from a center point, with on pixels acting as walls
 # returns [[visible], [nonvisible]]
-def RayCastClassifier(binImg, blobs, centerX, centerY):
+def RayCastClassifier(binImg, blobs, centerX, centerY, debugImage=(), startIter=0):
     ret = ([], [])
+    print(binImg.shape)
     for blob in blobs:
         # reduce blob point duplicates
         points = []
         for i in range(2):
-            if not any(map(lambda p: p == (blob[i], blob[i+1]), points)):
-                points.append((blob[i], blob[i+1]))
+            if not any(map(lambda p: p == (blob[i*2], blob[i*2+1]), points)):
+                points.append((blob[i*2], blob[i*2+1]))
         # ray cast test every point left
         # functional programming ftw
         if any(map(lambda point: 
             any(map(lambda linePoint: 
                 binImg[linePoint[1], linePoint[0]], 
-            get_line((centerX, centerY), (point[0], point[1])))), 
+            get_line((centerX, centerY), (point[0], point[1]), startIter=startIter))), 
         points)):
             ret[1].append(blob)
         else:
             ret[0].append(blob)
+        if len(debugImage) > 0:
+            for point in points:
+                for linePoint in get_line((centerX, centerY), (point[0], point[1])):
+                    debugImage[linePoint[1], linePoint[0]] = (0, 255, 0)
     return ret
 
 
-def get_line(start, end):
+def get_line(start, end, startIter=0):
     # Setup initial conditions
     x1, y1 = start
     x2, y2 = end
@@ -124,10 +129,23 @@ def get_line(start, end):
     ystep = 1 if y1 < y2 else -1
     # Iterate over bounding box generating points between start and end
     y = y1
-    for x in range(x1, x2 + 1):
+    # start with one iteration
+    for i in range(startIter):
+        error -= abs(dy)
+        if error < 0:
+            y += ystep
+            error += dx
+    for x in range(x1 + startIter, x2 - startIter):
         coord = (y, x) if is_steep else (x, y)
         yield coord
         error -= abs(dy)
         if error < 0:
             y += ystep
             error += dx
+
+    # taken from https://stackoverflow.com/questions/6989100/sort-points-in-clockwise-order
+    def clockwisePointSort(center, points):
+        def clockWiseCompare(pointA, pointB): # returns 1 if greater, 0 if same, -1 if less
+            nonlocal center
+
+

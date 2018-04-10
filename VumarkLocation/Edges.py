@@ -12,12 +12,12 @@ from BlobUtil import P
 from BlobUtil import RayCastClassifier
 
 cwd = path.relpath(os.path.dirname(os.path.realpath(__file__)))
-path = path.join(cwd, path.join('images', 'robotview.png'))
-#path = path.join(cwd, path.join('images', '98.jpg'))
+#path = path.join(cwd, path.join('images', 'robotview.png'))
+path = path.join(cwd, path.join('images', '81.jpg'))
 #robotPath = path.join(cwd, 'images', 'robotview.png')
 
 img = cv2.imread(path, 1)
-#img = cv2.pyrDown(img)
+img = cv2.pyrDown(img)
 #img = cv2.pyrDown(img)
 img = cv2.pyrDown(img)
 img = cv2.pyrDown(img)
@@ -84,13 +84,21 @@ def proc(img):
                 drawCorn[x,y] = 0
 
     boxes = ExpandingBoxCluster(drawCorn, 1)
-    print(RayCastClassifier(drawCorn, boxes, drawCorn.shape[1] >> 1, drawCorn.shape[0] >> 1))
 
     drawBox = cv2.merge((img, drawCorn, img))
 
+    betterPoints = RayCastClassifier(img, boxes, drawCorn.shape[1] >> 1, drawCorn.shape[0] >> 1, startIter=4)
 
-    for box in boxes:
-        cv2.rectangle(drawBox, (box[0], box[1]), (box[2], box[3]), (255, 0, 0))
+    #for box in boxes:
+    #    cv2.rectangle(drawBox, (box[0], box[1]), (box[2], box[3]), (255, 0, 0))
+
+    for box in betterPoints[0]:
+        cv2.rectangle(drawBox, (box[0], box[1]), (box[2], box[3]), (75, 0, 130))
+    
+    for box in betterPoints[1]:
+        cv2.rectangle(drawBox, (box[0], box[1]), (box[2], box[3]), (255, 165, 0))
+    
+    cv2.drawMarker(drawBox, (drawCorn.shape[1] >> 1, drawCorn.shape[0] >> 1), (255, 0, 0))
 
     return drawBox
 
