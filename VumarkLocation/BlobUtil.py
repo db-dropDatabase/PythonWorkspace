@@ -81,7 +81,6 @@ def ExpandingBoxCluster(binImg, maxDist, xSearchDist=0, ySearchDist=0):
 # returns [[visible], [nonvisible]]
 def RayCastClassifier(binImg, blobs, centerX, centerY, debugImage=(), startIter=0):
     ret = ([], [])
-    print(binImg.shape)
     for blob in blobs:
         # reduce blob point duplicates
         points = []
@@ -143,9 +142,58 @@ def get_line(start, end, startIter=0):
             y += ystep
             error += dx
 
-    # taken from https://stackoverflow.com/questions/6989100/sort-points-in-clockwise-order
-    def clockwisePointSort(center, points):
-        def clockWiseCompare(pointA, pointB): # returns 1 if greater, 0 if same, -1 if less
-            nonlocal center
+# taken from https://stackoverflow.com/questions/6989100/sort-points-in-clockwise-order
+def ClockwisePointSort(center, points):
+    def clockWiseCompare(a, b): # returns 1 if greater, 0 if same, -1 if less
+        nonlocal center
+        if a == b:
+            return 0
+        if a[0] - center[0] >= 0 and b[0] - center[0] < 0:
+            return -1
+        if a[0] - center[0] < 0 and b[0] - center[0] >= 0:
+            return 1
+        if a[0] - center[0] == 0 and b[0] - center[0] == 0:
+            if a[1] - center[1] >= 0 or b[1] - center[1] >= 0:
+                if a.y > b.y:
+                    return -1
+                else:
+                    return 1
+            if b.y > a.y:
+                return -1
+            else:
+                return 1
+        # compute the cross product of vectors (center -> a) x (center -> b)
+        det = (a[0] - center[0]) * (b[1] - center[1]) - (b[0] - center[0]) * (a[1] - center[1])
+        if det < 0:
+            return -1
+        if det > 0:
+            return 1
+        # points a and b are on the same line from the center
+        # check which point is closer to the center
+        d1 = (a[0] - center[0]) * (a[0] - center[0]) + (a[1] - center[1]) * (a[1] - center[1])
+        d2 = (b[0] - center[0]) * (b[0] - center[0]) + (b[1] - center[1]) * (b[1] - center[1])
+        if d1 > d2:
+            return -1
+        else:
+            return 1
+    # sort points using clockwisecompare
+    return sorted(points, key=cmp_to_key(clockWiseCompare))
 
-
+def cmp_to_key(mycmp):
+    'Convert a cmp= function into a key= function'
+    class K(object):
+        def __init__(self, obj, *args):
+            self.obj = obj
+        def __lt__(self, other):
+            return mycmp(self.obj, other.obj) < 0
+        def __gt__(self, other):
+            return mycmp(self.obj, other.obj) > 0
+        def __eq__(self, other):
+            return mycmp(self.obj, other.obj) == 0
+        def __le__(self, other):
+            return mycmp(self.obj, other.obj) <= 0
+        def __ge__(self, other):
+            return mycmp(self.obj, other.obj) >= 0
+        def __ne__(self, other):
+            return mycmp(self.obj, other.obj) != 0
+    return K
