@@ -11,3 +11,6 @@ This script automatically polls the START registration event server until regist
 6. Open chrome developer tools by pressing Ctrl+Shift+I
 7. Paste the [script found here](https://raw.githubusercontent.com/db-dropDatabase/PythonWorkspace/master/StartDatePoller/mimified.js) (Ctrl+A then Ctrl+C to copy) into the developer console (usually found by clicking the "Console" tab next to "Elements" tab at the top of the developer tools window) and press Enter to run it
 8. Once the script has detected that START registration is open, the page will load all the events, allowing you to proceed with registration normally (more details on how to finish registration in the youtube video above)
+
+## Will it actually work tho?
+This script has been tested with google chrome on windows 10 with a simple webapp simulating the OSU event servers. Since I cannot test on the real START registration, there is a possibility of the script failing due to unforseen behaviors of the site or event service. The worst can happen, however, is the script fails and you refresh the page anyway.
