@@ -1,15 +1,15 @@
 /**
- * I don't like OSU's crappy web portals, and I especially don't like refreshing them repeatedly
+ * I don't like OSU's web portals, and I especially don't like refreshing them repeatedly
  * This script is designed to update the START registration portal without refreshing the page
  * giving the user an edge over every other sucker who is still downloading angularjs for the umpentienth time
  * 
  * A little analysis of the OSU START portal shows polls to the URLs below when populating the event list
- * By polling these URLs ourselves, we can see if START registration is ready without reloadin the page
- * So the first step is spamming that URL until START is ready
+ * By polling these URLs ourselves, we can see if START registration is ready without reloading the page
+ * So the first step is s̶p̶a̶m̶m̶i̶n̶gchecking that URL until START is ready
  * 
  * Once we know the event should be in the list, we need reload the events without refreshing the page
  * To do this, we use the a behavior of the "search failed" box--once clicked to close, the events are
- * immediatly restocked
+ * immediatly restocked through the JS
  * Assuming we are on this page at the start, we can simply activate this button with javascript and be on
  * our merry way
  * 
