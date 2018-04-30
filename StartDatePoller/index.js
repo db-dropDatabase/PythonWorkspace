@@ -21,7 +21,7 @@
 
 //Constants
 // the magical URL the OSU event portal uses to check for events
-const URL = "https://xe.ucsadm.oregonstate.edu:8890/SelfServiceBannerGeneralEventManagement/ssb/events/eventsList?selectedMonth=5&selectedYear=2018";
+const URL = "https://xe.ucsadm.oregonstate.edu:8890/SelfServiceBannerGeneralEventManagement/ssb/events/eventsList?selectedMonth=6&selectedYear=2018";
 //URL where we want to navigate to in order to execute the script
 const TARGET_URL = "https://xe.ucsadm.oregonstate.edu:8890/SelfServiceBannerGeneralEventManagement/ssb/events#/search/";
 //selector of the close window button of the "search failed" dialog
