@@ -37,6 +37,11 @@ def gen_filter_kernel(angleDirection, stdDev):
         # gaussian stuff
         # opencv is row major
         kernel[y, x] = np.exp(-np.square(dp2)/(2*np.square(stdDev)))
+    # normalize kernel
+    kernel -= np.amin(kernel)
+    kernel /= np.amax(kernel)
+    kernel *= 255
+    kernel = kernel.astype(np.uint8)
     # return generated kernel
     return kernel
 
@@ -90,6 +95,7 @@ def run_filter(window, kernel):
     # return the final score
     return np.square(productSum)/(windowSum*kernelSum)
 
+"""
 # import image as a grayscale image
 image = cv2.imread("./Images/Normal/ISIC_0000042.jpg", 0)
 image = cv2.pyrDown(image)
@@ -102,3 +108,4 @@ image = 255 - image
 # display 
 show_images([image] + list(map(lambda stuff: convolve_test(image, [gen_filter_kernel(stuff[0], stuff[1])]), itertools.product(range(0, 190, 30), [2*math.sqrt(2)]))))
 
+"""
