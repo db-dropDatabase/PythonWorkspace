@@ -56,18 +56,13 @@ def convolve_test(img, kernels):
     # get window +- from kernel size
     windowDelta = math.floor(kernels[0].shape[0] / 2)
     # for every pixel in the image
-    for x in range(0, img.shape[1]):
-        for y in range(0, img.shape[0]):
-            # slice window from image
-            window = img[max(y - windowDelta, 0):y + windowDelta + 1, max(x - windowDelta, 0):x + windowDelta + 1]
-            # pad window to make window same size as kernel
-            padding = ((-min(y - windowDelta, 0), max(y + windowDelta - img.shape[0] + 1, 0)), 
-                                    (-min(x - windowDelta, 0), max(x + windowDelta - img.shape[1] + 1, 0)))
-            window = np.pad(window, padding, "constant")
-             # get the output value for every kernel
-            outputs = list(map(lambda kernel: run_filter(window, kernel), kernels))
-            # and the return the maximum
-            outImg[y, x] = np.amax(outputs)
+    for x,y in itertools.product(range(windowDelta, img.shape[1] - windowDelta), range(windowDelta, img.shape[0] - windowDelta)):
+        # slice window from image
+        window = img[y - windowDelta:y + windowDelta + 1, x - windowDelta:x + windowDelta + 1].copy()
+            # get the output value for every kernel
+        outputs = list(map(lambda kernel: run_filter(window, kernel), kernels))
+        # and the return the maximum
+        outImg[y, x] = np.amax(outputs)
     return outImg
 
 def run_filter(window, kernel):
@@ -83,7 +78,7 @@ def run_filter(window, kernel):
     # normalize window to 0-1 values
     window -= np.amin(window)
     windowMax = np.amax(window)
-    # if image is completly normal ignore
+    # if image is completly similair ignore it
     if windowMax == 0:
         return 0
     window = window / windowMax
@@ -105,5 +100,5 @@ image = cv2.pyrDown(image)
 image = 255 - image
 
 # display 
-show_images([image] + list(map(lambda stuff: convolve_test(image, [gen_filter_kernel(stuff[0], stuff[1])]), itertools.product(range(0, 180, 30), [1]))))
+show_images([image] + list(map(lambda stuff: convolve_test(image, [gen_filter_kernel(stuff[0], stuff[1])]), itertools.product(range(0, 190, 30), [2*math.sqrt(2)]))))
 
