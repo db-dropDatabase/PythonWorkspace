@@ -4,6 +4,7 @@ import itertools
 from ShowImages import show_images
 import math
 from ComplexHairRemoval import gen_filter_kernel
+from matplotlib import pyplot as plt
 
 np.seterr(all="raise")
 
@@ -16,11 +17,15 @@ image = cv2.pyrDown(image)
 image = cv2.pyrDown(image)
 
 morphrect = cv2.morphologyEx(image, cv2.MORPH_CLOSE, cv2.getStructuringElement(cv2.MORPH_RECT,(7,7)))
-morph0 = cv2.morphologyEx(image, cv2.MORPH_CLOSE, gen_filter_kernel(0, math.sqrt(2)))
-morph45 = cv2.morphologyEx(image, cv2.MORPH_CLOSE, gen_filter_kernel(45, math.sqrt(2)))
-morph90 = cv2.morphologyEx(image, cv2.MORPH_CLOSE, gen_filter_kernel(90, math.sqrt(2)))
-morph135 = cv2.morphologyEx(image, cv2.MORPH_CLOSE, gen_filter_kernel(135, math.sqrt(2)))
-sub = (image - morphrect)
-ret, thresh = cv2.threshold(sub,0,255,cv2.THRESH_BINARY+cv2.THRESH_OTSU)
 
-show_images([image, morph0, morph45, morph90, morph135, morphrect, sub, thresh])
+sub = np.abs(image.astype(np.int16) - morphrect.astype(np.int16)).astype(np.uint8)
+
+thresh, img = cv2.threshold(sub, 0, 255, cv2.THRESH_BINARY+cv2.THRESH_OTSU)
+
+canny = cv2.Canny(sub, 20, 100)
+
+cannyor = cv2.bitwise_or(canny, img)
+
+paint = cv2.inpaint(image, cannyor, 5, cv2.INPAINT_TELEA)
+
+show_images([image, morphrect, sub, img, canny, cannyor, paint])
