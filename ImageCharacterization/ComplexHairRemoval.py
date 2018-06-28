@@ -24,7 +24,7 @@ as it covers in great detail the methods attempted in this file.
 
 Pros:
     - Accurate, looking for only hair-like patterns, so features are more likley to stay in the image
-    - Scientifically proven
+    - Scientifically documented
 Cons:
     - Extremly Slow, lacks readily availible C++ implementations and python is unusably slow on large images
     - Not fully implemented, I didn't finish writing the whole thing
