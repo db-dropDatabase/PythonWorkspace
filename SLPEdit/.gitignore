@@ -1,0 +1,5 @@
+*.c
+*.pyd
+build
+node_modules
+__pycache__
