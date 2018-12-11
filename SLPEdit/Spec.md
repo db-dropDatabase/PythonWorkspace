@@ -27,7 +27,7 @@ SLP files are encoded as raw binary, using little-endian and a varying word size
 typedef struct Header
 {
     char         Version[4]               = "2.0N";
-    (u?)int64_t  Num_Frames;
+    (u?)int32_t  Num_Frames;
     char         Comment[24]              = "ArtDesk1.00 SLP Writer\0";
     Frame_Info   Frame_Data[Num_Frames];
 } Header;
@@ -51,11 +51,33 @@ typedef struct Frame_Info
 
 ## Outline Data
 
+One for each row, store the distance from the left edge to start and the distance from the right edge to finish, exclusive (only store skip count not index)
+
+```C
+struct rowedge
+{
+    uint16_t left; // exclusive
+    uint16_t right; // exclusive 
+};
+
+rowedge rows[Frame_Info.Height];
+```
+
+## Command Offset Data
+
+An array of longs of size `height`, which stores offsets to the first command of each row.
+
+```C
+uint32_t offsets[Frame_Info.Height];
+```
+
 ## Frames
 
-Colors are stored both in the high and low nibble (meaning it takes length/2 bytes)
+Colors are stored bytes.
 
-TODO: Color palette, document outline array/frame arrays   
+TODO: Color palette, document outline array/frame arrays
+
+player color = requested color | player num << 4
 
 ```C
 typedef struct Frame

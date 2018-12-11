@@ -1,0 +1,17 @@
+{
+  "name": "js-slp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "genie-slp": "^1.1.0",
+    "jascpal": "^0.1.4",
+    "papaparse": "^4.6.2",
+    "pngjs": "^3.3.3"
+  }
+}
