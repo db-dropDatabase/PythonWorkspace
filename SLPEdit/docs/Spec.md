@@ -112,9 +112,11 @@ Outline outlines[frame_info[index].height]; // 4*height bytes
 ```
 
 Stored in the beginning of the frame, the outline array specifies the two things: The offset from the left side of the screen to start drawing, and the offset from the right side of the screen to stop drawing, labeled left and right respectively. Both values are exclusive. In other words, if I have a row of pixels I want to draw below, where 0-10 is a color and -1 is transparent:
+
 | Index |   0   |   1   |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   |
 | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 | Pixel |  -1   |  -1   |   2   |   3   |   1   |   4   |  -1   |  -1   |  -1   |  -1   |
+
 I would set the left offset to 2 and the right offset to 4, and only encode the pixels 2-5 inclusive into the image.
 
 ### Offsets
