@@ -1,0 +1,3954 @@
+[
+ {
+  "type": 70,
+  "nameLength": 6,
+  "id0": 4,
+  "languageDllName": 5083,
+  "languageDllCreation": 6083,
+  "class": 0,
+  "standingGraphic0": 633,
+  "standingGraphic1": -1,
+  "dyingGraphic": 630,
+  "undeadGraphic": -1,
+  "deathMode": 0,
+  "hitPoints": 30,
+  "lineOfSight": 6,
+  "garrisonCapacity": 0,
+  "radius": {
+   "x": 0.20000000298023224,
+   "y": 0.20000000298023224,
+   "z": 2
+  },
+  "trainSound": 337,
+  "damageSound": -1,
+  "deadUnitId": 3,
+  "placementMode": 5,
+  "canBeBuiltOn": 0,
+  "iconId": 17,
+  "hiddenInEditor": 0,
+  "oldPortraitIconId": -1,
+  "enabled": false,
+  "disabled": false,
+  "placementSideTerrain0": -1,
+  "placementSideTerrain1": -1,
+  "placementTerrain0": -1,
+  "placementTerrain1": -1,
+  "clearanceSize": {
+   "x": 0.20000000298023224,
+   "y": 0.20000000298023224
+  },
+  "buildingMode": 0,
+  "visibleInFog": 0,
+  "terrainRestriction": 7,
+  "flyMode": 0,
+  "resourceCapacity": 25,
+  "resourceDecay": 25,
+  "blastDefenseLevel": 3,
+  "combatLevel": 4,
+  "interactionMode": 4,
+  "mapDrawLevel": 1,
+  "unitLevel": 4,
+  "attackReaction": 1,
+  "minimapColor": 0,
+  "languageDllHelp": 105083,
+  "languageDllHotkeyText": 155083,
+  "hotkeys": 16083,
+  "recycleable": 0,
+  "enableAutoGather": 0,
+  "doppelgangerOnDeath": 0,
+  "resourceGatherDrop": 0,
+  "occlusionMask": 1,
+  "obstructionType": 5,
+  "selectionShape": 2,
+  "trait": 0,
+  "civilization": 0,
+  "attributePiece": 0,
+  "selectionEffect": 0,
+  "editorSelectionColor": 0,
+  "selectionShapePos": {
+   "x": 0.20000000298023224,
+   "y": 0.20000000298023224,
+   "z": 2
+  },
+  "resourceStorage": [
+   {
+    "type": 4,
+    "amount": -1,
+    "usedMode": 2
+   },
+   {
+    "type": 11,
+    "amount": 1,
+    "usedMode": 2
+   },
+   {
+    "type": 19,
+    "amount": 1,
+    "usedMode": 1
+   }
+  ],
+  "damageGraphics": [],
+  "selectionSound": 420,
+  "dyingSound": -1,
+  "oldAttackMode": 0,
+  "convertTerrain": 0,
+  "name": "ARCHR\u0000",
+  "id1": 4,
+  "id2": 4,
+  "speed": 0.9599999785423279,
+  "walkingGraphics0": 637,
+  "walkingGraphics1": -1,
+  "turnSpeed": 0,
+  "oldSizeClass": 0,
+  "trailObjectId": -1,
+  "trailOptions": 0,
+  "trailSpacing": 0,
+  "oldMoveAlgorithm": 0,
+  "turnRadius": 0,
+  "turnRadiusSpeed": 3.4028234663852886e+38,
+  "maxYawPerSecondMoving": 3.4028234663852886e+38,
+  "stationaryYawRevolutionTime": 0,
+  "maxYawPerSecondStationary": 3.4028234663852886e+38,
+  "defaultTaskId": -1,
+  "searchRadius": 6,
+  "workRate": 1,
+  "dropSite0": -1,
+  "dropSite1": -1,
+  "taskByGroup": 0,
+  "commandSoundId": 422,
+  "stopSoundId": 421,
+  "runPattern": 0,
+  "defaultArmor": 1000,
+  "attacks": [
+   {
+    "type": 27,
+    "amount": 3
+   },
+   {
+    "type": 21,
+    "amount": 0
+   },
+   {
+    "type": 3,
+    "amount": 4
+   },
+   {
+    "type": 17,
+    "amount": 0
+   }
+  ],
+  "armors": [
+   {
+    "type": 4,
+    "amount": 0
+   },
+   {
+    "type": 15,
+    "amount": 0
+   },
+   {
+    "type": 3,
+    "amount": 0
+   }
+  ],
+  "boundaryId": -1,
+  "weaponRangeMax": 4,
+  "blastRange": 0,
+  "attackSpeed": 2,
+  "projectileObjectId": 363,
+  "baseHitChance": 80,
+  "breakOffCombat": 0,
+  "frameDelay": 5,
+  "weaponOffset": {
+   "x": 0,
+   "y": 0.5,
+   "z": 1.5
+  },
+  "blastLevelOffense": 3,
+  "weaponRangeMin": 0,
+  "accuracyDispersion": 0.33000001311302185,
+  "fightSpriteId": 627,
+  "meleeArmorDisplayed": 0,
+  "attackDisplayed": 4,
+  "rangeDisplayed": 4,
+  "reloadTimeDisplayed": 2,
+  "resourceCost": [
+   {
+    "type": 1,
+    "amount": 25,
+    "enabled": 1
+   },
+   {
+    "type": 3,
+    "amount": 45,
+    "enabled": 1
+   },
+   {
+    "type": 4,
+    "amount": 1,
+    "enabled": 0
+   }
+  ],
+  "creationTime": 35,
+  "creationLocationId": 87,
+  "creationButtonId": 1,
+  "rearAttackModifier": 0,
+  "flankAttackModifier": 0,
+  "creatableType": 5,
+  "heroMode": 0,
+  "garrisonGraphic": -1,
+  "attackProjectileCount": 1,
+  "attackProjectileMaxCount": 1,
+  "attackProjectileSpawningAreaWidth": 1,
+  "attackProjectileSpawningAreaLength": 1,
+  "attackProjectileSpawningAreaRandomness": 1,
+  "attackProjectileSecondaryObjectId": -1,
+  "specialGraphicid": -1,
+  "specialActivation": 0,
+  "pierceArmorDisplayed": 0
+ },
+ {
+  "type": 70,
+  "nameLength": 6,
+  "id0": 4,
+  "languageDllName": 5083,
+  "languageDllCreation": 6083,
+  "class": 0,
+  "standingGraphic0": 633,
+  "standingGraphic1": -1,
+  "dyingGraphic": 630,
+  "undeadGraphic": -1,
+  "deathMode": 0,
+  "hitPoints": 30,
+  "lineOfSight": 6,
+  "garrisonCapacity": 0,
+  "radius": {
+   "x": 0.20000000298023224,
+   "y": 0.20000000298023224,
+   "z": 2
+  },
+  "trainSound": 337,
+  "damageSound": -1,
+  "deadUnitId": 3,
+  "placementMode": 5,
+  "canBeBuiltOn": 0,
+  "iconId": 17,
+  "hiddenInEditor": 0,
+  "oldPortraitIconId": -1,
+  "enabled": false,
+  "disabled": false,
+  "placementSideTerrain0": -1,
+  "placementSideTerrain1": -1,
+  "placementTerrain0": -1,
+  "placementTerrain1": -1,
+  "clearanceSize": {
+   "x": 0.20000000298023224,
+   "y": 0.20000000298023224
+  },
+  "buildingMode": 0,
+  "visibleInFog": 0,
+  "terrainRestriction": 7,
+  "flyMode": 0,
+  "resourceCapacity": 25,
+  "resourceDecay": 25,
+  "blastDefenseLevel": 3,
+  "combatLevel": 4,
+  "interactionMode": 4,
+  "mapDrawLevel": 1,
+  "unitLevel": 4,
+  "attackReaction": 1,
+  "minimapColor": 0,
+  "languageDllHelp": 105083,
+  "languageDllHotkeyText": 155083,
+  "hotkeys": 16083,
+  "recycleable": 0,
+  "enableAutoGather": 0,
+  "doppelgangerOnDeath": 0,
+  "resourceGatherDrop": 0,
+  "occlusionMask": 1,
+  "obstructionType": 5,
+  "selectionShape": 2,
+  "trait": 0,
+  "civilization": 0,
+  "attributePiece": 0,
+  "selectionEffect": 0,
+  "editorSelectionColor": 0,
+  "selectionShapePos": {
+   "x": 0.20000000298023224,
+   "y": 0.20000000298023224,
+   "z": 2
+  },
+  "resourceStorage": [
+   {
+    "type": 4,
+    "amount": -1,
+    "usedMode": 2
+   },
+   {
+    "type": 11,
+    "amount": 1,
+    "usedMode": 2
+   },
+   {
+    "type": 19,
+    "amount": 1,
+    "usedMode": 1
+   }
+  ],
+  "damageGraphics": [],
+  "selectionSound": 420,
+  "dyingSound": -1,
+  "oldAttackMode": 0,
+  "convertTerrain": 0,
+  "name": "ARCHR\u0000",
+  "id1": 4,
+  "id2": 4,
+  "speed": 0.9599999785423279,
+  "walkingGraphics0": 637,
+  "walkingGraphics1": -1,
+  "turnSpeed": 0,
+  "oldSizeClass": 0,
+  "trailObjectId": -1,
+  "trailOptions": 0,
+  "trailSpacing": 0,
+  "oldMoveAlgorithm": 0,
+  "turnRadius": 0,
+  "turnRadiusSpeed": 3.4028234663852886e+38,
+  "maxYawPerSecondMoving": 3.4028234663852886e+38,
+  "stationaryYawRevolutionTime": 0,
+  "maxYawPerSecondStationary": 3.4028234663852886e+38,
+  "defaultTaskId": -1,
+  "searchRadius": 6,
+  "workRate": 1,
+  "dropSite0": -1,
+  "dropSite1": -1,
+  "taskByGroup": 0,
+  "commandSoundId": 422,
+  "stopSoundId": 421,
+  "runPattern": 0,
+  "defaultArmor": 1000,
+  "attacks": [
+   {
+    "type": 27,
+    "amount": 3
+   },
+   {
+    "type": 21,
+    "amount": 0
+   },
+   {
+    "type": 3,
+    "amount": 4
+   },
+   {
+    "type": 17,
+    "amount": 0
+   }
+  ],
+  "armors": [
+   {
+    "type": 4,
+    "amount": 0
+   },
+   {
+    "type": 15,
+    "amount": 0
+   },
+   {
+    "type": 3,
+    "amount": 0
+   }
+  ],
+  "boundaryId": -1,
+  "weaponRangeMax": 4,
+  "blastRange": 0,
+  "attackSpeed": 2,
+  "projectileObjectId": 363,
+  "baseHitChance": 80,
+  "breakOffCombat": 0,
+  "frameDelay": 5,
+  "weaponOffset": {
+   "x": 0,
+   "y": 0.5,
+   "z": 1.5
+  },
+  "blastLevelOffense": 3,
+  "weaponRangeMin": 0,
+  "accuracyDispersion": 0.33000001311302185,
+  "fightSpriteId": 627,
+  "meleeArmorDisplayed": 0,
+  "attackDisplayed": 4,
+  "rangeDisplayed": 4,
+  "reloadTimeDisplayed": 2,
+  "resourceCost": [
+   {
+    "type": 1,
+    "amount": 25,
+    "enabled": 1
+   },
+   {
+    "type": 3,
+    "amount": 45,
+    "enabled": 1
+   },
+   {
+    "type": 4,
+    "amount": 1,
+    "enabled": 0
+   }
+  ],
+  "creationTime": 35,
+  "creationLocationId": 87,
+  "creationButtonId": 1,
+  "rearAttackModifier": 0,
+  "flankAttackModifier": 0,
+  "creatableType": 5,
+  "heroMode": 0,
+  "garrisonGraphic": -1,
+  "attackProjectileCount": 1,
+  "attackProjectileMaxCount": 1,
+  "attackProjectileSpawningAreaWidth": 1,
+  "attackProjectileSpawningAreaLength": 1,
+  "attackProjectileSpawningAreaRandomness": 1,
+  "attackProjectileSecondaryObjectId": -1,
+  "specialGraphicid": -1,
+  "specialActivation": 0,
+  "pierceArmorDisplayed": 0
+ },
+ {
+  "type": 70,
+  "nameLength": 6,
+  "id0": 4,
+  "languageDllName": 5083,
+  "languageDllCreation": 6083,
+  "class": 0,
+  "standingGraphic0": 633,
+  "standingGraphic1": -1,
+  "dyingGraphic": 630,
+  "undeadGraphic": -1,
+  "deathMode": 0,
+  "hitPoints": 30,
+  "lineOfSight": 6,
+  "garrisonCapacity": 0,
+  "radius": {
+   "x": 0.20000000298023224,
+   "y": 0.20000000298023224,
+   "z": 2
+  },
+  "trainSound": 337,
+  "damageSound": -1,
+  "deadUnitId": 3,
+  "placementMode": 5,
+  "canBeBuiltOn": 0,
+  "iconId": 17,
+  "hiddenInEditor": 0,
+  "oldPortraitIconId": -1,
+  "enabled": false,
+  "disabled": false,
+  "placementSideTerrain0": -1,
+  "placementSideTerrain1": -1,
+  "placementTerrain0": -1,
+  "placementTerrain1": -1,
+  "clearanceSize": {
+   "x": 0.20000000298023224,
+   "y": 0.20000000298023224
+  },
+  "buildingMode": 0,
+  "visibleInFog": 0,
+  "terrainRestriction": 7,
+  "flyMode": 0,
+  "resourceCapacity": 25,
+  "resourceDecay": 25,
+  "blastDefenseLevel": 3,
+  "combatLevel": 4,
+  "interactionMode": 4,
+  "mapDrawLevel": 1,
+  "unitLevel": 4,
+  "attackReaction": 1,
+  "minimapColor": 0,
+  "languageDllHelp": 105083,
+  "languageDllHotkeyText": 155083,
+  "hotkeys": 16083,
+  "recycleable": 0,
+  "enableAutoGather": 0,
+  "doppelgangerOnDeath": 0,
+  "resourceGatherDrop": 0,
+  "occlusionMask": 1,
+  "obstructionType": 5,
+  "selectionShape": 2,
+  "trait": 0,
+  "civilization": 0,
+  "attributePiece": 0,
+  "selectionEffect": 0,
+  "editorSelectionColor": 0,
+  "selectionShapePos": {
+   "x": 0.20000000298023224,
+   "y": 0.20000000298023224,
+   "z": 2
+  },
+  "resourceStorage": [
+   {
+    "type": 4,
+    "amount": -1,
+    "usedMode": 2
+   },
+   {
+    "type": 11,
+    "amount": 1,
+    "usedMode": 2
+   },
+   {
+    "type": 19,
+    "amount": 1,
+    "usedMode": 1
+   }
+  ],
+  "damageGraphics": [],
+  "selectionSound": 420,
+  "dyingSound": -1,
+  "oldAttackMode": 0,
+  "convertTerrain": 0,
+  "name": "ARCHR\u0000",
+  "id1": 4,
+  "id2": 4,
+  "speed": 0.9599999785423279,
+  "walkingGraphics0": 637,
+  "walkingGraphics1": -1,
+  "turnSpeed": 0,
+  "oldSizeClass": 0,
+  "trailObjectId": -1,
+  "trailOptions": 0,
+  "trailSpacing": 0,
+  "oldMoveAlgorithm": 0,
+  "turnRadius": 0,
+  "turnRadiusSpeed": 3.4028234663852886e+38,
+  "maxYawPerSecondMoving": 3.4028234663852886e+38,
+  "stationaryYawRevolutionTime": 0,
+  "maxYawPerSecondStationary": 3.4028234663852886e+38,
+  "defaultTaskId": -1,
+  "searchRadius": 6,
+  "workRate": 1,
+  "dropSite0": -1,
+  "dropSite1": -1,
+  "taskByGroup": 0,
+  "commandSoundId": 422,
+  "stopSoundId": 421,
+  "runPattern": 0,
+  "defaultArmor": 1000,
+  "attacks": [
+   {
+    "type": 27,
+    "amount": 3
+   },
+   {
+    "type": 21,
+    "amount": 0
+   },
+   {
+    "type": 3,
+    "amount": 4
+   },
+   {
+    "type": 17,
+    "amount": 0
+   }
+  ],
+  "armors": [
+   {
+    "type": 4,
+    "amount": 0
+   },
+   {
+    "type": 15,
+    "amount": 0
+   },
+   {
+    "type": 3,
+    "amount": 0
+   }
+  ],
+  "boundaryId": -1,
+  "weaponRangeMax": 4,
+  "blastRange": 0,
+  "attackSpeed": 2,
+  "projectileObjectId": 363,
+  "baseHitChance": 80,
+  "breakOffCombat": 0,
+  "frameDelay": 5,
+  "weaponOffset": {
+   "x": 0,
+   "y": 0.5,
+   "z": 1.5
+  },
+  "blastLevelOffense": 3,
+  "weaponRangeMin": 0,
+  "accuracyDispersion": 0.33000001311302185,
+  "fightSpriteId": 627,
+  "meleeArmorDisplayed": 0,
+  "attackDisplayed": 4,
+  "rangeDisplayed": 4,
+  "reloadTimeDisplayed": 2,
+  "resourceCost": [
+   {
+    "type": 1,
+    "amount": 25,
+    "enabled": 1
+   },
+   {
+    "type": 3,
+    "amount": 45,
+    "enabled": 1
+   },
+   {
+    "type": 4,
+    "amount": 1,
+    "enabled": 0
+   }
+  ],
+  "creationTime": 35,
+  "creationLocationId": 87,
+  "creationButtonId": 1,
+  "rearAttackModifier": 0,
+  "flankAttackModifier": 0,
+  "creatableType": 5,
+  "heroMode": 0,
+  "garrisonGraphic": -1,
+  "attackProjectileCount": 1,
+  "attackProjectileMaxCount": 1,
+  "attackProjectileSpawningAreaWidth": 1,
+  "attackProjectileSpawningAreaLength": 1,
+  "attackProjectileSpawningAreaRandomness": 1,
+  "attackProjectileSecondaryObjectId": -1,
+  "specialGraphicid": -1,
+  "specialActivation": 0,
+  "pierceArmorDisplayed": 0
+ },
+ {
+  "type": 70,
+  "nameLength": 6,
+  "id0": 4,
+  "languageDllName": 5083,
+  "languageDllCreation": 6083,
+  "class": 0,
+  "standingGraphic0": 633,
+  "standingGraphic1": -1,
+  "dyingGraphic": 630,
+  "undeadGraphic": -1,
+  "deathMode": 0,
+  "hitPoints": 30,
+  "lineOfSight": 6,
+  "garrisonCapacity": 0,
+  "radius": {
+   "x": 0.20000000298023224,
+   "y": 0.20000000298023224,
+   "z": 2
+  },
+  "trainSound": 337,
+  "damageSound": -1,
+  "deadUnitId": 3,
+  "placementMode": 5,
+  "canBeBuiltOn": 0,
+  "iconId": 17,
+  "hiddenInEditor": 0,
+  "oldPortraitIconId": -1,
+  "enabled": false,
+  "disabled": false,
+  "placementSideTerrain0": -1,
+  "placementSideTerrain1": -1,
+  "placementTerrain0": -1,
+  "placementTerrain1": -1,
+  "clearanceSize": {
+   "x": 0.20000000298023224,
+   "y": 0.20000000298023224
+  },
+  "buildingMode": 0,
+  "visibleInFog": 0,
+  "terrainRestriction": 7,
+  "flyMode": 0,
+  "resourceCapacity": 25,
+  "resourceDecay": 25,
+  "blastDefenseLevel": 3,
+  "combatLevel": 4,
+  "interactionMode": 4,
+  "mapDrawLevel": 1,
+  "unitLevel": 4,
+  "attackReaction": 1,
+  "minimapColor": 0,
+  "languageDllHelp": 105083,
+  "languageDllHotkeyText": 155083,
+  "hotkeys": 16083,
+  "recycleable": 0,
+  "enableAutoGather": 0,
+  "doppelgangerOnDeath": 0,
+  "resourceGatherDrop": 0,
+  "occlusionMask": 1,
+  "obstructionType": 5,
+  "selectionShape": 2,
+  "trait": 0,
+  "civilization": 0,
+  "attributePiece": 0,
+  "selectionEffect": 0,
+  "editorSelectionColor": 0,
+  "selectionShapePos": {
+   "x": 0.20000000298023224,
+   "y": 0.20000000298023224,
+   "z": 2
+  },
+  "resourceStorage": [
+   {
+    "type": 4,
+    "amount": -1,
+    "usedMode": 2
+   },
+   {
+    "type": 11,
+    "amount": 1,
+    "usedMode": 2
+   },
+   {
+    "type": 19,
+    "amount": 1,
+    "usedMode": 1
+   }
+  ],
+  "damageGraphics": [],
+  "selectionSound": 420,
+  "dyingSound": -1,
+  "oldAttackMode": 0,
+  "convertTerrain": 0,
+  "name": "ARCHR\u0000",
+  "id1": 4,
+  "id2": 4,
+  "speed": 0.9599999785423279,
+  "walkingGraphics0": 637,
+  "walkingGraphics1": -1,
+  "turnSpeed": 0,
+  "oldSizeClass": 0,
+  "trailObjectId": -1,
+  "trailOptions": 0,
+  "trailSpacing": 0,
+  "oldMoveAlgorithm": 0,
+  "turnRadius": 0,
+  "turnRadiusSpeed": 3.4028234663852886e+38,
+  "maxYawPerSecondMoving": 3.4028234663852886e+38,
+  "stationaryYawRevolutionTime": 0,
+  "maxYawPerSecondStationary": 3.4028234663852886e+38,
+  "defaultTaskId": -1,
+  "searchRadius": 6,
+  "workRate": 1,
+  "dropSite0": -1,
+  "dropSite1": -1,
+  "taskByGroup": 0,
+  "commandSoundId": 422,
+  "stopSoundId": 421,
+  "runPattern": 0,
+  "defaultArmor": 1000,
+  "attacks": [
+   {
+    "type": 27,
+    "amount": 3
+   },
+   {
+    "type": 21,
+    "amount": 0
+   },
+   {
+    "type": 3,
+    "amount": 4
+   },
+   {
+    "type": 17,
+    "amount": 0
+   }
+  ],
+  "armors": [
+   {
+    "type": 4,
+    "amount": 0
+   },
+   {
+    "type": 15,
+    "amount": 0
+   },
+   {
+    "type": 3,
+    "amount": 0
+   }
+  ],
+  "boundaryId": -1,
+  "weaponRangeMax": 4,
+  "blastRange": 0,
+  "attackSpeed": 2,
+  "projectileObjectId": 363,
+  "baseHitChance": 80,
+  "breakOffCombat": 0,
+  "frameDelay": 5,
+  "weaponOffset": {
+   "x": 0,
+   "y": 0.5,
+   "z": 1.5
+  },
+  "blastLevelOffense": 3,
+  "weaponRangeMin": 0,
+  "accuracyDispersion": 0.33000001311302185,
+  "fightSpriteId": 627,
+  "meleeArmorDisplayed": 0,
+  "attackDisplayed": 4,
+  "rangeDisplayed": 4,
+  "reloadTimeDisplayed": 2,
+  "resourceCost": [
+   {
+    "type": 1,
+    "amount": 25,
+    "enabled": 1
+   },
+   {
+    "type": 3,
+    "amount": 45,
+    "enabled": 1
+   },
+   {
+    "type": 4,
+    "amount": 1,
+    "enabled": 0
+   }
+  ],
+  "creationTime": 35,
+  "creationLocationId": 87,
+  "creationButtonId": 1,
+  "rearAttackModifier": 0,
+  "flankAttackModifier": 0,
+  "creatableType": 5,
+  "heroMode": 0,
+  "garrisonGraphic": -1,
+  "attackProjectileCount": 1,
+  "attackProjectileMaxCount": 1,
+  "attackProjectileSpawningAreaWidth": 1,
+  "attackProjectileSpawningAreaLength": 1,
+  "attackProjectileSpawningAreaRandomness": 1,
+  "attackProjectileSecondaryObjectId": -1,
+  "specialGraphicid": -1,
+  "specialActivation": 0,
+  "pierceArmorDisplayed": 0
+ },
+ {
+  "type": 70,
+  "nameLength": 6,
+  "id0": 4,
+  "languageDllName": 5083,
+  "languageDllCreation": 6083,
+  "class": 0,
+  "standingGraphic0": 633,
+  "standingGraphic1": -1,
+  "dyingGraphic": 630,
+  "undeadGraphic": -1,
+  "deathMode": 0,
+  "hitPoints": 30,
+  "lineOfSight": 6,
+  "garrisonCapacity": 0,
+  "radius": {
+   "x": 0.20000000298023224,
+   "y": 0.20000000298023224,
+   "z": 2
+  },
+  "trainSound": 337,
+  "damageSound": -1,
+  "deadUnitId": 3,
+  "placementMode": 5,
+  "canBeBuiltOn": 0,
+  "iconId": 17,
+  "hiddenInEditor": 0,
+  "oldPortraitIconId": -1,
+  "enabled": false,
+  "disabled": false,
+  "placementSideTerrain0": -1,
+  "placementSideTerrain1": -1,
+  "placementTerrain0": -1,
+  "placementTerrain1": -1,
+  "clearanceSize": {
+   "x": 0.20000000298023224,
+   "y": 0.20000000298023224
+  },
+  "buildingMode": 0,
+  "visibleInFog": 0,
+  "terrainRestriction": 7,
+  "flyMode": 0,
+  "resourceCapacity": 25,
+  "resourceDecay": 25,
+  "blastDefenseLevel": 3,
+  "combatLevel": 4,
+  "interactionMode": 4,
+  "mapDrawLevel": 1,
+  "unitLevel": 4,
+  "attackReaction": 1,
+  "minimapColor": 0,
+  "languageDllHelp": 105083,
+  "languageDllHotkeyText": 155083,
+  "hotkeys": 16083,
+  "recycleable": 0,
+  "enableAutoGather": 0,
+  "doppelgangerOnDeath": 0,
+  "resourceGatherDrop": 0,
+  "occlusionMask": 1,
+  "obstructionType": 5,
+  "selectionShape": 2,
+  "trait": 0,
+  "civilization": 0,
+  "attributePiece": 0,
+  "selectionEffect": 0,
+  "editorSelectionColor": 0,
+  "selectionShapePos": {
+   "x": 0.20000000298023224,
+   "y": 0.20000000298023224,
+   "z": 2
+  },
+  "resourceStorage": [
+   {
+    "type": 4,
+    "amount": -1,
+    "usedMode": 2
+   },
+   {
+    "type": 11,
+    "amount": 1,
+    "usedMode": 2
+   },
+   {
+    "type": 19,
+    "amount": 1,
+    "usedMode": 1
+   }
+  ],
+  "damageGraphics": [],
+  "selectionSound": 420,
+  "dyingSound": -1,
+  "oldAttackMode": 0,
+  "convertTerrain": 0,
+  "name": "ARCHR\u0000",
+  "id1": 4,
+  "id2": 4,
+  "speed": 0.9599999785423279,
+  "walkingGraphics0": 637,
+  "walkingGraphics1": -1,
+  "turnSpeed": 0,
+  "oldSizeClass": 0,
+  "trailObjectId": -1,
+  "trailOptions": 0,
+  "trailSpacing": 0,
+  "oldMoveAlgorithm": 0,
+  "turnRadius": 0,
+  "turnRadiusSpeed": 3.4028234663852886e+38,
+  "maxYawPerSecondMoving": 3.4028234663852886e+38,
+  "stationaryYawRevolutionTime": 0,
+  "maxYawPerSecondStationary": 3.4028234663852886e+38,
+  "defaultTaskId": -1,
+  "searchRadius": 6,
+  "workRate": 1,
+  "dropSite0": -1,
+  "dropSite1": -1,
+  "taskByGroup": 0,
+  "commandSoundId": 422,
+  "stopSoundId": 421,
+  "runPattern": 0,
+  "defaultArmor": 1000,
+  "attacks": [
+   {
+    "type": 27,
+    "amount": 3
+   },
+   {
+    "type": 21,
+    "amount": 0
+   },
+   {
+    "type": 3,
+    "amount": 4
+   },
+   {
+    "type": 17,
+    "amount": 0
+   }
+  ],
+  "armors": [
+   {
+    "type": 4,
+    "amount": 0
+   },
+   {
+    "type": 15,
+    "amount": 0
+   },
+   {
+    "type": 3,
+    "amount": 0
+   }
+  ],
+  "boundaryId": -1,
+  "weaponRangeMax": 4,
+  "blastRange": 0,
+  "attackSpeed": 2,
+  "projectileObjectId": 363,
+  "baseHitChance": 80,
+  "breakOffCombat": 0,
+  "frameDelay": 5,
+  "weaponOffset": {
+   "x": 0,
+   "y": 0.5,
+   "z": 1.5
+  },
+  "blastLevelOffense": 3,
+  "weaponRangeMin": 0,
+  "accuracyDispersion": 0.33000001311302185,
+  "fightSpriteId": 627,
+  "meleeArmorDisplayed": 0,
+  "attackDisplayed": 4,
+  "rangeDisplayed": 4,
+  "reloadTimeDisplayed": 2,
+  "resourceCost": [
+   {
+    "type": 1,
+    "amount": 25,
+    "enabled": 1
+   },
+   {
+    "type": 3,
+    "amount": 45,
+    "enabled": 1
+   },
+   {
+    "type": 4,
+    "amount": 1,
+    "enabled": 0
+   }
+  ],
+  "creationTime": 35,
+  "creationLocationId": 87,
+  "creationButtonId": 1,
+  "rearAttackModifier": 0,
+  "flankAttackModifier": 0,
+  "creatableType": 5,
+  "heroMode": 0,
+  "garrisonGraphic": -1,
+  "attackProjectileCount": 1,
+  "attackProjectileMaxCount": 1,
+  "attackProjectileSpawningAreaWidth": 1,
+  "attackProjectileSpawningAreaLength": 1,
+  "attackProjectileSpawningAreaRandomness": 1,
+  "attackProjectileSecondaryObjectId": -1,
+  "specialGraphicid": -1,
+  "specialActivation": 0,
+  "pierceArmorDisplayed": 0
+ },
+ {
+  "type": 70,
+  "nameLength": 6,
+  "id0": 4,
+  "languageDllName": 5083,
+  "languageDllCreation": 6083,
+  "class": 0,
+  "standingGraphic0": 633,
+  "standingGraphic1": -1,
+  "dyingGraphic": 630,
+  "undeadGraphic": -1,
+  "deathMode": 0,
+  "hitPoints": 30,
+  "lineOfSight": 6,
+  "garrisonCapacity": 0,
+  "radius": {
+   "x": 0.20000000298023224,
+   "y": 0.20000000298023224,
+   "z": 2
+  },
+  "trainSound": 337,
+  "damageSound": -1,
+  "deadUnitId": 3,
+  "placementMode": 5,
+  "canBeBuiltOn": 0,
+  "iconId": 17,
+  "hiddenInEditor": 0,
+  "oldPortraitIconId": -1,
+  "enabled": false,
+  "disabled": false,
+  "placementSideTerrain0": -1,
+  "placementSideTerrain1": -1,
+  "placementTerrain0": -1,
+  "placementTerrain1": -1,
+  "clearanceSize": {
+   "x": 0.20000000298023224,
+   "y": 0.20000000298023224
+  },
+  "buildingMode": 0,
+  "visibleInFog": 0,
+  "terrainRestriction": 7,
+  "flyMode": 0,
+  "resourceCapacity": 25,
+  "resourceDecay": 25,
+  "blastDefenseLevel": 3,
+  "combatLevel": 4,
+  "interactionMode": 4,
+  "mapDrawLevel": 1,
+  "unitLevel": 4,
+  "attackReaction": 1,
+  "minimapColor": 0,
+  "languageDllHelp": 105083,
+  "languageDllHotkeyText": 155083,
+  "hotkeys": 16083,
+  "recycleable": 0,
+  "enableAutoGather": 0,
+  "doppelgangerOnDeath": 0,
+  "resourceGatherDrop": 0,
+  "occlusionMask": 1,
+  "obstructionType": 5,
+  "selectionShape": 2,
+  "trait": 0,
+  "civilization": 0,
+  "attributePiece": 0,
+  "selectionEffect": 0,
+  "editorSelectionColor": 0,
+  "selectionShapePos": {
+   "x": 0.20000000298023224,
+   "y": 0.20000000298023224,
+   "z": 2
+  },
+  "resourceStorage": [
+   {
+    "type": 4,
+    "amount": -1,
+    "usedMode": 2
+   },
+   {
+    "type": 11,
+    "amount": 1,
+    "usedMode": 2
+   },
+   {
+    "type": 19,
+    "amount": 1,
+    "usedMode": 1
+   }
+  ],
+  "damageGraphics": [],
+  "selectionSound": 420,
+  "dyingSound": -1,
+  "oldAttackMode": 0,
+  "convertTerrain": 0,
+  "name": "ARCHR\u0000",
+  "id1": 4,
+  "id2": 4,
+  "speed": 0.9599999785423279,
+  "walkingGraphics0": 637,
+  "walkingGraphics1": -1,
+  "turnSpeed": 0,
+  "oldSizeClass": 0,
+  "trailObjectId": -1,
+  "trailOptions": 0,
+  "trailSpacing": 0,
+  "oldMoveAlgorithm": 0,
+  "turnRadius": 0,
+  "turnRadiusSpeed": 3.4028234663852886e+38,
+  "maxYawPerSecondMoving": 3.4028234663852886e+38,
+  "stationaryYawRevolutionTime": 0,
+  "maxYawPerSecondStationary": 3.4028234663852886e+38,
+  "defaultTaskId": -1,
+  "searchRadius": 6,
+  "workRate": 1,
+  "dropSite0": -1,
+  "dropSite1": -1,
+  "taskByGroup": 0,
+  "commandSoundId": 422,
+  "stopSoundId": 421,
+  "runPattern": 0,
+  "defaultArmor": 1000,
+  "attacks": [
+   {
+    "type": 27,
+    "amount": 3
+   },
+   {
+    "type": 21,
+    "amount": 0
+   },
+   {
+    "type": 3,
+    "amount": 4
+   },
+   {
+    "type": 17,
+    "amount": 0
+   }
+  ],
+  "armors": [
+   {
+    "type": 4,
+    "amount": 0
+   },
+   {
+    "type": 15,
+    "amount": 0
+   },
+   {
+    "type": 3,
+    "amount": 0
+   }
+  ],
+  "boundaryId": -1,
+  "weaponRangeMax": 4,
+  "blastRange": 0,
+  "attackSpeed": 2,
+  "projectileObjectId": 363,
+  "baseHitChance": 80,
+  "breakOffCombat": 0,
+  "frameDelay": 5,
+  "weaponOffset": {
+   "x": 0,
+   "y": 0.5,
+   "z": 1.5
+  },
+  "blastLevelOffense": 3,
+  "weaponRangeMin": 0,
+  "accuracyDispersion": 0.33000001311302185,
+  "fightSpriteId": 627,
+  "meleeArmorDisplayed": 0,
+  "attackDisplayed": 4,
+  "rangeDisplayed": 4,
+  "reloadTimeDisplayed": 2,
+  "resourceCost": [
+   {
+    "type": 1,
+    "amount": 25,
+    "enabled": 1
+   },
+   {
+    "type": 3,
+    "amount": 45,
+    "enabled": 1
+   },
+   {
+    "type": 4,
+    "amount": 1,
+    "enabled": 0
+   }
+  ],
+  "creationTime": 35,
+  "creationLocationId": 87,
+  "creationButtonId": 1,
+  "rearAttackModifier": 0,
+  "flankAttackModifier": 0,
+  "creatableType": 5,
+  "heroMode": 0,
+  "garrisonGraphic": -1,
+  "attackProjectileCount": 1,
+  "attackProjectileMaxCount": 1,
+  "attackProjectileSpawningAreaWidth": 1,
+  "attackProjectileSpawningAreaLength": 1,
+  "attackProjectileSpawningAreaRandomness": 1,
+  "attackProjectileSecondaryObjectId": -1,
+  "specialGraphicid": -1,
+  "specialActivation": 0,
+  "pierceArmorDisplayed": 0
+ },
+ {
+  "type": 70,
+  "nameLength": 6,
+  "id0": 4,
+  "languageDllName": 5083,
+  "languageDllCreation": 6083,
+  "class": 0,
+  "standingGraphic0": 633,
+  "standingGraphic1": -1,
+  "dyingGraphic": 630,
+  "undeadGraphic": -1,
+  "deathMode": 0,
+  "hitPoints": 30,
+  "lineOfSight": 6,
+  "garrisonCapacity": 0,
+  "radius": {
+   "x": 0.20000000298023224,
+   "y": 0.20000000298023224,
+   "z": 2
+  },
+  "trainSound": 337,
+  "damageSound": -1,
+  "deadUnitId": 3,
+  "placementMode": 5,
+  "canBeBuiltOn": 0,
+  "iconId": 17,
+  "hiddenInEditor": 0,
+  "oldPortraitIconId": -1,
+  "enabled": false,
+  "disabled": false,
+  "placementSideTerrain0": -1,
+  "placementSideTerrain1": -1,
+  "placementTerrain0": -1,
+  "placementTerrain1": -1,
+  "clearanceSize": {
+   "x": 0.20000000298023224,
+   "y": 0.20000000298023224
+  },
+  "buildingMode": 0,
+  "visibleInFog": 0,
+  "terrainRestriction": 7,
+  "flyMode": 0,
+  "resourceCapacity": 25,
+  "resourceDecay": 25,
+  "blastDefenseLevel": 3,
+  "combatLevel": 4,
+  "interactionMode": 4,
+  "mapDrawLevel": 1,
+  "unitLevel": 4,
+  "attackReaction": 1,
+  "minimapColor": 0,
+  "languageDllHelp": 105083,
+  "languageDllHotkeyText": 155083,
+  "hotkeys": 16083,
+  "recycleable": 0,
+  "enableAutoGather": 0,
+  "doppelgangerOnDeath": 0,
+  "resourceGatherDrop": 0,
+  "occlusionMask": 1,
+  "obstructionType": 5,
+  "selectionShape": 2,
+  "trait": 0,
+  "civilization": 0,
+  "attributePiece": 0,
+  "selectionEffect": 0,
+  "editorSelectionColor": 0,
+  "selectionShapePos": {
+   "x": 0.20000000298023224,
+   "y": 0.20000000298023224,
+   "z": 2
+  },
+  "resourceStorage": [
+   {
+    "type": 4,
+    "amount": -1,
+    "usedMode": 2
+   },
+   {
+    "type": 11,
+    "amount": 1,
+    "usedMode": 2
+   },
+   {
+    "type": 19,
+    "amount": 1,
+    "usedMode": 1
+   }
+  ],
+  "damageGraphics": [],
+  "selectionSound": 420,
+  "dyingSound": -1,
+  "oldAttackMode": 0,
+  "convertTerrain": 0,
+  "name": "ARCHR\u0000",
+  "id1": 4,
+  "id2": 4,
+  "speed": 0.9599999785423279,
+  "walkingGraphics0": 637,
+  "walkingGraphics1": -1,
+  "turnSpeed": 0,
+  "oldSizeClass": 0,
+  "trailObjectId": -1,
+  "trailOptions": 0,
+  "trailSpacing": 0,
+  "oldMoveAlgorithm": 0,
+  "turnRadius": 0,
+  "turnRadiusSpeed": 3.4028234663852886e+38,
+  "maxYawPerSecondMoving": 3.4028234663852886e+38,
+  "stationaryYawRevolutionTime": 0,
+  "maxYawPerSecondStationary": 3.4028234663852886e+38,
+  "defaultTaskId": -1,
+  "searchRadius": 6,
+  "workRate": 1,
+  "dropSite0": -1,
+  "dropSite1": -1,
+  "taskByGroup": 0,
+  "commandSoundId": 422,
+  "stopSoundId": 421,
+  "runPattern": 0,
+  "defaultArmor": 1000,
+  "attacks": [
+   {
+    "type": 27,
+    "amount": 3
+   },
+   {
+    "type": 21,
+    "amount": 0
+   },
+   {
+    "type": 3,
+    "amount": 4
+   },
+   {
+    "type": 17,
+    "amount": 0
+   }
+  ],
+  "armors": [
+   {
+    "type": 4,
+    "amount": 0
+   },
+   {
+    "type": 15,
+    "amount": 0
+   },
+   {
+    "type": 3,
+    "amount": 0
+   }
+  ],
+  "boundaryId": -1,
+  "weaponRangeMax": 4,
+  "blastRange": 0,
+  "attackSpeed": 2,
+  "projectileObjectId": 363,
+  "baseHitChance": 80,
+  "breakOffCombat": 0,
+  "frameDelay": 5,
+  "weaponOffset": {
+   "x": 0,
+   "y": 0.5,
+   "z": 1.5
+  },
+  "blastLevelOffense": 3,
+  "weaponRangeMin": 0,
+  "accuracyDispersion": 0.33000001311302185,
+  "fightSpriteId": 627,
+  "meleeArmorDisplayed": 0,
+  "attackDisplayed": 4,
+  "rangeDisplayed": 4,
+  "reloadTimeDisplayed": 2,
+  "resourceCost": [
+   {
+    "type": 1,
+    "amount": 25,
+    "enabled": 1
+   },
+   {
+    "type": 3,
+    "amount": 45,
+    "enabled": 1
+   },
+   {
+    "type": 4,
+    "amount": 1,
+    "enabled": 0
+   }
+  ],
+  "creationTime": 35,
+  "creationLocationId": 87,
+  "creationButtonId": 1,
+  "rearAttackModifier": 0,
+  "flankAttackModifier": 0,
+  "creatableType": 5,
+  "heroMode": 0,
+  "garrisonGraphic": -1,
+  "attackProjectileCount": 1,
+  "attackProjectileMaxCount": 1,
+  "attackProjectileSpawningAreaWidth": 1,
+  "attackProjectileSpawningAreaLength": 1,
+  "attackProjectileSpawningAreaRandomness": 1,
+  "attackProjectileSecondaryObjectId": -1,
+  "specialGraphicid": -1,
+  "specialActivation": 0,
+  "pierceArmorDisplayed": 0
+ },
+ {
+  "type": 70,
+  "nameLength": 6,
+  "id0": 4,
+  "languageDllName": 5083,
+  "languageDllCreation": 6083,
+  "class": 0,
+  "standingGraphic0": 633,
+  "standingGraphic1": -1,
+  "dyingGraphic": 630,
+  "undeadGraphic": -1,
+  "deathMode": 0,
+  "hitPoints": 30,
+  "lineOfSight": 6,
+  "garrisonCapacity": 0,
+  "radius": {
+   "x": 0.20000000298023224,
+   "y": 0.20000000298023224,
+   "z": 2
+  },
+  "trainSound": 337,
+  "damageSound": -1,
+  "deadUnitId": 3,
+  "placementMode": 5,
+  "canBeBuiltOn": 0,
+  "iconId": 17,
+  "hiddenInEditor": 0,
+  "oldPortraitIconId": -1,
+  "enabled": false,
+  "disabled": false,
+  "placementSideTerrain0": -1,
+  "placementSideTerrain1": -1,
+  "placementTerrain0": -1,
+  "placementTerrain1": -1,
+  "clearanceSize": {
+   "x": 0.20000000298023224,
+   "y": 0.20000000298023224
+  },
+  "buildingMode": 0,
+  "visibleInFog": 0,
+  "terrainRestriction": 7,
+  "flyMode": 0,
+  "resourceCapacity": 25,
+  "resourceDecay": 25,
+  "blastDefenseLevel": 3,
+  "combatLevel": 4,
+  "interactionMode": 4,
+  "mapDrawLevel": 1,
+  "unitLevel": 4,
+  "attackReaction": 1,
+  "minimapColor": 0,
+  "languageDllHelp": 105083,
+  "languageDllHotkeyText": 155083,
+  "hotkeys": 16083,
+  "recycleable": 0,
+  "enableAutoGather": 0,
+  "doppelgangerOnDeath": 0,
+  "resourceGatherDrop": 0,
+  "occlusionMask": 1,
+  "obstructionType": 5,
+  "selectionShape": 2,
+  "trait": 0,
+  "civilization": 0,
+  "attributePiece": 0,
+  "selectionEffect": 0,
+  "editorSelectionColor": 0,
+  "selectionShapePos": {
+   "x": 0.20000000298023224,
+   "y": 0.20000000298023224,
+   "z": 2
+  },
+  "resourceStorage": [
+   {
+    "type": 4,
+    "amount": -1,
+    "usedMode": 2
+   },
+   {
+    "type": 11,
+    "amount": 1,
+    "usedMode": 2
+   },
+   {
+    "type": 19,
+    "amount": 1,
+    "usedMode": 1
+   }
+  ],
+  "damageGraphics": [],
+  "selectionSound": 420,
+  "dyingSound": -1,
+  "oldAttackMode": 0,
+  "convertTerrain": 0,
+  "name": "ARCHR\u0000",
+  "id1": 4,
+  "id2": 4,
+  "speed": 0.9599999785423279,
+  "walkingGraphics0": 637,
+  "walkingGraphics1": -1,
+  "turnSpeed": 0,
+  "oldSizeClass": 0,
+  "trailObjectId": -1,
+  "trailOptions": 0,
+  "trailSpacing": 0,
+  "oldMoveAlgorithm": 0,
+  "turnRadius": 0,
+  "turnRadiusSpeed": 3.4028234663852886e+38,
+  "maxYawPerSecondMoving": 3.4028234663852886e+38,
+  "stationaryYawRevolutionTime": 0,
+  "maxYawPerSecondStationary": 3.4028234663852886e+38,
+  "defaultTaskId": -1,
+  "searchRadius": 6,
+  "workRate": 1,
+  "dropSite0": -1,
+  "dropSite1": -1,
+  "taskByGroup": 0,
+  "commandSoundId": 422,
+  "stopSoundId": 421,
+  "runPattern": 0,
+  "defaultArmor": 1000,
+  "attacks": [
+   {
+    "type": 27,
+    "amount": 3
+   },
+   {
+    "type": 21,
+    "amount": 0
+   },
+   {
+    "type": 3,
+    "amount": 4
+   },
+   {
+    "type": 17,
+    "amount": 0
+   }
+  ],
+  "armors": [
+   {
+    "type": 4,
+    "amount": 0
+   },
+   {
+    "type": 15,
+    "amount": 0
+   },
+   {
+    "type": 3,
+    "amount": 0
+   }
+  ],
+  "boundaryId": -1,
+  "weaponRangeMax": 4,
+  "blastRange": 0,
+  "attackSpeed": 2,
+  "projectileObjectId": 363,
+  "baseHitChance": 80,
+  "breakOffCombat": 0,
+  "frameDelay": 5,
+  "weaponOffset": {
+   "x": 0,
+   "y": 0.5,
+   "z": 1.5
+  },
+  "blastLevelOffense": 3,
+  "weaponRangeMin": 0,
+  "accuracyDispersion": 0.33000001311302185,
+  "fightSpriteId": 627,
+  "meleeArmorDisplayed": 0,
+  "attackDisplayed": 4,
+  "rangeDisplayed": 4,
+  "reloadTimeDisplayed": 2,
+  "resourceCost": [
+   {
+    "type": 1,
+    "amount": 25,
+    "enabled": 1
+   },
+   {
+    "type": 3,
+    "amount": 45,
+    "enabled": 1
+   },
+   {
+    "type": 4,
+    "amount": 1,
+    "enabled": 0
+   }
+  ],
+  "creationTime": 35,
+  "creationLocationId": 87,
+  "creationButtonId": 1,
+  "rearAttackModifier": 0,
+  "flankAttackModifier": 0,
+  "creatableType": 5,
+  "heroMode": 0,
+  "garrisonGraphic": -1,
+  "attackProjectileCount": 1,
+  "attackProjectileMaxCount": 1,
+  "attackProjectileSpawningAreaWidth": 1,
+  "attackProjectileSpawningAreaLength": 1,
+  "attackProjectileSpawningAreaRandomness": 1,
+  "attackProjectileSecondaryObjectId": -1,
+  "specialGraphicid": -1,
+  "specialActivation": 0,
+  "pierceArmorDisplayed": 0
+ },
+ {
+  "type": 70,
+  "nameLength": 6,
+  "id0": 4,
+  "languageDllName": 5083,
+  "languageDllCreation": 6083,
+  "class": 0,
+  "standingGraphic0": 633,
+  "standingGraphic1": -1,
+  "dyingGraphic": 630,
+  "undeadGraphic": -1,
+  "deathMode": 0,
+  "hitPoints": 30,
+  "lineOfSight": 6,
+  "garrisonCapacity": 0,
+  "radius": {
+   "x": 0.20000000298023224,
+   "y": 0.20000000298023224,
+   "z": 2
+  },
+  "trainSound": 337,
+  "damageSound": -1,
+  "deadUnitId": 3,
+  "placementMode": 5,
+  "canBeBuiltOn": 0,
+  "iconId": 17,
+  "hiddenInEditor": 0,
+  "oldPortraitIconId": -1,
+  "enabled": false,
+  "disabled": false,
+  "placementSideTerrain0": -1,
+  "placementSideTerrain1": -1,
+  "placementTerrain0": -1,
+  "placementTerrain1": -1,
+  "clearanceSize": {
+   "x": 0.20000000298023224,
+   "y": 0.20000000298023224
+  },
+  "buildingMode": 0,
+  "visibleInFog": 0,
+  "terrainRestriction": 7,
+  "flyMode": 0,
+  "resourceCapacity": 25,
+  "resourceDecay": 25,
+  "blastDefenseLevel": 3,
+  "combatLevel": 4,
+  "interactionMode": 4,
+  "mapDrawLevel": 1,
+  "unitLevel": 4,
+  "attackReaction": 1,
+  "minimapColor": 0,
+  "languageDllHelp": 105083,
+  "languageDllHotkeyText": 155083,
+  "hotkeys": 16083,
+  "recycleable": 0,
+  "enableAutoGather": 0,
+  "doppelgangerOnDeath": 0,
+  "resourceGatherDrop": 0,
+  "occlusionMask": 1,
+  "obstructionType": 5,
+  "selectionShape": 2,
+  "trait": 0,
+  "civilization": 0,
+  "attributePiece": 0,
+  "selectionEffect": 0,
+  "editorSelectionColor": 0,
+  "selectionShapePos": {
+   "x": 0.20000000298023224,
+   "y": 0.20000000298023224,
+   "z": 2
+  },
+  "resourceStorage": [
+   {
+    "type": 4,
+    "amount": -1,
+    "usedMode": 2
+   },
+   {
+    "type": 11,
+    "amount": 1,
+    "usedMode": 2
+   },
+   {
+    "type": 19,
+    "amount": 1,
+    "usedMode": 1
+   }
+  ],
+  "damageGraphics": [],
+  "selectionSound": 420,
+  "dyingSound": -1,
+  "oldAttackMode": 0,
+  "convertTerrain": 0,
+  "name": "ARCHR\u0000",
+  "id1": 4,
+  "id2": 4,
+  "speed": 0.9599999785423279,
+  "walkingGraphics0": 637,
+  "walkingGraphics1": -1,
+  "turnSpeed": 0,
+  "oldSizeClass": 0,
+  "trailObjectId": -1,
+  "trailOptions": 0,
+  "trailSpacing": 0,
+  "oldMoveAlgorithm": 0,
+  "turnRadius": 0,
+  "turnRadiusSpeed": 3.4028234663852886e+38,
+  "maxYawPerSecondMoving": 3.4028234663852886e+38,
+  "stationaryYawRevolutionTime": 0,
+  "maxYawPerSecondStationary": 3.4028234663852886e+38,
+  "defaultTaskId": -1,
+  "searchRadius": 6,
+  "workRate": 1,
+  "dropSite0": -1,
+  "dropSite1": -1,
+  "taskByGroup": 0,
+  "commandSoundId": 422,
+  "stopSoundId": 421,
+  "runPattern": 0,
+  "defaultArmor": 1000,
+  "attacks": [
+   {
+    "type": 27,
+    "amount": 3
+   },
+   {
+    "type": 21,
+    "amount": 0
+   },
+   {
+    "type": 3,
+    "amount": 4
+   },
+   {
+    "type": 17,
+    "amount": 0
+   }
+  ],
+  "armors": [
+   {
+    "type": 4,
+    "amount": 0
+   },
+   {
+    "type": 15,
+    "amount": 0
+   },
+   {
+    "type": 3,
+    "amount": 0
+   }
+  ],
+  "boundaryId": -1,
+  "weaponRangeMax": 4,
+  "blastRange": 0,
+  "attackSpeed": 2,
+  "projectileObjectId": 363,
+  "baseHitChance": 80,
+  "breakOffCombat": 0,
+  "frameDelay": 5,
+  "weaponOffset": {
+   "x": 0,
+   "y": 0.5,
+   "z": 1.5
+  },
+  "blastLevelOffense": 3,
+  "weaponRangeMin": 0,
+  "accuracyDispersion": 0.33000001311302185,
+  "fightSpriteId": 627,
+  "meleeArmorDisplayed": 0,
+  "attackDisplayed": 4,
+  "rangeDisplayed": 4,
+  "reloadTimeDisplayed": 2,
+  "resourceCost": [
+   {
+    "type": 1,
+    "amount": 25,
+    "enabled": 1
+   },
+   {
+    "type": 3,
+    "amount": 45,
+    "enabled": 1
+   },
+   {
+    "type": 4,
+    "amount": 1,
+    "enabled": 0
+   }
+  ],
+  "creationTime": 35,
+  "creationLocationId": 87,
+  "creationButtonId": 1,
+  "rearAttackModifier": 0,
+  "flankAttackModifier": 0,
+  "creatableType": 5,
+  "heroMode": 0,
+  "garrisonGraphic": -1,
+  "attackProjectileCount": 1,
+  "attackProjectileMaxCount": 1,
+  "attackProjectileSpawningAreaWidth": 1,
+  "attackProjectileSpawningAreaLength": 1,
+  "attackProjectileSpawningAreaRandomness": 1,
+  "attackProjectileSecondaryObjectId": -1,
+  "specialGraphicid": -1,
+  "specialActivation": 0,
+  "pierceArmorDisplayed": 0
+ },
+ {
+  "type": 70,
+  "nameLength": 6,
+  "id0": 4,
+  "languageDllName": 5083,
+  "languageDllCreation": 6083,
+  "class": 0,
+  "standingGraphic0": 633,
+  "standingGraphic1": -1,
+  "dyingGraphic": 630,
+  "undeadGraphic": -1,
+  "deathMode": 0,
+  "hitPoints": 30,
+  "lineOfSight": 6,
+  "garrisonCapacity": 0,
+  "radius": {
+   "x": 0.20000000298023224,
+   "y": 0.20000000298023224,
+   "z": 2
+  },
+  "trainSound": 337,
+  "damageSound": -1,
+  "deadUnitId": 3,
+  "placementMode": 5,
+  "canBeBuiltOn": 0,
+  "iconId": 17,
+  "hiddenInEditor": 0,
+  "oldPortraitIconId": -1,
+  "enabled": false,
+  "disabled": false,
+  "placementSideTerrain0": -1,
+  "placementSideTerrain1": -1,
+  "placementTerrain0": -1,
+  "placementTerrain1": -1,
+  "clearanceSize": {
+   "x": 0.20000000298023224,
+   "y": 0.20000000298023224
+  },
+  "buildingMode": 0,
+  "visibleInFog": 0,
+  "terrainRestriction": 7,
+  "flyMode": 0,
+  "resourceCapacity": 25,
+  "resourceDecay": 25,
+  "blastDefenseLevel": 3,
+  "combatLevel": 4,
+  "interactionMode": 4,
+  "mapDrawLevel": 1,
+  "unitLevel": 4,
+  "attackReaction": 1,
+  "minimapColor": 0,
+  "languageDllHelp": 105083,
+  "languageDllHotkeyText": 155083,
+  "hotkeys": 16083,
+  "recycleable": 0,
+  "enableAutoGather": 0,
+  "doppelgangerOnDeath": 0,
+  "resourceGatherDrop": 0,
+  "occlusionMask": 1,
+  "obstructionType": 5,
+  "selectionShape": 2,
+  "trait": 0,
+  "civilization": 0,
+  "attributePiece": 0,
+  "selectionEffect": 0,
+  "editorSelectionColor": 0,
+  "selectionShapePos": {
+   "x": 0.20000000298023224,
+   "y": 0.20000000298023224,
+   "z": 2
+  },
+  "resourceStorage": [
+   {
+    "type": 4,
+    "amount": -1,
+    "usedMode": 2
+   },
+   {
+    "type": 11,
+    "amount": 1,
+    "usedMode": 2
+   },
+   {
+    "type": 19,
+    "amount": 1,
+    "usedMode": 1
+   }
+  ],
+  "damageGraphics": [],
+  "selectionSound": 420,
+  "dyingSound": -1,
+  "oldAttackMode": 0,
+  "convertTerrain": 0,
+  "name": "ARCHR\u0000",
+  "id1": 4,
+  "id2": 4,
+  "speed": 0.9599999785423279,
+  "walkingGraphics0": 637,
+  "walkingGraphics1": -1,
+  "turnSpeed": 0,
+  "oldSizeClass": 0,
+  "trailObjectId": -1,
+  "trailOptions": 0,
+  "trailSpacing": 0,
+  "oldMoveAlgorithm": 0,
+  "turnRadius": 0,
+  "turnRadiusSpeed": 3.4028234663852886e+38,
+  "maxYawPerSecondMoving": 3.4028234663852886e+38,
+  "stationaryYawRevolutionTime": 0,
+  "maxYawPerSecondStationary": 3.4028234663852886e+38,
+  "defaultTaskId": -1,
+  "searchRadius": 6,
+  "workRate": 1,
+  "dropSite0": -1,
+  "dropSite1": -1,
+  "taskByGroup": 0,
+  "commandSoundId": 422,
+  "stopSoundId": 421,
+  "runPattern": 0,
+  "defaultArmor": 1000,
+  "attacks": [
+   {
+    "type": 27,
+    "amount": 3
+   },
+   {
+    "type": 21,
+    "amount": 0
+   },
+   {
+    "type": 3,
+    "amount": 4
+   },
+   {
+    "type": 17,
+    "amount": 0
+   }
+  ],
+  "armors": [
+   {
+    "type": 4,
+    "amount": 0
+   },
+   {
+    "type": 15,
+    "amount": 0
+   },
+   {
+    "type": 3,
+    "amount": 0
+   }
+  ],
+  "boundaryId": -1,
+  "weaponRangeMax": 4,
+  "blastRange": 0,
+  "attackSpeed": 2,
+  "projectileObjectId": 363,
+  "baseHitChance": 80,
+  "breakOffCombat": 0,
+  "frameDelay": 5,
+  "weaponOffset": {
+   "x": 0,
+   "y": 0.5,
+   "z": 1.5
+  },
+  "blastLevelOffense": 3,
+  "weaponRangeMin": 0,
+  "accuracyDispersion": 0.33000001311302185,
+  "fightSpriteId": 627,
+  "meleeArmorDisplayed": 0,
+  "attackDisplayed": 4,
+  "rangeDisplayed": 4,
+  "reloadTimeDisplayed": 2,
+  "resourceCost": [
+   {
+    "type": 1,
+    "amount": 25,
+    "enabled": 1
+   },
+   {
+    "type": 3,
+    "amount": 45,
+    "enabled": 1
+   },
+   {
+    "type": 4,
+    "amount": 1,
+    "enabled": 0
+   }
+  ],
+  "creationTime": 35,
+  "creationLocationId": 87,
+  "creationButtonId": 1,
+  "rearAttackModifier": 0,
+  "flankAttackModifier": 0,
+  "creatableType": 5,
+  "heroMode": 0,
+  "garrisonGraphic": -1,
+  "attackProjectileCount": 1,
+  "attackProjectileMaxCount": 1,
+  "attackProjectileSpawningAreaWidth": 1,
+  "attackProjectileSpawningAreaLength": 1,
+  "attackProjectileSpawningAreaRandomness": 1,
+  "attackProjectileSecondaryObjectId": -1,
+  "specialGraphicid": -1,
+  "specialActivation": 0,
+  "pierceArmorDisplayed": 0
+ },
+ {
+  "type": 70,
+  "nameLength": 6,
+  "id0": 4,
+  "languageDllName": 5083,
+  "languageDllCreation": 6083,
+  "class": 0,
+  "standingGraphic0": 633,
+  "standingGraphic1": -1,
+  "dyingGraphic": 630,
+  "undeadGraphic": -1,
+  "deathMode": 0,
+  "hitPoints": 30,
+  "lineOfSight": 6,
+  "garrisonCapacity": 0,
+  "radius": {
+   "x": 0.20000000298023224,
+   "y": 0.20000000298023224,
+   "z": 2
+  },
+  "trainSound": 337,
+  "damageSound": -1,
+  "deadUnitId": 3,
+  "placementMode": 5,
+  "canBeBuiltOn": 0,
+  "iconId": 17,
+  "hiddenInEditor": 0,
+  "oldPortraitIconId": -1,
+  "enabled": false,
+  "disabled": false,
+  "placementSideTerrain0": -1,
+  "placementSideTerrain1": -1,
+  "placementTerrain0": -1,
+  "placementTerrain1": -1,
+  "clearanceSize": {
+   "x": 0.20000000298023224,
+   "y": 0.20000000298023224
+  },
+  "buildingMode": 0,
+  "visibleInFog": 0,
+  "terrainRestriction": 7,
+  "flyMode": 0,
+  "resourceCapacity": 25,
+  "resourceDecay": 25,
+  "blastDefenseLevel": 3,
+  "combatLevel": 4,
+  "interactionMode": 4,
+  "mapDrawLevel": 1,
+  "unitLevel": 4,
+  "attackReaction": 1,
+  "minimapColor": 0,
+  "languageDllHelp": 105083,
+  "languageDllHotkeyText": 155083,
+  "hotkeys": 16083,
+  "recycleable": 0,
+  "enableAutoGather": 0,
+  "doppelgangerOnDeath": 0,
+  "resourceGatherDrop": 0,
+  "occlusionMask": 1,
+  "obstructionType": 5,
+  "selectionShape": 2,
+  "trait": 0,
+  "civilization": 0,
+  "attributePiece": 0,
+  "selectionEffect": 0,
+  "editorSelectionColor": 0,
+  "selectionShapePos": {
+   "x": 0.20000000298023224,
+   "y": 0.20000000298023224,
+   "z": 2
+  },
+  "resourceStorage": [
+   {
+    "type": 4,
+    "amount": -1,
+    "usedMode": 2
+   },
+   {
+    "type": 11,
+    "amount": 1,
+    "usedMode": 2
+   },
+   {
+    "type": 19,
+    "amount": 1,
+    "usedMode": 1
+   }
+  ],
+  "damageGraphics": [],
+  "selectionSound": 420,
+  "dyingSound": -1,
+  "oldAttackMode": 0,
+  "convertTerrain": 0,
+  "name": "ARCHR\u0000",
+  "id1": 4,
+  "id2": 4,
+  "speed": 0.9599999785423279,
+  "walkingGraphics0": 637,
+  "walkingGraphics1": -1,
+  "turnSpeed": 0,
+  "oldSizeClass": 0,
+  "trailObjectId": -1,
+  "trailOptions": 0,
+  "trailSpacing": 0,
+  "oldMoveAlgorithm": 0,
+  "turnRadius": 0,
+  "turnRadiusSpeed": 3.4028234663852886e+38,
+  "maxYawPerSecondMoving": 3.4028234663852886e+38,
+  "stationaryYawRevolutionTime": 0,
+  "maxYawPerSecondStationary": 3.4028234663852886e+38,
+  "defaultTaskId": -1,
+  "searchRadius": 6,
+  "workRate": 1,
+  "dropSite0": -1,
+  "dropSite1": -1,
+  "taskByGroup": 0,
+  "commandSoundId": 422,
+  "stopSoundId": 421,
+  "runPattern": 0,
+  "defaultArmor": 1000,
+  "attacks": [
+   {
+    "type": 27,
+    "amount": 3
+   },
+   {
+    "type": 21,
+    "amount": 0
+   },
+   {
+    "type": 3,
+    "amount": 4
+   },
+   {
+    "type": 17,
+    "amount": 0
+   }
+  ],
+  "armors": [
+   {
+    "type": 4,
+    "amount": 0
+   },
+   {
+    "type": 15,
+    "amount": 0
+   },
+   {
+    "type": 3,
+    "amount": 0
+   }
+  ],
+  "boundaryId": -1,
+  "weaponRangeMax": 4,
+  "blastRange": 0,
+  "attackSpeed": 2,
+  "projectileObjectId": 363,
+  "baseHitChance": 80,
+  "breakOffCombat": 0,
+  "frameDelay": 5,
+  "weaponOffset": {
+   "x": 0,
+   "y": 0.5,
+   "z": 1.5
+  },
+  "blastLevelOffense": 3,
+  "weaponRangeMin": 0,
+  "accuracyDispersion": 0.33000001311302185,
+  "fightSpriteId": 627,
+  "meleeArmorDisplayed": 0,
+  "attackDisplayed": 4,
+  "rangeDisplayed": 4,
+  "reloadTimeDisplayed": 2,
+  "resourceCost": [
+   {
+    "type": 1,
+    "amount": 25,
+    "enabled": 1
+   },
+   {
+    "type": 3,
+    "amount": 45,
+    "enabled": 1
+   },
+   {
+    "type": 4,
+    "amount": 1,
+    "enabled": 0
+   }
+  ],
+  "creationTime": 35,
+  "creationLocationId": 87,
+  "creationButtonId": 1,
+  "rearAttackModifier": 0,
+  "flankAttackModifier": 0,
+  "creatableType": 5,
+  "heroMode": 0,
+  "garrisonGraphic": -1,
+  "attackProjectileCount": 1,
+  "attackProjectileMaxCount": 1,
+  "attackProjectileSpawningAreaWidth": 1,
+  "attackProjectileSpawningAreaLength": 1,
+  "attackProjectileSpawningAreaRandomness": 1,
+  "attackProjectileSecondaryObjectId": -1,
+  "specialGraphicid": -1,
+  "specialActivation": 0,
+  "pierceArmorDisplayed": 0
+ },
+ {
+  "type": 70,
+  "nameLength": 6,
+  "id0": 4,
+  "languageDllName": 5083,
+  "languageDllCreation": 6083,
+  "class": 0,
+  "standingGraphic0": 633,
+  "standingGraphic1": -1,
+  "dyingGraphic": 630,
+  "undeadGraphic": -1,
+  "deathMode": 0,
+  "hitPoints": 30,
+  "lineOfSight": 6,
+  "garrisonCapacity": 0,
+  "radius": {
+   "x": 0.20000000298023224,
+   "y": 0.20000000298023224,
+   "z": 2
+  },
+  "trainSound": 337,
+  "damageSound": -1,
+  "deadUnitId": 3,
+  "placementMode": 5,
+  "canBeBuiltOn": 0,
+  "iconId": 17,
+  "hiddenInEditor": 0,
+  "oldPortraitIconId": -1,
+  "enabled": false,
+  "disabled": false,
+  "placementSideTerrain0": -1,
+  "placementSideTerrain1": -1,
+  "placementTerrain0": -1,
+  "placementTerrain1": -1,
+  "clearanceSize": {
+   "x": 0.20000000298023224,
+   "y": 0.20000000298023224
+  },
+  "buildingMode": 0,
+  "visibleInFog": 0,
+  "terrainRestriction": 7,
+  "flyMode": 0,
+  "resourceCapacity": 25,
+  "resourceDecay": 25,
+  "blastDefenseLevel": 3,
+  "combatLevel": 4,
+  "interactionMode": 4,
+  "mapDrawLevel": 1,
+  "unitLevel": 4,
+  "attackReaction": 1,
+  "minimapColor": 0,
+  "languageDllHelp": 105083,
+  "languageDllHotkeyText": 155083,
+  "hotkeys": 16083,
+  "recycleable": 0,
+  "enableAutoGather": 0,
+  "doppelgangerOnDeath": 0,
+  "resourceGatherDrop": 0,
+  "occlusionMask": 1,
+  "obstructionType": 5,
+  "selectionShape": 2,
+  "trait": 0,
+  "civilization": 0,
+  "attributePiece": 0,
+  "selectionEffect": 0,
+  "editorSelectionColor": 0,
+  "selectionShapePos": {
+   "x": 0.20000000298023224,
+   "y": 0.20000000298023224,
+   "z": 2
+  },
+  "resourceStorage": [
+   {
+    "type": 4,
+    "amount": -1,
+    "usedMode": 2
+   },
+   {
+    "type": 11,
+    "amount": 1,
+    "usedMode": 2
+   },
+   {
+    "type": 19,
+    "amount": 1,
+    "usedMode": 1
+   }
+  ],
+  "damageGraphics": [],
+  "selectionSound": 420,
+  "dyingSound": -1,
+  "oldAttackMode": 0,
+  "convertTerrain": 0,
+  "name": "ARCHR\u0000",
+  "id1": 4,
+  "id2": 4,
+  "speed": 0.9599999785423279,
+  "walkingGraphics0": 637,
+  "walkingGraphics1": -1,
+  "turnSpeed": 0,
+  "oldSizeClass": 0,
+  "trailObjectId": -1,
+  "trailOptions": 0,
+  "trailSpacing": 0,
+  "oldMoveAlgorithm": 0,
+  "turnRadius": 0,
+  "turnRadiusSpeed": 3.4028234663852886e+38,
+  "maxYawPerSecondMoving": 3.4028234663852886e+38,
+  "stationaryYawRevolutionTime": 0,
+  "maxYawPerSecondStationary": 3.4028234663852886e+38,
+  "defaultTaskId": -1,
+  "searchRadius": 6,
+  "workRate": 1,
+  "dropSite0": -1,
+  "dropSite1": -1,
+  "taskByGroup": 0,
+  "commandSoundId": 422,
+  "stopSoundId": 421,
+  "runPattern": 0,
+  "defaultArmor": 1000,
+  "attacks": [
+   {
+    "type": 27,
+    "amount": 3
+   },
+   {
+    "type": 21,
+    "amount": 0
+   },
+   {
+    "type": 3,
+    "amount": 4
+   },
+   {
+    "type": 17,
+    "amount": 0
+   }
+  ],
+  "armors": [
+   {
+    "type": 4,
+    "amount": 0
+   },
+   {
+    "type": 15,
+    "amount": 0
+   },
+   {
+    "type": 3,
+    "amount": 0
+   }
+  ],
+  "boundaryId": -1,
+  "weaponRangeMax": 4,
+  "blastRange": 0,
+  "attackSpeed": 2,
+  "projectileObjectId": 363,
+  "baseHitChance": 80,
+  "breakOffCombat": 0,
+  "frameDelay": 5,
+  "weaponOffset": {
+   "x": 0,
+   "y": 0.5,
+   "z": 1.5
+  },
+  "blastLevelOffense": 3,
+  "weaponRangeMin": 0,
+  "accuracyDispersion": 0.33000001311302185,
+  "fightSpriteId": 627,
+  "meleeArmorDisplayed": 0,
+  "attackDisplayed": 4,
+  "rangeDisplayed": 4,
+  "reloadTimeDisplayed": 2,
+  "resourceCost": [
+   {
+    "type": 1,
+    "amount": 25,
+    "enabled": 1
+   },
+   {
+    "type": 3,
+    "amount": 45,
+    "enabled": 1
+   },
+   {
+    "type": 4,
+    "amount": 1,
+    "enabled": 0
+   }
+  ],
+  "creationTime": 35,
+  "creationLocationId": 87,
+  "creationButtonId": 1,
+  "rearAttackModifier": 0,
+  "flankAttackModifier": 0,
+  "creatableType": 5,
+  "heroMode": 0,
+  "garrisonGraphic": -1,
+  "attackProjectileCount": 1,
+  "attackProjectileMaxCount": 1,
+  "attackProjectileSpawningAreaWidth": 1,
+  "attackProjectileSpawningAreaLength": 1,
+  "attackProjectileSpawningAreaRandomness": 1,
+  "attackProjectileSecondaryObjectId": -1,
+  "specialGraphicid": -1,
+  "specialActivation": 0,
+  "pierceArmorDisplayed": 0
+ },
+ {
+  "type": 70,
+  "nameLength": 6,
+  "id0": 4,
+  "languageDllName": 5083,
+  "languageDllCreation": 6083,
+  "class": 0,
+  "standingGraphic0": 633,
+  "standingGraphic1": -1,
+  "dyingGraphic": 630,
+  "undeadGraphic": -1,
+  "deathMode": 0,
+  "hitPoints": 30,
+  "lineOfSight": 6,
+  "garrisonCapacity": 0,
+  "radius": {
+   "x": 0.20000000298023224,
+   "y": 0.20000000298023224,
+   "z": 2
+  },
+  "trainSound": 337,
+  "damageSound": -1,
+  "deadUnitId": 3,
+  "placementMode": 5,
+  "canBeBuiltOn": 0,
+  "iconId": 17,
+  "hiddenInEditor": 0,
+  "oldPortraitIconId": -1,
+  "enabled": false,
+  "disabled": false,
+  "placementSideTerrain0": -1,
+  "placementSideTerrain1": -1,
+  "placementTerrain0": -1,
+  "placementTerrain1": -1,
+  "clearanceSize": {
+   "x": 0.20000000298023224,
+   "y": 0.20000000298023224
+  },
+  "buildingMode": 0,
+  "visibleInFog": 0,
+  "terrainRestriction": 7,
+  "flyMode": 0,
+  "resourceCapacity": 25,
+  "resourceDecay": 25,
+  "blastDefenseLevel": 3,
+  "combatLevel": 4,
+  "interactionMode": 4,
+  "mapDrawLevel": 1,
+  "unitLevel": 4,
+  "attackReaction": 1,
+  "minimapColor": 0,
+  "languageDllHelp": 105083,
+  "languageDllHotkeyText": 155083,
+  "hotkeys": 16083,
+  "recycleable": 0,
+  "enableAutoGather": 0,
+  "doppelgangerOnDeath": 0,
+  "resourceGatherDrop": 0,
+  "occlusionMask": 1,
+  "obstructionType": 5,
+  "selectionShape": 2,
+  "trait": 0,
+  "civilization": 0,
+  "attributePiece": 0,
+  "selectionEffect": 0,
+  "editorSelectionColor": 0,
+  "selectionShapePos": {
+   "x": 0.20000000298023224,
+   "y": 0.20000000298023224,
+   "z": 2
+  },
+  "resourceStorage": [
+   {
+    "type": 4,
+    "amount": -1,
+    "usedMode": 2
+   },
+   {
+    "type": 11,
+    "amount": 1,
+    "usedMode": 2
+   },
+   {
+    "type": 19,
+    "amount": 1,
+    "usedMode": 1
+   }
+  ],
+  "damageGraphics": [],
+  "selectionSound": 420,
+  "dyingSound": -1,
+  "oldAttackMode": 0,
+  "convertTerrain": 0,
+  "name": "ARCHR\u0000",
+  "id1": 4,
+  "id2": 4,
+  "speed": 0.9599999785423279,
+  "walkingGraphics0": 637,
+  "walkingGraphics1": -1,
+  "turnSpeed": 0,
+  "oldSizeClass": 0,
+  "trailObjectId": -1,
+  "trailOptions": 0,
+  "trailSpacing": 0,
+  "oldMoveAlgorithm": 0,
+  "turnRadius": 0,
+  "turnRadiusSpeed": 3.4028234663852886e+38,
+  "maxYawPerSecondMoving": 3.4028234663852886e+38,
+  "stationaryYawRevolutionTime": 0,
+  "maxYawPerSecondStationary": 3.4028234663852886e+38,
+  "defaultTaskId": -1,
+  "searchRadius": 6,
+  "workRate": 1,
+  "dropSite0": -1,
+  "dropSite1": -1,
+  "taskByGroup": 0,
+  "commandSoundId": 422,
+  "stopSoundId": 421,
+  "runPattern": 0,
+  "defaultArmor": 1000,
+  "attacks": [
+   {
+    "type": 27,
+    "amount": 3
+   },
+   {
+    "type": 21,
+    "amount": 0
+   },
+   {
+    "type": 3,
+    "amount": 4
+   },
+   {
+    "type": 17,
+    "amount": 0
+   }
+  ],
+  "armors": [
+   {
+    "type": 4,
+    "amount": 0
+   },
+   {
+    "type": 15,
+    "amount": 0
+   },
+   {
+    "type": 3,
+    "amount": 0
+   }
+  ],
+  "boundaryId": -1,
+  "weaponRangeMax": 4,
+  "blastRange": 0,
+  "attackSpeed": 2,
+  "projectileObjectId": 363,
+  "baseHitChance": 80,
+  "breakOffCombat": 0,
+  "frameDelay": 5,
+  "weaponOffset": {
+   "x": 0,
+   "y": 0.5,
+   "z": 1.5
+  },
+  "blastLevelOffense": 3,
+  "weaponRangeMin": 0,
+  "accuracyDispersion": 0.33000001311302185,
+  "fightSpriteId": 627,
+  "meleeArmorDisplayed": 0,
+  "attackDisplayed": 4,
+  "rangeDisplayed": 4,
+  "reloadTimeDisplayed": 2,
+  "resourceCost": [
+   {
+    "type": 1,
+    "amount": 25,
+    "enabled": 1
+   },
+   {
+    "type": 3,
+    "amount": 45,
+    "enabled": 1
+   },
+   {
+    "type": 4,
+    "amount": 1,
+    "enabled": 0
+   }
+  ],
+  "creationTime": 35,
+  "creationLocationId": 87,
+  "creationButtonId": 1,
+  "rearAttackModifier": 0,
+  "flankAttackModifier": 0,
+  "creatableType": 5,
+  "heroMode": 0,
+  "garrisonGraphic": -1,
+  "attackProjectileCount": 1,
+  "attackProjectileMaxCount": 1,
+  "attackProjectileSpawningAreaWidth": 1,
+  "attackProjectileSpawningAreaLength": 1,
+  "attackProjectileSpawningAreaRandomness": 1,
+  "attackProjectileSecondaryObjectId": -1,
+  "specialGraphicid": -1,
+  "specialActivation": 0,
+  "pierceArmorDisplayed": 0
+ },
+ {
+  "type": 70,
+  "nameLength": 6,
+  "id0": 4,
+  "languageDllName": 5083,
+  "languageDllCreation": 6083,
+  "class": 0,
+  "standingGraphic0": 633,
+  "standingGraphic1": -1,
+  "dyingGraphic": 630,
+  "undeadGraphic": -1,
+  "deathMode": 0,
+  "hitPoints": 30,
+  "lineOfSight": 6,
+  "garrisonCapacity": 0,
+  "radius": {
+   "x": 0.20000000298023224,
+   "y": 0.20000000298023224,
+   "z": 2
+  },
+  "trainSound": 337,
+  "damageSound": -1,
+  "deadUnitId": 3,
+  "placementMode": 5,
+  "canBeBuiltOn": 0,
+  "iconId": 17,
+  "hiddenInEditor": 0,
+  "oldPortraitIconId": -1,
+  "enabled": false,
+  "disabled": false,
+  "placementSideTerrain0": -1,
+  "placementSideTerrain1": -1,
+  "placementTerrain0": -1,
+  "placementTerrain1": -1,
+  "clearanceSize": {
+   "x": 0.20000000298023224,
+   "y": 0.20000000298023224
+  },
+  "buildingMode": 0,
+  "visibleInFog": 0,
+  "terrainRestriction": 7,
+  "flyMode": 0,
+  "resourceCapacity": 25,
+  "resourceDecay": 25,
+  "blastDefenseLevel": 3,
+  "combatLevel": 4,
+  "interactionMode": 4,
+  "mapDrawLevel": 1,
+  "unitLevel": 4,
+  "attackReaction": 1,
+  "minimapColor": 0,
+  "languageDllHelp": 105083,
+  "languageDllHotkeyText": 155083,
+  "hotkeys": 16083,
+  "recycleable": 0,
+  "enableAutoGather": 0,
+  "doppelgangerOnDeath": 0,
+  "resourceGatherDrop": 0,
+  "occlusionMask": 1,
+  "obstructionType": 5,
+  "selectionShape": 2,
+  "trait": 0,
+  "civilization": 0,
+  "attributePiece": 0,
+  "selectionEffect": 0,
+  "editorSelectionColor": 0,
+  "selectionShapePos": {
+   "x": 0.20000000298023224,
+   "y": 0.20000000298023224,
+   "z": 2
+  },
+  "resourceStorage": [
+   {
+    "type": 4,
+    "amount": -1,
+    "usedMode": 2
+   },
+   {
+    "type": 11,
+    "amount": 1,
+    "usedMode": 2
+   },
+   {
+    "type": 19,
+    "amount": 1,
+    "usedMode": 1
+   }
+  ],
+  "damageGraphics": [],
+  "selectionSound": 420,
+  "dyingSound": -1,
+  "oldAttackMode": 0,
+  "convertTerrain": 0,
+  "name": "ARCHR\u0000",
+  "id1": 4,
+  "id2": 4,
+  "speed": 0.9599999785423279,
+  "walkingGraphics0": 637,
+  "walkingGraphics1": -1,
+  "turnSpeed": 0,
+  "oldSizeClass": 0,
+  "trailObjectId": -1,
+  "trailOptions": 0,
+  "trailSpacing": 0,
+  "oldMoveAlgorithm": 0,
+  "turnRadius": 0,
+  "turnRadiusSpeed": 3.4028234663852886e+38,
+  "maxYawPerSecondMoving": 3.4028234663852886e+38,
+  "stationaryYawRevolutionTime": 0,
+  "maxYawPerSecondStationary": 3.4028234663852886e+38,
+  "defaultTaskId": -1,
+  "searchRadius": 6,
+  "workRate": 1,
+  "dropSite0": -1,
+  "dropSite1": -1,
+  "taskByGroup": 0,
+  "commandSoundId": 422,
+  "stopSoundId": 421,
+  "runPattern": 0,
+  "defaultArmor": 1000,
+  "attacks": [
+   {
+    "type": 27,
+    "amount": 3
+   },
+   {
+    "type": 21,
+    "amount": 0
+   },
+   {
+    "type": 3,
+    "amount": 4
+   },
+   {
+    "type": 17,
+    "amount": 0
+   }
+  ],
+  "armors": [
+   {
+    "type": 4,
+    "amount": 0
+   },
+   {
+    "type": 15,
+    "amount": 0
+   },
+   {
+    "type": 3,
+    "amount": 0
+   }
+  ],
+  "boundaryId": -1,
+  "weaponRangeMax": 4,
+  "blastRange": 0,
+  "attackSpeed": 2,
+  "projectileObjectId": 363,
+  "baseHitChance": 80,
+  "breakOffCombat": 0,
+  "frameDelay": 5,
+  "weaponOffset": {
+   "x": 0,
+   "y": 0.5,
+   "z": 1.5
+  },
+  "blastLevelOffense": 3,
+  "weaponRangeMin": 0,
+  "accuracyDispersion": 0.33000001311302185,
+  "fightSpriteId": 627,
+  "meleeArmorDisplayed": 0,
+  "attackDisplayed": 4,
+  "rangeDisplayed": 4,
+  "reloadTimeDisplayed": 2,
+  "resourceCost": [
+   {
+    "type": 1,
+    "amount": 25,
+    "enabled": 1
+   },
+   {
+    "type": 3,
+    "amount": 45,
+    "enabled": 1
+   },
+   {
+    "type": 4,
+    "amount": 1,
+    "enabled": 0
+   }
+  ],
+  "creationTime": 35,
+  "creationLocationId": 87,
+  "creationButtonId": 1,
+  "rearAttackModifier": 0,
+  "flankAttackModifier": 0,
+  "creatableType": 5,
+  "heroMode": 0,
+  "garrisonGraphic": -1,
+  "attackProjectileCount": 1,
+  "attackProjectileMaxCount": 1,
+  "attackProjectileSpawningAreaWidth": 1,
+  "attackProjectileSpawningAreaLength": 1,
+  "attackProjectileSpawningAreaRandomness": 1,
+  "attackProjectileSecondaryObjectId": -1,
+  "specialGraphicid": -1,
+  "specialActivation": 0,
+  "pierceArmorDisplayed": 0
+ },
+ {
+  "type": 70,
+  "nameLength": 6,
+  "id0": 4,
+  "languageDllName": 5083,
+  "languageDllCreation": 6083,
+  "class": 0,
+  "standingGraphic0": 633,
+  "standingGraphic1": -1,
+  "dyingGraphic": 630,
+  "undeadGraphic": -1,
+  "deathMode": 0,
+  "hitPoints": 30,
+  "lineOfSight": 6,
+  "garrisonCapacity": 0,
+  "radius": {
+   "x": 0.20000000298023224,
+   "y": 0.20000000298023224,
+   "z": 2
+  },
+  "trainSound": 337,
+  "damageSound": -1,
+  "deadUnitId": 3,
+  "placementMode": 5,
+  "canBeBuiltOn": 0,
+  "iconId": 17,
+  "hiddenInEditor": 0,
+  "oldPortraitIconId": -1,
+  "enabled": false,
+  "disabled": false,
+  "placementSideTerrain0": -1,
+  "placementSideTerrain1": -1,
+  "placementTerrain0": -1,
+  "placementTerrain1": -1,
+  "clearanceSize": {
+   "x": 0.20000000298023224,
+   "y": 0.20000000298023224
+  },
+  "buildingMode": 0,
+  "visibleInFog": 0,
+  "terrainRestriction": 7,
+  "flyMode": 0,
+  "resourceCapacity": 25,
+  "resourceDecay": 25,
+  "blastDefenseLevel": 3,
+  "combatLevel": 4,
+  "interactionMode": 4,
+  "mapDrawLevel": 1,
+  "unitLevel": 4,
+  "attackReaction": 1,
+  "minimapColor": 0,
+  "languageDllHelp": 105083,
+  "languageDllHotkeyText": 155083,
+  "hotkeys": 16083,
+  "recycleable": 0,
+  "enableAutoGather": 0,
+  "doppelgangerOnDeath": 0,
+  "resourceGatherDrop": 0,
+  "occlusionMask": 1,
+  "obstructionType": 5,
+  "selectionShape": 2,
+  "trait": 0,
+  "civilization": 0,
+  "attributePiece": 0,
+  "selectionEffect": 0,
+  "editorSelectionColor": 0,
+  "selectionShapePos": {
+   "x": 0.20000000298023224,
+   "y": 0.20000000298023224,
+   "z": 2
+  },
+  "resourceStorage": [
+   {
+    "type": 4,
+    "amount": -1,
+    "usedMode": 2
+   },
+   {
+    "type": 11,
+    "amount": 1,
+    "usedMode": 2
+   },
+   {
+    "type": 19,
+    "amount": 1,
+    "usedMode": 1
+   }
+  ],
+  "damageGraphics": [],
+  "selectionSound": 420,
+  "dyingSound": -1,
+  "oldAttackMode": 0,
+  "convertTerrain": 0,
+  "name": "ARCHR\u0000",
+  "id1": 4,
+  "id2": 4,
+  "speed": 0.9599999785423279,
+  "walkingGraphics0": 637,
+  "walkingGraphics1": -1,
+  "turnSpeed": 0,
+  "oldSizeClass": 0,
+  "trailObjectId": -1,
+  "trailOptions": 0,
+  "trailSpacing": 0,
+  "oldMoveAlgorithm": 0,
+  "turnRadius": 0,
+  "turnRadiusSpeed": 3.4028234663852886e+38,
+  "maxYawPerSecondMoving": 3.4028234663852886e+38,
+  "stationaryYawRevolutionTime": 0,
+  "maxYawPerSecondStationary": 3.4028234663852886e+38,
+  "defaultTaskId": -1,
+  "searchRadius": 6,
+  "workRate": 1,
+  "dropSite0": -1,
+  "dropSite1": -1,
+  "taskByGroup": 0,
+  "commandSoundId": 422,
+  "stopSoundId": 421,
+  "runPattern": 0,
+  "defaultArmor": 1000,
+  "attacks": [
+   {
+    "type": 27,
+    "amount": 3
+   },
+   {
+    "type": 21,
+    "amount": 0
+   },
+   {
+    "type": 3,
+    "amount": 4
+   },
+   {
+    "type": 17,
+    "amount": 0
+   }
+  ],
+  "armors": [
+   {
+    "type": 4,
+    "amount": 0
+   },
+   {
+    "type": 15,
+    "amount": 0
+   },
+   {
+    "type": 3,
+    "amount": 0
+   }
+  ],
+  "boundaryId": -1,
+  "weaponRangeMax": 4,
+  "blastRange": 0,
+  "attackSpeed": 2,
+  "projectileObjectId": 363,
+  "baseHitChance": 80,
+  "breakOffCombat": 0,
+  "frameDelay": 5,
+  "weaponOffset": {
+   "x": 0,
+   "y": 0.5,
+   "z": 1.5
+  },
+  "blastLevelOffense": 3,
+  "weaponRangeMin": 0,
+  "accuracyDispersion": 0.33000001311302185,
+  "fightSpriteId": 627,
+  "meleeArmorDisplayed": 0,
+  "attackDisplayed": 4,
+  "rangeDisplayed": 4,
+  "reloadTimeDisplayed": 2,
+  "resourceCost": [
+   {
+    "type": 1,
+    "amount": 25,
+    "enabled": 1
+   },
+   {
+    "type": 3,
+    "amount": 45,
+    "enabled": 1
+   },
+   {
+    "type": 4,
+    "amount": 1,
+    "enabled": 0
+   }
+  ],
+  "creationTime": 35,
+  "creationLocationId": 87,
+  "creationButtonId": 1,
+  "rearAttackModifier": 0,
+  "flankAttackModifier": 0,
+  "creatableType": 5,
+  "heroMode": 0,
+  "garrisonGraphic": -1,
+  "attackProjectileCount": 1,
+  "attackProjectileMaxCount": 1,
+  "attackProjectileSpawningAreaWidth": 1,
+  "attackProjectileSpawningAreaLength": 1,
+  "attackProjectileSpawningAreaRandomness": 1,
+  "attackProjectileSecondaryObjectId": -1,
+  "specialGraphicid": -1,
+  "specialActivation": 0,
+  "pierceArmorDisplayed": 0
+ },
+ {
+  "type": 70,
+  "nameLength": 6,
+  "id0": 4,
+  "languageDllName": 5083,
+  "languageDllCreation": 6083,
+  "class": 0,
+  "standingGraphic0": 633,
+  "standingGraphic1": -1,
+  "dyingGraphic": 630,
+  "undeadGraphic": -1,
+  "deathMode": 0,
+  "hitPoints": 30,
+  "lineOfSight": 6,
+  "garrisonCapacity": 0,
+  "radius": {
+   "x": 0.20000000298023224,
+   "y": 0.20000000298023224,
+   "z": 2
+  },
+  "trainSound": 337,
+  "damageSound": -1,
+  "deadUnitId": 3,
+  "placementMode": 5,
+  "canBeBuiltOn": 0,
+  "iconId": 17,
+  "hiddenInEditor": 0,
+  "oldPortraitIconId": -1,
+  "enabled": false,
+  "disabled": false,
+  "placementSideTerrain0": -1,
+  "placementSideTerrain1": -1,
+  "placementTerrain0": -1,
+  "placementTerrain1": -1,
+  "clearanceSize": {
+   "x": 0.20000000298023224,
+   "y": 0.20000000298023224
+  },
+  "buildingMode": 0,
+  "visibleInFog": 0,
+  "terrainRestriction": 7,
+  "flyMode": 0,
+  "resourceCapacity": 25,
+  "resourceDecay": 25,
+  "blastDefenseLevel": 3,
+  "combatLevel": 4,
+  "interactionMode": 4,
+  "mapDrawLevel": 1,
+  "unitLevel": 4,
+  "attackReaction": 1,
+  "minimapColor": 0,
+  "languageDllHelp": 105083,
+  "languageDllHotkeyText": 155083,
+  "hotkeys": 16083,
+  "recycleable": 0,
+  "enableAutoGather": 0,
+  "doppelgangerOnDeath": 0,
+  "resourceGatherDrop": 0,
+  "occlusionMask": 1,
+  "obstructionType": 5,
+  "selectionShape": 2,
+  "trait": 0,
+  "civilization": 0,
+  "attributePiece": 0,
+  "selectionEffect": 0,
+  "editorSelectionColor": 0,
+  "selectionShapePos": {
+   "x": 0.20000000298023224,
+   "y": 0.20000000298023224,
+   "z": 2
+  },
+  "resourceStorage": [
+   {
+    "type": 4,
+    "amount": -1,
+    "usedMode": 2
+   },
+   {
+    "type": 11,
+    "amount": 1,
+    "usedMode": 2
+   },
+   {
+    "type": 19,
+    "amount": 1,
+    "usedMode": 1
+   }
+  ],
+  "damageGraphics": [],
+  "selectionSound": 420,
+  "dyingSound": -1,
+  "oldAttackMode": 0,
+  "convertTerrain": 0,
+  "name": "ARCHR\u0000",
+  "id1": 4,
+  "id2": 4,
+  "speed": 0.9599999785423279,
+  "walkingGraphics0": 637,
+  "walkingGraphics1": -1,
+  "turnSpeed": 0,
+  "oldSizeClass": 0,
+  "trailObjectId": -1,
+  "trailOptions": 0,
+  "trailSpacing": 0,
+  "oldMoveAlgorithm": 0,
+  "turnRadius": 0,
+  "turnRadiusSpeed": 3.4028234663852886e+38,
+  "maxYawPerSecondMoving": 3.4028234663852886e+38,
+  "stationaryYawRevolutionTime": 0,
+  "maxYawPerSecondStationary": 3.4028234663852886e+38,
+  "defaultTaskId": -1,
+  "searchRadius": 6,
+  "workRate": 1,
+  "dropSite0": -1,
+  "dropSite1": -1,
+  "taskByGroup": 0,
+  "commandSoundId": 422,
+  "stopSoundId": 421,
+  "runPattern": 0,
+  "defaultArmor": 1000,
+  "attacks": [
+   {
+    "type": 27,
+    "amount": 3
+   },
+   {
+    "type": 21,
+    "amount": 0
+   },
+   {
+    "type": 3,
+    "amount": 4
+   },
+   {
+    "type": 17,
+    "amount": 0
+   }
+  ],
+  "armors": [
+   {
+    "type": 4,
+    "amount": 0
+   },
+   {
+    "type": 15,
+    "amount": 0
+   },
+   {
+    "type": 3,
+    "amount": 0
+   }
+  ],
+  "boundaryId": -1,
+  "weaponRangeMax": 4,
+  "blastRange": 0,
+  "attackSpeed": 2,
+  "projectileObjectId": 363,
+  "baseHitChance": 80,
+  "breakOffCombat": 0,
+  "frameDelay": 5,
+  "weaponOffset": {
+   "x": 0,
+   "y": 0.5,
+   "z": 1.5
+  },
+  "blastLevelOffense": 3,
+  "weaponRangeMin": 0,
+  "accuracyDispersion": 0.33000001311302185,
+  "fightSpriteId": 627,
+  "meleeArmorDisplayed": 0,
+  "attackDisplayed": 4,
+  "rangeDisplayed": 4,
+  "reloadTimeDisplayed": 2,
+  "resourceCost": [
+   {
+    "type": 1,
+    "amount": 25,
+    "enabled": 1
+   },
+   {
+    "type": 3,
+    "amount": 45,
+    "enabled": 1
+   },
+   {
+    "type": 4,
+    "amount": 1,
+    "enabled": 0
+   }
+  ],
+  "creationTime": 35,
+  "creationLocationId": 87,
+  "creationButtonId": 1,
+  "rearAttackModifier": 0,
+  "flankAttackModifier": 0,
+  "creatableType": 5,
+  "heroMode": 0,
+  "garrisonGraphic": -1,
+  "attackProjectileCount": 1,
+  "attackProjectileMaxCount": 1,
+  "attackProjectileSpawningAreaWidth": 1,
+  "attackProjectileSpawningAreaLength": 1,
+  "attackProjectileSpawningAreaRandomness": 1,
+  "attackProjectileSecondaryObjectId": -1,
+  "specialGraphicid": -1,
+  "specialActivation": 0,
+  "pierceArmorDisplayed": 0
+ },
+ {
+  "type": 70,
+  "nameLength": 6,
+  "id0": 4,
+  "languageDllName": 5083,
+  "languageDllCreation": 6083,
+  "class": 0,
+  "standingGraphic0": 633,
+  "standingGraphic1": -1,
+  "dyingGraphic": 630,
+  "undeadGraphic": -1,
+  "deathMode": 0,
+  "hitPoints": 30,
+  "lineOfSight": 6,
+  "garrisonCapacity": 0,
+  "radius": {
+   "x": 0.20000000298023224,
+   "y": 0.20000000298023224,
+   "z": 2
+  },
+  "trainSound": 337,
+  "damageSound": -1,
+  "deadUnitId": 3,
+  "placementMode": 5,
+  "canBeBuiltOn": 0,
+  "iconId": 17,
+  "hiddenInEditor": 0,
+  "oldPortraitIconId": -1,
+  "enabled": false,
+  "disabled": false,
+  "placementSideTerrain0": -1,
+  "placementSideTerrain1": -1,
+  "placementTerrain0": -1,
+  "placementTerrain1": -1,
+  "clearanceSize": {
+   "x": 0.20000000298023224,
+   "y": 0.20000000298023224
+  },
+  "buildingMode": 0,
+  "visibleInFog": 0,
+  "terrainRestriction": 7,
+  "flyMode": 0,
+  "resourceCapacity": 25,
+  "resourceDecay": 25,
+  "blastDefenseLevel": 3,
+  "combatLevel": 4,
+  "interactionMode": 4,
+  "mapDrawLevel": 1,
+  "unitLevel": 4,
+  "attackReaction": 1,
+  "minimapColor": 0,
+  "languageDllHelp": 105083,
+  "languageDllHotkeyText": 155083,
+  "hotkeys": 16083,
+  "recycleable": 0,
+  "enableAutoGather": 0,
+  "doppelgangerOnDeath": 0,
+  "resourceGatherDrop": 0,
+  "occlusionMask": 1,
+  "obstructionType": 5,
+  "selectionShape": 2,
+  "trait": 0,
+  "civilization": 0,
+  "attributePiece": 0,
+  "selectionEffect": 0,
+  "editorSelectionColor": 0,
+  "selectionShapePos": {
+   "x": 0.20000000298023224,
+   "y": 0.20000000298023224,
+   "z": 2
+  },
+  "resourceStorage": [
+   {
+    "type": 4,
+    "amount": -1,
+    "usedMode": 2
+   },
+   {
+    "type": 11,
+    "amount": 1,
+    "usedMode": 2
+   },
+   {
+    "type": 19,
+    "amount": 1,
+    "usedMode": 1
+   }
+  ],
+  "damageGraphics": [],
+  "selectionSound": 420,
+  "dyingSound": -1,
+  "oldAttackMode": 0,
+  "convertTerrain": 0,
+  "name": "ARCHR\u0000",
+  "id1": 4,
+  "id2": 4,
+  "speed": 0.9599999785423279,
+  "walkingGraphics0": 637,
+  "walkingGraphics1": -1,
+  "turnSpeed": 0,
+  "oldSizeClass": 0,
+  "trailObjectId": -1,
+  "trailOptions": 0,
+  "trailSpacing": 0,
+  "oldMoveAlgorithm": 0,
+  "turnRadius": 0,
+  "turnRadiusSpeed": 3.4028234663852886e+38,
+  "maxYawPerSecondMoving": 3.4028234663852886e+38,
+  "stationaryYawRevolutionTime": 0,
+  "maxYawPerSecondStationary": 3.4028234663852886e+38,
+  "defaultTaskId": -1,
+  "searchRadius": 6,
+  "workRate": 1,
+  "dropSite0": -1,
+  "dropSite1": -1,
+  "taskByGroup": 0,
+  "commandSoundId": 422,
+  "stopSoundId": 421,
+  "runPattern": 0,
+  "defaultArmor": 1000,
+  "attacks": [
+   {
+    "type": 27,
+    "amount": 3
+   },
+   {
+    "type": 21,
+    "amount": 0
+   },
+   {
+    "type": 3,
+    "amount": 4
+   },
+   {
+    "type": 17,
+    "amount": 0
+   }
+  ],
+  "armors": [
+   {
+    "type": 4,
+    "amount": 0
+   },
+   {
+    "type": 15,
+    "amount": 0
+   },
+   {
+    "type": 3,
+    "amount": 0
+   }
+  ],
+  "boundaryId": -1,
+  "weaponRangeMax": 4,
+  "blastRange": 0,
+  "attackSpeed": 2,
+  "projectileObjectId": 363,
+  "baseHitChance": 80,
+  "breakOffCombat": 0,
+  "frameDelay": 5,
+  "weaponOffset": {
+   "x": 0,
+   "y": 0.5,
+   "z": 1.5
+  },
+  "blastLevelOffense": 3,
+  "weaponRangeMin": 0,
+  "accuracyDispersion": 0.33000001311302185,
+  "fightSpriteId": 627,
+  "meleeArmorDisplayed": 0,
+  "attackDisplayed": 4,
+  "rangeDisplayed": 4,
+  "reloadTimeDisplayed": 2,
+  "resourceCost": [
+   {
+    "type": 1,
+    "amount": 25,
+    "enabled": 1
+   },
+   {
+    "type": 3,
+    "amount": 45,
+    "enabled": 1
+   },
+   {
+    "type": 4,
+    "amount": 1,
+    "enabled": 0
+   }
+  ],
+  "creationTime": 35,
+  "creationLocationId": 87,
+  "creationButtonId": 1,
+  "rearAttackModifier": 0,
+  "flankAttackModifier": 0,
+  "creatableType": 5,
+  "heroMode": 0,
+  "garrisonGraphic": -1,
+  "attackProjectileCount": 1,
+  "attackProjectileMaxCount": 1,
+  "attackProjectileSpawningAreaWidth": 1,
+  "attackProjectileSpawningAreaLength": 1,
+  "attackProjectileSpawningAreaRandomness": 1,
+  "attackProjectileSecondaryObjectId": -1,
+  "specialGraphicid": -1,
+  "specialActivation": 0,
+  "pierceArmorDisplayed": 0
+ },
+ {
+  "type": 70,
+  "nameLength": 6,
+  "id0": 4,
+  "languageDllName": 5083,
+  "languageDllCreation": 6083,
+  "class": 0,
+  "standingGraphic0": 633,
+  "standingGraphic1": -1,
+  "dyingGraphic": 630,
+  "undeadGraphic": -1,
+  "deathMode": 0,
+  "hitPoints": 30,
+  "lineOfSight": 6,
+  "garrisonCapacity": 0,
+  "radius": {
+   "x": 0.20000000298023224,
+   "y": 0.20000000298023224,
+   "z": 2
+  },
+  "trainSound": 337,
+  "damageSound": -1,
+  "deadUnitId": 3,
+  "placementMode": 5,
+  "canBeBuiltOn": 0,
+  "iconId": 17,
+  "hiddenInEditor": 0,
+  "oldPortraitIconId": -1,
+  "enabled": false,
+  "disabled": false,
+  "placementSideTerrain0": -1,
+  "placementSideTerrain1": -1,
+  "placementTerrain0": -1,
+  "placementTerrain1": -1,
+  "clearanceSize": {
+   "x": 0.20000000298023224,
+   "y": 0.20000000298023224
+  },
+  "buildingMode": 0,
+  "visibleInFog": 0,
+  "terrainRestriction": 7,
+  "flyMode": 0,
+  "resourceCapacity": 25,
+  "resourceDecay": 25,
+  "blastDefenseLevel": 3,
+  "combatLevel": 4,
+  "interactionMode": 4,
+  "mapDrawLevel": 1,
+  "unitLevel": 4,
+  "attackReaction": 1,
+  "minimapColor": 0,
+  "languageDllHelp": 105083,
+  "languageDllHotkeyText": 155083,
+  "hotkeys": 16083,
+  "recycleable": 0,
+  "enableAutoGather": 0,
+  "doppelgangerOnDeath": 0,
+  "resourceGatherDrop": 0,
+  "occlusionMask": 1,
+  "obstructionType": 5,
+  "selectionShape": 2,
+  "trait": 0,
+  "civilization": 0,
+  "attributePiece": 0,
+  "selectionEffect": 0,
+  "editorSelectionColor": 0,
+  "selectionShapePos": {
+   "x": 0.20000000298023224,
+   "y": 0.20000000298023224,
+   "z": 2
+  },
+  "resourceStorage": [
+   {
+    "type": 4,
+    "amount": -1,
+    "usedMode": 2
+   },
+   {
+    "type": 11,
+    "amount": 1,
+    "usedMode": 2
+   },
+   {
+    "type": 19,
+    "amount": 1,
+    "usedMode": 1
+   }
+  ],
+  "damageGraphics": [],
+  "selectionSound": 420,
+  "dyingSound": -1,
+  "oldAttackMode": 0,
+  "convertTerrain": 0,
+  "name": "ARCHR\u0000",
+  "id1": 4,
+  "id2": 4,
+  "speed": 0.9599999785423279,
+  "walkingGraphics0": 637,
+  "walkingGraphics1": -1,
+  "turnSpeed": 0,
+  "oldSizeClass": 0,
+  "trailObjectId": -1,
+  "trailOptions": 0,
+  "trailSpacing": 0,
+  "oldMoveAlgorithm": 0,
+  "turnRadius": 0,
+  "turnRadiusSpeed": 3.4028234663852886e+38,
+  "maxYawPerSecondMoving": 3.4028234663852886e+38,
+  "stationaryYawRevolutionTime": 0,
+  "maxYawPerSecondStationary": 3.4028234663852886e+38,
+  "defaultTaskId": -1,
+  "searchRadius": 6,
+  "workRate": 1,
+  "dropSite0": -1,
+  "dropSite1": -1,
+  "taskByGroup": 0,
+  "commandSoundId": 422,
+  "stopSoundId": 421,
+  "runPattern": 0,
+  "defaultArmor": 1000,
+  "attacks": [
+   {
+    "type": 27,
+    "amount": 3
+   },
+   {
+    "type": 21,
+    "amount": 0
+   },
+   {
+    "type": 3,
+    "amount": 4
+   },
+   {
+    "type": 17,
+    "amount": 0
+   }
+  ],
+  "armors": [
+   {
+    "type": 4,
+    "amount": 0
+   },
+   {
+    "type": 15,
+    "amount": 0
+   },
+   {
+    "type": 3,
+    "amount": 0
+   }
+  ],
+  "boundaryId": -1,
+  "weaponRangeMax": 4,
+  "blastRange": 0,
+  "attackSpeed": 2,
+  "projectileObjectId": 363,
+  "baseHitChance": 80,
+  "breakOffCombat": 0,
+  "frameDelay": 5,
+  "weaponOffset": {
+   "x": 0,
+   "y": 0.5,
+   "z": 1.5
+  },
+  "blastLevelOffense": 3,
+  "weaponRangeMin": 0,
+  "accuracyDispersion": 0.33000001311302185,
+  "fightSpriteId": 627,
+  "meleeArmorDisplayed": 0,
+  "attackDisplayed": 4,
+  "rangeDisplayed": 4,
+  "reloadTimeDisplayed": 2,
+  "resourceCost": [
+   {
+    "type": 1,
+    "amount": 25,
+    "enabled": 1
+   },
+   {
+    "type": 3,
+    "amount": 45,
+    "enabled": 1
+   },
+   {
+    "type": 4,
+    "amount": 1,
+    "enabled": 0
+   }
+  ],
+  "creationTime": 35,
+  "creationLocationId": 87,
+  "creationButtonId": 1,
+  "rearAttackModifier": 0,
+  "flankAttackModifier": 0,
+  "creatableType": 5,
+  "heroMode": 0,
+  "garrisonGraphic": -1,
+  "attackProjectileCount": 1,
+  "attackProjectileMaxCount": 1,
+  "attackProjectileSpawningAreaWidth": 1,
+  "attackProjectileSpawningAreaLength": 1,
+  "attackProjectileSpawningAreaRandomness": 1,
+  "attackProjectileSecondaryObjectId": -1,
+  "specialGraphicid": -1,
+  "specialActivation": 0,
+  "pierceArmorDisplayed": 0
+ },
+ {
+  "type": 70,
+  "nameLength": 6,
+  "id0": 4,
+  "languageDllName": 5083,
+  "languageDllCreation": 6083,
+  "class": 0,
+  "standingGraphic0": 633,
+  "standingGraphic1": -1,
+  "dyingGraphic": 630,
+  "undeadGraphic": -1,
+  "deathMode": 0,
+  "hitPoints": 30,
+  "lineOfSight": 6,
+  "garrisonCapacity": 0,
+  "radius": {
+   "x": 0.20000000298023224,
+   "y": 0.20000000298023224,
+   "z": 2
+  },
+  "trainSound": 337,
+  "damageSound": -1,
+  "deadUnitId": 3,
+  "placementMode": 5,
+  "canBeBuiltOn": 0,
+  "iconId": 17,
+  "hiddenInEditor": 0,
+  "oldPortraitIconId": -1,
+  "enabled": false,
+  "disabled": false,
+  "placementSideTerrain0": -1,
+  "placementSideTerrain1": -1,
+  "placementTerrain0": -1,
+  "placementTerrain1": -1,
+  "clearanceSize": {
+   "x": 0.20000000298023224,
+   "y": 0.20000000298023224
+  },
+  "buildingMode": 0,
+  "visibleInFog": 0,
+  "terrainRestriction": 7,
+  "flyMode": 0,
+  "resourceCapacity": 25,
+  "resourceDecay": 25,
+  "blastDefenseLevel": 3,
+  "combatLevel": 4,
+  "interactionMode": 4,
+  "mapDrawLevel": 1,
+  "unitLevel": 4,
+  "attackReaction": 1,
+  "minimapColor": 0,
+  "languageDllHelp": 105083,
+  "languageDllHotkeyText": 155083,
+  "hotkeys": 16083,
+  "recycleable": 0,
+  "enableAutoGather": 0,
+  "doppelgangerOnDeath": 0,
+  "resourceGatherDrop": 0,
+  "occlusionMask": 1,
+  "obstructionType": 5,
+  "selectionShape": 2,
+  "trait": 0,
+  "civilization": 0,
+  "attributePiece": 0,
+  "selectionEffect": 0,
+  "editorSelectionColor": 0,
+  "selectionShapePos": {
+   "x": 0.20000000298023224,
+   "y": 0.20000000298023224,
+   "z": 2
+  },
+  "resourceStorage": [
+   {
+    "type": 4,
+    "amount": -1,
+    "usedMode": 2
+   },
+   {
+    "type": 11,
+    "amount": 1,
+    "usedMode": 2
+   },
+   {
+    "type": 19,
+    "amount": 1,
+    "usedMode": 1
+   }
+  ],
+  "damageGraphics": [],
+  "selectionSound": 420,
+  "dyingSound": -1,
+  "oldAttackMode": 0,
+  "convertTerrain": 0,
+  "name": "ARCHR\u0000",
+  "id1": 4,
+  "id2": 4,
+  "speed": 0.9599999785423279,
+  "walkingGraphics0": 637,
+  "walkingGraphics1": -1,
+  "turnSpeed": 0,
+  "oldSizeClass": 0,
+  "trailObjectId": -1,
+  "trailOptions": 0,
+  "trailSpacing": 0,
+  "oldMoveAlgorithm": 0,
+  "turnRadius": 0,
+  "turnRadiusSpeed": 3.4028234663852886e+38,
+  "maxYawPerSecondMoving": 3.4028234663852886e+38,
+  "stationaryYawRevolutionTime": 0,
+  "maxYawPerSecondStationary": 3.4028234663852886e+38,
+  "defaultTaskId": -1,
+  "searchRadius": 6,
+  "workRate": 1,
+  "dropSite0": -1,
+  "dropSite1": -1,
+  "taskByGroup": 0,
+  "commandSoundId": 422,
+  "stopSoundId": 421,
+  "runPattern": 0,
+  "defaultArmor": 1000,
+  "attacks": [
+   {
+    "type": 27,
+    "amount": 3
+   },
+   {
+    "type": 21,
+    "amount": 0
+   },
+   {
+    "type": 3,
+    "amount": 4
+   },
+   {
+    "type": 17,
+    "amount": 0
+   }
+  ],
+  "armors": [
+   {
+    "type": 4,
+    "amount": 0
+   },
+   {
+    "type": 15,
+    "amount": 0
+   },
+   {
+    "type": 3,
+    "amount": 0
+   }
+  ],
+  "boundaryId": -1,
+  "weaponRangeMax": 4,
+  "blastRange": 0,
+  "attackSpeed": 2,
+  "projectileObjectId": 363,
+  "baseHitChance": 80,
+  "breakOffCombat": 0,
+  "frameDelay": 5,
+  "weaponOffset": {
+   "x": 0,
+   "y": 0.5,
+   "z": 1.5
+  },
+  "blastLevelOffense": 3,
+  "weaponRangeMin": 0,
+  "accuracyDispersion": 0.33000001311302185,
+  "fightSpriteId": 627,
+  "meleeArmorDisplayed": 0,
+  "attackDisplayed": 4,
+  "rangeDisplayed": 4,
+  "reloadTimeDisplayed": 2,
+  "resourceCost": [
+   {
+    "type": 1,
+    "amount": 25,
+    "enabled": 1
+   },
+   {
+    "type": 3,
+    "amount": 45,
+    "enabled": 1
+   },
+   {
+    "type": 4,
+    "amount": 1,
+    "enabled": 0
+   }
+  ],
+  "creationTime": 35,
+  "creationLocationId": 87,
+  "creationButtonId": 1,
+  "rearAttackModifier": 0,
+  "flankAttackModifier": 0,
+  "creatableType": 5,
+  "heroMode": 0,
+  "garrisonGraphic": -1,
+  "attackProjectileCount": 1,
+  "attackProjectileMaxCount": 1,
+  "attackProjectileSpawningAreaWidth": 1,
+  "attackProjectileSpawningAreaLength": 1,
+  "attackProjectileSpawningAreaRandomness": 1,
+  "attackProjectileSecondaryObjectId": -1,
+  "specialGraphicid": -1,
+  "specialActivation": 0,
+  "pierceArmorDisplayed": 0
+ }
+]

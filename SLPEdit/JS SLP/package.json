@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "genie-dat": "^0.3.0",
     "genie-slp": "^1.1.0",
     "jascpal": "^0.1.4",
     "papaparse": "^4.6.2",
