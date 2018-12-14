@@ -141,13 +141,13 @@ In these cases, the length of the block copy is stored in the top 6 bits of the 
 
 These commands skip a range of pixels, up to 64. The length is encoded like with the prior command, i.e. `length = command >> 2`. This command is mainly used to draw an empty space in the middle of a sprite, as it just moves the pointer to the drawing buffer forward.
 
-#### case 2: Block Copy (big) (`0000 0010`)
+#### case 2: Block Copy (big) (`LLLL 0010`)
 
-Like the first Block Copy, but supports ranges > 64 bytes. The top 4 bits of the command byte are shifted left 4 bits and added to the next byte in the command stream to get a length of 0-0xfff, i.e. `length = ((command & 0xf0) << 1) + next_byte`. Following that is the stream of data to copy, of size "length".
+Like the first Block Copy, but supports ranges > 64 bytes. The top 4 bits of the command byte are shifted left 4 bits and added to the next byte in the command stream to get a length of 0-0xfff, i.e. `length = ((command & 0xf0) << 4) + next_byte`. Following that is the stream of data to copy, of size "length".
 
-#### case 3: Skip pixels (big) (`0000 0011`)
+#### case 3: Skip pixels (big) (`LLLL 0011`)
 
-The length is determined just like the big block copy command (`length = ((command & 0xf0) << 1) + next_byte`), and it behaves like the other skip command in that it just moves the pointer to the drawing buffer.
+The length is determined just like the big block copy command (`length = ((command & 0xf0) << 4) + next_byte`), and it behaves like the other skip command in that it just moves the pointer to the drawing buffer.
 
 #### case 6: Copy & Transform block (`LLLL 0110`)
 
